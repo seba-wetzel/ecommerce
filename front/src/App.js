@@ -1,6 +1,13 @@
+
+import React from "react";
+import {BrowserRouter, Route} from "react-router-dom";
+/* import {Provider} from "react-redux"; */
+import NavBar from "./components/NavBar";
+
+
 import './App.css';
-import React from 'react'
 import withFirebaseAuth from './firebase/login'
+
 
 import firebase from "firebase/app";
 import "firebase/auth";
@@ -28,6 +35,9 @@ function App({ user, signOut, signInWithGoogle }) {
   console.log(user)
   return (
     <FirebaseAuthProvider firebase={firebase} {...firebaseConfig}>
+          <Provider >
+      <NavBar/>
+      <BrowserRouter>
       <div className="App">
         <header className="App-header">
           <IfFirebaseAuthed>
@@ -43,7 +53,18 @@ function App({ user, signOut, signInWithGoogle }) {
         </header>
       </div>
     </FirebaseAuthProvider>
+        <Route path="/" component={ProductosContainer} />
+      
+          
+          </BrowserRouter>
+    
+
+</Provider>
+
+
+      
   );
 }
 
 export default withFirebaseAuth(App);
+
