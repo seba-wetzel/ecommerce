@@ -1,4 +1,6 @@
 import express from "express";
+import api from './src/routes/index.js'
+
 const app = express();
 
 app.use(express.json());
@@ -12,6 +14,7 @@ app.use(function (err, req, res, next) {
     res.status(500).send(err);
 });
 
+app.use("/api", api)
 app.get("/mmmmmmmmmm", (req, res) => {
     console.log("sfdsfsdfgfds")
     res.send("hola")
