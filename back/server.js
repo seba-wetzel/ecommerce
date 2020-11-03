@@ -1,14 +1,11 @@
 import express from "express";
-
-
-
 const app = express();
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 
-app.use(express.static('../front/build/'));
+app.use(express.static('../front/dist/'));
 
 app.use(function (err, req, res, next) {
     console.error(err, err.stack);
