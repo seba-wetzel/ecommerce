@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import "../config/index.js"
 const Schema = mongoose.Schema;
 
 var productSchema = new Schema({
