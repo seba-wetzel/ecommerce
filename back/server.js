@@ -15,7 +15,7 @@ app.use(function (err, req, res, next) {
     res.status(500).send(err);
 });
 
-app.get("/mmmmmmmmmm", (req, res) => {
+app.get("/", (req, res) => {
     console.log("sfdsfsdfgfds")
     res.send("hola")
 })
