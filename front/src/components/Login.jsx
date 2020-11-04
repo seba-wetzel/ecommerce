@@ -8,30 +8,28 @@ import "firebase/auth";
 
 import {
   FirebaseAuthProvider,
-  FirebaseAuthConsumer,
-  IfFirebaseAuthed,
-  IfFirebaseAuthedAnd
+  IfFirebaseAuthed
 } from "@react-firebase/auth";
 
 
 import withFirebaseAuth from '../firebase/login'
 
 
-
 function Login({ user, signOut, signInWithGoogle }) {
   console.log(user)
   return (
+
     <FirebaseAuthProvider firebase={firebase} >
          <div className="App">
-            <header className="App-header">
-              <IfFirebaseAuthed>
+         <div className="right hide-on-med-and-down"> 
+              <IfFirebaseAuthed className="right hide-on-med-and-down">
                 <p>{user ? user.displayName : null}</p>
-                <button onClick={signOut}>logout</button>
+                <i className="material-icons" onClick={signOut}>logout</i>
               </IfFirebaseAuthed>
-              <button onClick={signInWithGoogle}>login</button>
-              
-
-            </header>
+              <i  onClick={signInWithGoogle}
+              className="material-icons">person_outline</i>
+            
+          </div>
           </div>
         </FirebaseAuthProvider>
 
