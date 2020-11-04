@@ -1,49 +1,28 @@
-import './App.css';
-import React from 'react'
-import withFirebaseAuth from './firebase/login'
 
-import firebase from "firebase/app";
-import "firebase/auth";
-//import config from '../../firebase-config';
+import React from "react";
+import { Route, Redirect, Switch } from 'react-router-dom';
 
-import {
-  FirebaseAuthProvider,
-  FirebaseAuthConsumer,
-  IfFirebaseAuthed,
-  IfFirebaseAuthedAnd
-} from "@react-firebase/auth";
+//Redux
 
-const firebaseConfig = {
-  apiKey: "AIzaSyBzk2OZavEhBqRzNDetZrlBrAm5hIjAMTY",
-  authDomain: "ecommerce-2020-b068c.firebaseapp.com",
-  databaseURL: "https://ecommerce-2020-b068c.firebaseio.com",
-  projectId: "ecommerce-2020-b068c",
-  storageBucket: "ecommerce-2020-b068c.appspot.com",
-  messagingSenderId: "828383040394",
-  appId: "1:828383040394:web:1f3f27ef8edc37b6da6e73",
-  measurementId: "G-FXWFEH2VDR"
-};
+//Components
+import NavBar from "./components/NavBar";
+import ProductosContainer from "./containers/ProductosContainer"
+import Login from './components/Login'
 
-function App({ user, signOut, signInWithGoogle }) {
-  console.log(user)
+function App() {
+  
   return (
-    <FirebaseAuthProvider firebase={firebase} {...firebaseConfig}>
-      <div className="App">
-        <header className="App-header">
-          <IfFirebaseAuthed>
-            <p>
-              {user ? user.displayName : null}
-            </p>
-            <button onClick={signOut}>logout</button>
-
-
-          </IfFirebaseAuthed>
-          <button onClick={signInWithGoogle}>login</button>
-
-        </header>
-      </div>
-    </FirebaseAuthProvider>
+    <>
+      <NavBar />
+      
+        <div >
+             <Switch>
+                  <Route exact path='/' component={ProductosContainer}></Route>
+                  <Route exact path='/login' component={Login}></Route>
+            </Switch>
+        </div>
+    </>  
   );
 }
 
-export default withFirebaseAuth(App);
+export default App;
