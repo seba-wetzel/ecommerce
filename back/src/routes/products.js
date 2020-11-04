@@ -1,13 +1,51 @@
-import express from 'express';
+import express from "express";
+import Product from "../db/db_models/products.js";
 
-const products = express.Router()
+const products = express.Router();
 
-products.get("/", (req, res) => {
-    res.send(`${req.originalUrl}`)
-})
+products.get("/", async (req, res) => {
+  console.log("llego");
+  try {
+    const results = await Product.find();
+    res.send(results);
+  } catch {
+    res.send(500).end();
+  }
+});
 
-export default products
+products.get("/:id", async (req, res) => {
+  try {
+    const product = await Product.findById(req.params.id);
+    res.send(product);
+  } catch {
+    res.send(503).end();
+  }
+});
 
+products.post("/", async (req, res) => {
+  const { nombre } = req.body;
+  console.log(nombre);
+  const product = await Product.create({ nombre });
+  res.status(201).send(product);
+});
+
+products.put("/:id", async (req, res) => {
+  try {
+    const product = await Product.update(req.body);
+    res.status(201).send(product);
+  } catch {
+    res.send(503).end();
+  }
+});
+
+products.delete("/:id", async (req, res) => {
+  try
+  {const product = await Products.deleteOne({ _id: req.params.id });
+  res.status(202).send(product)}
+
+  catch{res.send(503).end()}
+});
+export default products;
 
 /* .get = "/" = devuelve todos los productos
 .get = "/:ID = tiene que devolver 1 producto"
