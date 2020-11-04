@@ -33,7 +33,7 @@ const firebaseConfig = {
   measurementId: "G-FXWFEH2VDR"
 };
 
-function App({ user, signOut, signInWithGoogle }) {
+function App({ user, signOut, signInWithGoogle, signInWithFacebook }) {
   console.log(user)
   return (
     <FirebaseAuthProvider firebase={firebase} {...firebaseConfig}>
@@ -46,7 +46,8 @@ function App({ user, signOut, signInWithGoogle }) {
                 <p>{user ? user.displayName : null}</p>
                 <button onClick={signOut}>logout</button>
               </IfFirebaseAuthed>
-              <button onClick={signInWithGoogle}>login</button>
+              <button onClick={signInWithGoogle}>login google</button>
+              <button onClick={signInWithFacebook}>login facebook</button>
               <Route path="/" component={ProductosContainer} />
 
             </header>

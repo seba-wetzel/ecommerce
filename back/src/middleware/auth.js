@@ -1,6 +1,6 @@
-const { admin, db } = require('./admin');
+import admin from './admin.js'
 
-module.exports = (req, res, next) => {
+const auth = (req, res, next) => {
     let idToken;
     if (
         req.headers.authorization &&
@@ -16,6 +16,9 @@ module.exports = (req, res, next) => {
         .auth()
         .verifyIdToken(idToken)
         .then((decodedToken) => {
-            console.log(decodedToken);
             req.user = decodedToken;
             return next()
+        }).catch(e => res.status(404).send(e))
+}
+
+export default auth;
