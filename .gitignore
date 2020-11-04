@@ -25,3 +25,7 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 back/package.json
+front/dist/src.a2b27638.js
+front/dist/src.a2b27638.js.map
+front/dist/web-vitals.es5.min.a825d1ad.js
+front/dist/web-vitals.es5.min.a825d1ad.js.map
