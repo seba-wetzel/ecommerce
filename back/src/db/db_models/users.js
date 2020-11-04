@@ -1,7 +1,8 @@
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
+import "../config/index.js";
 const Schema = mongoose.Schema;
 
-var userSchema = new Schema({
+const userSchema = new Schema({
   correo: { type: String, required: true },
   compras: [{ type: Schema.Types.ObjectId, ref: "Purchase", required: true }], //array de referencias al modelo de compras
   carrito: { type: Schema.Types.ObjectId, ref: "Cart", required: true }, // referencia al modelo carritos
@@ -12,4 +13,4 @@ var userSchema = new Schema({
 
 const User = mongoose.model("User", userSchema);
 
-module.exports = User;
+export default User;

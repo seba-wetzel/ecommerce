@@ -1,7 +1,8 @@
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
+import "../config/index.js"
 const Schema = mongoose.Schema;
 
-var purchaseSchema = new Schema({
+const purchaseSchema = new Schema({
   fecha: { type: Date, required: true },
   monto: { type: Number, required: true },
   producto: [{ type: Schema.Types.ObjectId, ref: "Product", required: true }],
@@ -10,4 +11,4 @@ var purchaseSchema = new Schema({
 
 const Purchase = mongoose.model("Purchase", purchaseSchema);
 
-module.exports = Purchase;
+export default Purchase;
