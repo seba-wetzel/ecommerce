@@ -15,10 +15,6 @@ app.use(function (err, req, res, next) {
 });
 
 app.use("/api", api)
-app.get("/mmmmmmmmmm", (req, res) => {
-    console.log("sfdsfsdfgfds")
-    res.send("hola")
-})
 
 app.listen(8000, () => {
     console.log(`Server listening at port 8000`);
