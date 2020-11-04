@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 import "../config/index.js"
 const Schema = mongoose.Schema;
 
-var productSchema = new Schema({
+const productSchema = new Schema({
   nombre: { type: String, required: true },
   categoria: { type: Schema.Types.ObjectId, ref: "Category" },
   precio: { type: Number },
