@@ -9,6 +9,7 @@ const productSchema = new Schema({
   stock: { type: Number },
   imgURL: { type: Array },
   disponibilidad: { type: Boolean, default: true },
+  descripcion: { type: String }
 });
 
 const Product = mongoose.model("Product", productSchema);

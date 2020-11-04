@@ -20,6 +20,7 @@ const firebaseAppAuth = firebaseApp.auth();
 
 const providers = {
     googleProvider: new firebase.auth.GoogleAuthProvider(),
+    facebookProvider: new firebase.auth.FacebookAuthProvider()
 };
 
 export default withFirebaseAuth({
