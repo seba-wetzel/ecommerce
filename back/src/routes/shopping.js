@@ -1,7 +1,7 @@
 import express from 'express';
 import auth from '../middleware/auth.js'
 import User from "../db/db_models/users.js"
-import Cart from '../db/db_models/carrito.js'
+import Cart from '../db/db_models/carts.js'
 
 
 const shopping = express.Router()
@@ -9,37 +9,37 @@ const shopping = express.Router()
 shopping.get("/dfsdfdsf", auth, async (req, res) => {
     const email = req.user.email
     const user = await User.findOne({ email })
-    if (!user.carrito) {
-        const carrito = await Cart.create({ user })
-        user.carrito = carrito
+    if (!user.cart) {
+        const cart = await Cart.create({ user })
+        user.cart = cart
         user.save(e => console.log(e))
     }
 
-    res.send(`${user.carrito}`)
+    res.send(`${user.cart}`)
 })
 
 shopping.get("/", auth, async (req, res) => {
     const email = req.user.email
     const user = await User.findOne({ email })
-    const cart = await (await Cart.findById(user.carrito).
+    const cart = await (await Cart.findById(user.cart).
         populate("user", "email").
-        populate({ path: "producto", populate: { path: "producto" } }))
+        populate({ path: "products", populate: { path: "product" } }))
     res.send(cart)
 })
 
 // {"products": [
-//     { "producto": "5fa1d8b9bf9617470bcce714", "cantidad": 3 },
-//    { "producto": "5fa1d8b9bf9617470bcce712", "cantidad": 5 }
+//     { "product": "5fa1d8b9bf9617470bcce714", "units": 3 },
+//    { "product": "5fa1d8b9bf9617470bcce712", "units": 5 }
 //              ]
 // }  Esto es lo que hay que mandar por el body
 shopping.post("/", auth, async (req, res) => {
-    const producto = req.body.products
+    const products = req.body.products
     const email = req.user.email
     const user = await User.findOne({ email })
-    const carrito = await Cart.findByIdAndUpdate(user.carrito,
-        { producto }, () => { }).
-        populate({ path: "producto", populate: { path: "producto" } })
-    res.send(carrito)
+    const cart = await Cart.findByIdAndUpdate(user.cart,
+        { products }, () => { }).
+        populate({ path: "products", populate: { path: "product" } })
+    res.send(cart)
 })
 
 
