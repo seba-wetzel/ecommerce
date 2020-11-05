@@ -1,8 +1,9 @@
 import React from 'react';
+import {Link} from 'react-router-dom'
+import SoloProductoComponent from './SoloProductoComponent';
 
 
 const ProductosComponent = ({producto}) => {
-    console.log(producto, 'PRUEBA 2 ASDDDDDDDDSSSSSSSSSSSSS')
     return ( 
             
             
@@ -11,6 +12,7 @@ const ProductosComponent = ({producto}) => {
                 <div className="card hoverable">
                     <div className="card-image ">
                         <img src={producto.imgURL}/>
+                        <Link to='/products/:id' component={SoloProductoComponent} producto={producto} className="btn-floating halfway-fab waves-effect waves-light #880e4f pink darken-4"><i class="material-icons">shopping_basket</i></Link>
                         <a className="btn-floating halfway-fab waves-effect waves-light #880e4f pink darken-4"><i class="material-icons">shopping_basket</i></a>
                     </div>
               
@@ -18,7 +20,7 @@ const ProductosComponent = ({producto}) => {
                         <span className="card-title">{producto.nombre}</span>
                         <p>{producto.descripcion}</p>
                     </div>
-                    <div className="card-action">
+                    <div className="card-action center">
                         <a href="#idModal" className='btn modal-trigger red'>Detalles</a>
                     </div>
                 </div>
