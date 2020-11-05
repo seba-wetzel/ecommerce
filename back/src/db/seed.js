@@ -21,3 +21,4 @@ import "./config/index.js"
     console.log(newProducts)
     process.exit();
 })()
+

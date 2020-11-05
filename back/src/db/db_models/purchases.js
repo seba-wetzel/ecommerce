@@ -18,9 +18,9 @@ import "../config/index.js"
 const Schema = mongoose.Schema;
 
 const purchaseSchema = new Schema({
-  fecha: { type: Date, required: true },
-  monto: { type: Number, required: true },
-  producto: [{ type: Schema.Types.ObjectId, ref: "Product", required: true }],
+  date: { type: Date, required: true },
+  amount: { type: Number, required: true },
+  products: [{ type: Schema.Types.ObjectId, ref: "Product", required: true }],
   user: [{ type: Schema.Types.ObjectId, ref: "User", required: true }],
 });
 
