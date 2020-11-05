@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import axios from "axios";
 import { ADD_CATEGORY, DELETE_CATEGORY } from "../constants";
 
@@ -24,3 +25,31 @@ export const removeCat = (id) => (dispatch) =>
     .delete(`/api/category/${id}`)
     .then((res) => res.data)
     .then((cat) => dispatch(deleteCat(cat)));
+=======
+import axios from "axios";
+import { ADD_CATEGORY, DELETE_CATEGORY } from "../constants";
+
+const addCat = (cat) => ({
+  type: ADD_CATEGORY,
+  cat,
+});
+
+const deleteCat = (cat) => ({
+  type: DELETE_CATEGORY,
+  product,
+});
+
+// SOLO PARA ADMIN
+
+export const postCat = () => (dispatch) =>
+  axios
+    .post("/api/category")
+    .then((res) => res.data)
+    .then((cat) => dispatch(addCat(cat)));
+
+export const removeCat = () => (dispatch) =>
+  axios
+    .delete(`/api/category/${id}`)
+    .then((res) => res.data)
+    .then((cat) => dispatch(deleteCat(cat)));
+>>>>>>> master
