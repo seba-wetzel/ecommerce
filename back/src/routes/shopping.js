@@ -6,7 +6,7 @@ import Cart from '../db/db_models/carrito.js'
 
 const shopping = express.Router()
 
-shopping.get("/", auth, async (req, res) => {
+shopping.get("/dfsdfdsf", auth, async (req, res) => {
     const email = req.user.email
     const user = await User.findOne({ email })
     if (!user.carrito) {
@@ -18,11 +18,30 @@ shopping.get("/", auth, async (req, res) => {
     res.send(`${user.carrito}`)
 })
 
-shopping.get("/:id", auth, async (req, res) => {
-    const _id = req.params.id
-    const cart = await Cart.findById(_id).populate("user")
-    res.send(`${cart}`)
+shopping.get("/", auth, async (req, res) => {
+    const email = req.user.email
+    const user = await User.findOne({ email })
+    const cart = await (await Cart.findById(user.carrito).
+        populate("user", "email").
+        populate({ path: "producto", populate: { path: "producto" } }))
+    res.send(cart)
 })
+
+// {"products": [
+//     { "producto": "5fa1d8b9bf9617470bcce714", "cantidad": 3 },
+//    { "producto": "5fa1d8b9bf9617470bcce712", "cantidad": 5 }
+//              ]
+// }  Esto es lo que hay que mandar por el body
+shopping.post("/", auth, async (req, res) => {
+    const producto = req.body.products
+    const email = req.user.email
+    const user = await User.findOne({ email })
+    const carrito = await Cart.findByIdAndUpdate(user.carrito,
+        { producto }, () => { }).
+        populate({ path: "producto", populate: { path: "producto" } })
+    res.send(carrito)
+})
+
 
 
 export default shopping
