@@ -1,14 +1,3 @@
-<<<<<<< HEAD
-import express from 'express';
-
-const products = express.Router()
-
-products.get("/", (req, res) => {
-    res.send(`${req.originalUrl}`)
-})
-
-export default products
-=======
 import express from "express";
 import Product from "../db/db_models/products.js";
 
@@ -73,4 +62,3 @@ nombre: { type: String, required: true },
 .delete = "/:id" = sirve para borrar producto
 
   */
->>>>>>> master

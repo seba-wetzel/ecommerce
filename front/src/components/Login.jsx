@@ -16,20 +16,22 @@ import withFirebaseAuth from '../firebase/login'
 
 
 function Login({ user, signOut, signInWithGoogle }) {
-  console.log(user)
-  return (
+    return (
 
     <FirebaseAuthProvider firebase={firebase} >
          <div className="App">
          <div className="right hide-on-med-and-down"> 
-              <IfFirebaseAuthed className="right hide-on-med-and-down">
-                <p>{user ? user.displayName : null}</p>
-                <i className="material-icons" onClick={signOut}>logout</i>
+              <IfFirebaseAuthed >
+                <ul>
+                <li className="right hide-on-med-and-down">{user ? user.displayName : null}</li>
+                <li className="right hide-on-med-and-down" ><i className="material-icons" onClick={signOut}>logout</i></li>
+                </ul>
               </IfFirebaseAuthed>
-              <i  onClick={signInWithGoogle}
-              className="material-icons">person_outline</i>
-            
-          </div>
+              <li ><i  onClick={signInWithGoogle}
+              className="material-icons">person_outline</i></li>
+
+             </div>
+
           </div>
         </FirebaseAuthProvider>
 
