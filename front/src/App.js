@@ -1,6 +1,6 @@
 
 import React from "react";
-import { BrowserRouter, Route , Switch } from "react-router-dom";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 //Redux
 import { Provider } from "react-redux";
 import store from './redux/store'
@@ -38,34 +38,21 @@ const firebaseConfig = {
 function App({ user, signOut, signInWithGoogle, signInWithFacebook }) {
   console.log(user)
   return (
-   
+
 
     <FirebaseAuthProvider firebase={firebase} {...firebaseConfig}>
       <Provider store={store}>
         <NavBar />
         <BrowserRouter>
-<<<<<<< HEAD
-          <div className="App">
-            <header className="App-header">
-              <IfFirebaseAuthed>
-                <p>{user ? user.displayName : null}</p>
-                <button onClick={signOut}>logout</button>
-              </IfFirebaseAuthed>
-              <Route path="/" component={ProductosContainer} />
+          <div >
+            <Switch>
 
-            </header>
-          </div>
-=======
-        <div >
-             <Switch>
-
-                  <Route exact path='/login' component={Login}></Route>
-                  <Route exact path='/shopping' component={Carrito}></Route>
-                  <Route exact path='/' component={ProductosContainer}></Route>
+              <Route exact path='/login' component={Login}></Route>
+              <Route exact path='/shopping' component={Carrito}></Route>
+              <Route exact path='/' component={ProductosContainer}></Route>
 
             </Switch>
-        </div>
->>>>>>> fe28f9345c825d281f3835d18ae7369b0359eb81
+          </div>
         </BrowserRouter>
       </Provider>
     </FirebaseAuthProvider>
