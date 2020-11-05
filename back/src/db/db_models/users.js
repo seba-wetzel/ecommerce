@@ -4,9 +4,9 @@ const Schema = mongoose.Schema;
 
 const userSchema = new Schema({
   email: { type: String, required: true },
-  compras: [{ type: Schema.Types.ObjectId, ref: "Purchase" }], //array de referencias al modelo de compras
-  carrito: { type: Schema.Types.ObjectId, ref: "Cart" }, // referencia al modelo carritos
-  comentarios: [
+  purchases: [{ type: Schema.Types.ObjectId, ref: "Purchase" }], //array de referencias al modelo de compras
+  cart: { type: Schema.Types.ObjectId, ref: "Cart" }, // referencia al modelo carritos
+  comments: [
     { type: Schema.Types.ObjectId, ref: "Comment" },
   ], //array de referencias al modelo de comentarios
 });

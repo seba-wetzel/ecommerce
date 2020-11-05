@@ -3,13 +3,13 @@ import "../config/index.js"
 const Schema = mongoose.Schema;
 
 const productSchema = new Schema({
-  nombre: { type: String, required: true },
-  categoria: { type: Schema.Types.ObjectId, ref: "Category" },
-  precio: { type: Number },
+  name: { type: String, required: true },
+  categories: [{ type: Schema.Types.ObjectId, ref: "Category" }],
+  price: { type: Number },
   stock: { type: Number },
   imgURL: { type: Array },
-  disponibilidad: { type: Boolean, default: true },
-  descripcion: { type: String }
+  available: { type: Boolean, default: true },
+  description: { type: String }
 });
 
 const Product = mongoose.model("Product", productSchema);
