@@ -5,8 +5,6 @@ import Cart from '../db/db_models/carts.js'
 
 const users = express.Router()
 
-
-
 users.get("/me", auth, async (req, res) => {
     const email = req.user.email;
     const user = await User.findOne({ email })
@@ -15,10 +13,8 @@ users.get("/me", auth, async (req, res) => {
         const cart = await Cart.create({ user: newUser._id })
         newUser.cart = cart
         newUser.save(e => console.log(e))
-
         return res.status(201).send(newUser)
     }
-    console.log(user)
     res.send(user)
 })
 
