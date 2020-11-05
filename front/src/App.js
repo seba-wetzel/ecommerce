@@ -46,8 +46,6 @@ function App({ user, signOut, signInWithGoogle, signInWithFacebook }) {
                 <p>{user ? user.displayName : null}</p>
                 <button onClick={signOut}>logout</button>
               </IfFirebaseAuthed>
-              <button onClick={signInWithGoogle}>login google</button>
-              <button onClick={signInWithFacebook}>login facebook</button>
               <Route path="/" component={ProductosContainer} />
 
             </header>
