@@ -2,9 +2,23 @@
 <html>
  <head>
  <title>My React Configuration Setup</title>
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+ <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
  </head>
  <body>
  <div id="root"></div>
  <script src="./src/index.js"></script>
+ <script> 
+    M.toast('Agregador al carrito')
+    document.addEventListener('DOMContentLoaded', function() {
+      M.AutoInit()
+      var elems = document.querySelectorAll('.slider');
+      var instances = M.Slider.init(elems, {
+        interval: 3000,
+        fullWidth: true,
+        height: 400
+      });
+    });
+  </script>
  </body>
 </html>
