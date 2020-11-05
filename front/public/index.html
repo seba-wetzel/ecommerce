@@ -18,6 +18,23 @@
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script> 
+      M.toast('Agregador al carrito')
+
+
+      document.addEventListener('DOMContentLoaded', function() {
+        M.AutoInit()
+        var elems = document.querySelectorAll('.slider');
+        var instances = M.Slider.init(elems, {
+          interval: 3000,
+          fullWidth: true,
+          height: 400
+        });
+      });
+      
+      
+
+    </script>
 
   </body>
 </html>

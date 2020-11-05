@@ -1,23 +1,25 @@
-import React, { Component } from "react";
+import React from "react";
+import ProductosComponent from '../components/ProductosComponent'
+import ProductosCarrousel from '../components/ProductosCarrousel'
+import datos from '../datos'
 
+const ProductosContainer = () => {
+  return ( 
+    <div className='container section' >
+            <div className='row'>
+              <ProductosCarrousel/>
+              {datos.map((producto, i) => {
 
-class ProductosContainer extends Component{
-    constructor(props){
-        super(props)
-        this.state={}
-    }
+                return <ProductosComponent key={i} producto={producto} />
+                // console.log(producto, 'PRUEBAAAAAAAAAAAAAAA 1')
+              })}
 
-    render(){
-        return(
-            <div>
-                <h1>
-                    ProductosContainer
-                </h1>
+              
+
             </div>
-        )
-
-    }
-    
+          </div>
+   );
 }
+ 
+export default ProductosContainer;
 
-export default ProductosContainer
