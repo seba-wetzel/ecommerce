@@ -1,4 +1,8 @@
 import React from "react";
+import {connect} from 'react-redux';
+import { fetchProducts } from "../constants-actioncreators/action-creators/products";
+
+import Nabvar from "../components/NavBar"
 
 
 
@@ -12,31 +16,35 @@ class NavbarContainer extends React.Component {
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
       }
-    
-     
       handleChange (evt) {
         const value = evt.target.value; 
         this.setState({
           Search: value    
     });}
-    
       handleSubmit(evt){
         evt.preventDefault();  
-       this.props.fetchPeliculas(this.state.SearchMovie)
+       this.props.fetchProducts(this.state.Search)
      }
     
+     render(){
+         return(
+             <div>
+                    <Nabvar handleSubmit={this.handleSubmit} handleChange={this.handleChange}/>
+             </div>
 
-
-  return ( 
-    <div className='container section' >
-            <div className='row'>
-              
-
-              
-
-            </div>
-    </div>
-   );
+         )
+     }    
 }
+
+const mapStateToProps = function(state) {
+    return {
+        Search: state.products
+    }}
+  
+  
+  const mapDispatchToProps = function(dispatch) {
+      return {
+                fetchProducts:(title)=> dispatch(fetchProducts(title))
+    }}
  
-export default NavbarContainer;
+export default connect(mapStateToProps,mapDispatchToProps)(NavbarContainer);
