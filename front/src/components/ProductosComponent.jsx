@@ -10,8 +10,9 @@ const ProductosComponent = ({producto}) => {
             <div className='col s4 m3'>
                 <div className="card hoverable">
                     <div className="card-image ">
-                        <img src={producto.imgURL}/>
-                        <a className="btn-floating halfway-fab waves-effect waves-light #880e4f pink darken-4"><i class="material-icons">shopping_basket</i></a>
+                        <img src={producto.imgURL} alt=""/>
+                        <a className="btn-floating halfway-fab waves-effect waves-light #880e4f pink darken-4">
+                        <i class="material-icons">shopping_basket</i></a>
                     </div>
               
                     <div className="card-content">
@@ -23,10 +24,6 @@ const ProductosComponent = ({producto}) => {
                     </div>
                 </div>
             </div>
-
-    
-
-        
            
     );
 }
