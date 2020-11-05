@@ -22,6 +22,11 @@ products.get("/:id", async (req, res) => {
     }
 });
 
+products.get("/search/:query", async (req, res) => {
+    const products = await Product.find(query)
+
+})
+
 products.post("/", async (req, res) => {
     const { nombre } = req.body;
     console.log(nombre);
