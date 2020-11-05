@@ -13,6 +13,7 @@ products.get("/", async (req, res) => {
     }
 });
 
+
 products.get("/:id", async (req, res) => {
     try {
         const product = await Product.findById(req.params.id);
@@ -21,11 +22,6 @@ products.get("/:id", async (req, res) => {
         res.send(503).end();
     }
 });
-
-products.get("/search/:query", async (req, res) => {
-    const products = await Product.find(query)
-
-})
 
 products.post("/", async (req, res) => {
     const { nombre } = req.body;
