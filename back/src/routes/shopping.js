@@ -23,7 +23,8 @@ shopping.get("/", auth, async (req, res) => {
     const user = await User.findOne({ email })
     const cart = await (await Cart.findById(user.cart).
         populate("user", "email").
-        populate({ path: "products", populate: { path: "product" } }))
+        populate({ path: "products", populate: { path: "product" } })).
+        populate({ path: "products", populate: { path: "product", populate: { path: "categories" } } })
     res.send(cart)
 })
 
@@ -38,7 +39,8 @@ shopping.post("/", auth, async (req, res) => {
     const user = await User.findOne({ email })
     const cart = await Cart.findByIdAndUpdate(user.cart,
         { products }, () => { }).
-        populate({ path: "products", populate: { path: "product" } })
+        populate({ path: "products", populate: { path: "product" } }).
+        populate({ path: "products", populate: { path: "product", populate: { path: "categories" } } })
     res.send(cart)
 })
 
