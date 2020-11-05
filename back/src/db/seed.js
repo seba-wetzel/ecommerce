@@ -2,7 +2,6 @@ import Product from '../db/db_models/products.js'
 import Category from '../db/db_models/categories.js'
 import "./config/index.js"
 
-
 (async function () {
     const Categories = [
         { name: "bombacha" },
