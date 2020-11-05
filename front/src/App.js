@@ -9,6 +9,7 @@ import NavBar from "./components/NavBar";
 // import Footer from './components/Footer'
 import ProductosContainer from "./containers/ProductosContainer"
 import Login from './components/Login'
+import Carrito from "./components/Carrito";
 
 function App() {
   
@@ -20,8 +21,11 @@ function App() {
       <NavBar />
         <div >
              <Switch>
-                  <Route path='/' component={ProductosContainer}></Route>
+                  
                   <Route exact path='/login' component={Login}></Route>
+                  <Route exact path='/shopping' component={Carrito}></Route>
+                  <Route exact path='/' component={ProductosContainer}></Route>
+                  
             </Switch>
         </div>
       {/* <Footer/> */}

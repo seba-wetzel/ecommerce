@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Login from './Login'
+import Carrito from './Carrito'
 
 
 
@@ -29,7 +30,7 @@ return (
             <Link to="/login"><Login/></Link>
             </li>
             <li><Link to="/">Productos</Link></li>
-            <li><a href="collapsible.html"><i className="material-icons">shopping_cart</i></a></li>
+            <li><Link to="/shopping" ><i className="material-icons">shopping_cart</i></Link></li>
           </ul>
       </div>
     </nav>

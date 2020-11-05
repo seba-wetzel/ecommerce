@@ -11,7 +11,7 @@ const ProductosContainer = () => {
               {datos.map((producto, i) => {
 
                 return <ProductosComponent key={i} producto={producto} />
-                // console.log(producto, 'PRUEBAAAAAAAAAAAAAAA 1')
+                
               })}
 
               
