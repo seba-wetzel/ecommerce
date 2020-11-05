@@ -1,5 +1,3 @@
-
-
 export default [
     {
         "nombre": "Corpiño Lucy",
