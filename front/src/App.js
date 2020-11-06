@@ -39,7 +39,7 @@ function App({ user, signOut, signInWithGoogle, signInWithFacebook }) {
       <Provider store={store}>
         <>
       <style>
-      {'body{background-image: url(https://images-ext-1.discordapp.net/external/58sr4TN7ZgZRAC18oVUkoZHZr__30MTeYyxOjlgaDec/https/i.pinimg.com/564x/e4/bf/cb/e4bfcb8597fe3b950571d859c576b564.jpg);background-position: center center;background-repeat: no-repeat;background-attachment: fixed;background-size: cover;height: 100%; }'}
+      {'body{background-image: url(https://media.discordapp.net/attachments/771492002147598348/774013141330952272/flowers.jpg?width=860&height=532);background-position: center center;background-repeat: no-repeat;background-attachment: fixed;background-size: cover;height: 100%; }'}
     </style>
         <NavBar />
         <BrowserRouter>
