@@ -7,7 +7,10 @@
     "@testing-library/jest-dom": "^5.11.5",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
+<<<<<<< HEAD
     "axios": "^0.21.0",
+=======
+>>>>>>> 5821f880f716e1a0b92fd77f029541c0684e15b5
     "firebase": "^8.0.0",
     "materialize-css": "^1.0.0-rc.2",
     "react": "^17.0.1",

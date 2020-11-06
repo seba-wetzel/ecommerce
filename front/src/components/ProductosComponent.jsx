@@ -35,5 +35,4 @@ const ProductosComponent = ({ producto }) => {
 
     );
 }
-
 export default ProductosComponent;
