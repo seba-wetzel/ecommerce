@@ -8,6 +8,7 @@ app.use(express.urlencoded({ extended: true }));
 
 
 app.use(express.static('../front/dist/'));
+app.use(express.static('../front/src'));
 
 app.use(function (err, req, res, next) {
     console.error(err, err.stack);

@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import ProductosComponent from '../components/ProductosComponent'
 import ProductosCarrousel from '../components/ProductosCarrousel'
-import datos from '../datos'
 import { useDispatch, useSelector } from "react-redux"
 import { fetchProducts } from '../redux/actions/products'
 
@@ -34,7 +33,7 @@ const ProductosContainer = () => {
         <div id="test3" class="col s12"><p>Test 3</p></div>
         <div id="test4" class="col s12"><p>Test 4</p></div>
 
-        {datos.map((producto, i) => {
+        {datos1.products.map((producto, i) => {
           return <ProductosComponent key={i} producto={producto} />
         })}
       </div>

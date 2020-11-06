@@ -14,19 +14,28 @@ const useInput = (name) => {
 }
 
 const NavBar = () => {
-return (
-   //NABVAR //
-  <div className="App">
-    <nav>
-      
-      <div className="nav-wrapper #880e4f pink darken-4">
-        <a  href="/shopping" className="brand-logo center">Lenceria</a>
-        <ul className="right hide-on-med-and-down">
-          <li><a href="sass.html"><i className="material-icons">search</i></a></li>
-          <li className="input-field">
-              <input  type="text" id="autocomplete-input" class="autocomplete" placeholder="Busqueda"/>
-          </li>
-        </ul>
+  const input = useInput("search")
+  const dispatch = useDispatch()
+  const handleSubmit = e => {
+    e.preventDefault()
+    if (input.value === "") dispatch(fetchProducts())
+    else dispatch(fetchProduct(input.value))
+  }
+  return (
+    //NABVAR //
+    <div className="App">
+      <nav>
+
+        <div className="nav-wrapper #880e4f pink darken-4">
+          <a href="/shopping" className="brand-logo center">Lenceria</a>
+          <ul className="right hide-on-med-and-down">
+            <li><a href="sass.html"><i className="material-icons">search</i></a></li>
+            <li className="input-field">
+              <form onSubmit={handleSubmit}>
+                <input {...input} type="text" id="autocomplete-input" class="autocomplete" placeholder="Busqueda" />
+              </form>
+            </li>
+          </ul>
           <ul className="lefth hide-on-med-and-down">
             <li>
               <Link to="/login"><Login /></Link>
