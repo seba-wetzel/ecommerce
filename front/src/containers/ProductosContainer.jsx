@@ -34,7 +34,7 @@ const ProductosContainer = () => {
         <div id="test3" class="col s12"><p>Test 3</p></div>
         <div id="test4" class="col s12"><p>Test 4</p></div>
 
-        {datos1.products.map((producto, i) => {
+        {datos.map((producto, i) => {
           return <ProductosComponent key={i} producto={producto} />
         })}
       </div>
