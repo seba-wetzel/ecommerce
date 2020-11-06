@@ -5,7 +5,7 @@ import Sidenav from './Sidenav';
 import { useDispatch, useSelector } from 'react-redux';
 
 
-import { fetchProduct } from '../redux/actions/products'
+import { fetchProduct, fetchProducts } from '../redux/actions/products'
 
 const useInput = (name) => {
   const [value, setValue] = useState("");
@@ -19,7 +19,8 @@ const NavBar = () => {
 
   const handleSubmit = e => {
     e.preventDefault()
-    dispatch(fetchProduct(input.value))
+    if (input.value === "") dispatch(fetchProducts())
+    else dispatch(fetchProduct(input.value))
   }
   return (
     //NABVAR //
