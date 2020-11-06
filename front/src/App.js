@@ -45,7 +45,7 @@ function App({ user, signOut, signInWithGoogle, signInWithFacebook }) {
         <BrowserRouter>
           <div >
             <Switch>
-              <Route exact path='/login' component={Login}></Route>
+              
               <Route exact path='/shopping' component={Carrito}></Route>
               <Route exact path='/' component={ProductosContainer}></Route>
             </Switch>

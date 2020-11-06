@@ -9,8 +9,9 @@ return (
    //NABVAR //
   <div className="App">
     <nav>
+      
       <div className="nav-wrapper #880e4f pink darken-4">
-        <li className="brand-logo center">Lenceria</li>
+        <a  href="/shopping" className="brand-logo center">Lenceria</a>
         <ul className="right hide-on-med-and-down">
           <li><a href="sass.html"><i className="material-icons">search</i></a></li>
           <li className="input-field">

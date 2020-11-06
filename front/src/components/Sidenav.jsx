@@ -25,7 +25,7 @@ const Sidenav = () => {
 
                 <li>
                     <a href="#!"><i className="material-icons">shopping_cart</i>
-                        <span className="new badge blue" data-badge-caption="">3 Total: 4999$ </span></a></li>
+                        <span className="new badge gray" data-badge-caption="">3 Total: 4999$ </span></a></li>
                 <li><div className="divider"></div></li>
 
                 <li><a href="#!">Corpiño<span className="new badge" data-badge-caption="">+</span><span className="new badge red" data-badge-caption="">-</span></a></li>
