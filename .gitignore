@@ -32,3 +32,8 @@ front/dist/web-vitals.es5.min.a825d1ad.js.map
 back/ecommerce-2020-b068c-firebase-adminsdk-a1zze-4c58c14771.json
 front/dist/web-vitals.es5.min.a825d1ad.js
 front/dist/web-vitals.es5.min.a825d1ad.js
+<<<<<<< HEAD
+front/package-lock.json
+front/dist/web-vitals.es5.min.a825d1ad.js
+=======
+>>>>>>> 5821f880f716e1a0b92fd77f029541c0684e15b5

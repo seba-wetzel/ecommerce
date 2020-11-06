@@ -1,8 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Login from './Login'
 import Sidenav from './Sidenav';
+import { useDispatch, useSelector } from 'react-redux';
 
+
+import { fetchProduct, fetchProducts } from '../redux/actions/products'
+
+const useInput = (name) => {
+  const [value, setValue] = useState("");
+  const onChange = ({ target: { value } }) => setValue(value);
+  return { value, onChange, name };
+}
 
 const NavBar = () => {
 return (
@@ -20,16 +29,16 @@ return (
         </ul>
           <ul className="lefth hide-on-med-and-down">
             <li>
-            <Link to="/login"><Login/></Link>
+              <Link to="/login"><Login /></Link>
             </li>
             <li><Link to="/">Productos</Link></li>
-            <li><Link to="/" ><Sidenav/></Link></li>
+            <li><Link to="/" ><Sidenav /></Link></li>
           </ul>
-      </div>
-    </nav>
+        </div>
+      </nav>
 
-  </div>
-)
+    </div>
+  )
 }
 
 
