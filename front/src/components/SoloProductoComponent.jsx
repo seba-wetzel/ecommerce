@@ -1,7 +1,6 @@
 import React from 'react';
 
 const SoloProductoComponent = ({producto}) => {
-    console.log(producto, 'SOLO PRODUCTO PA')
     return ( 
     <div id='idModal' className='modal'>
         <div className='modal-content'>
