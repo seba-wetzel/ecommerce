@@ -11,7 +11,7 @@ import {
 
 //COMO HAGO AQUI??? CADA CARRITO TIENE QUE TENER UN ID UNICO QUE SE RELACIONE CON EL USUARIO PERO QUE NO ES UNICO?
 
-const addToCart = (productId) => ({
+export const addToCart = (productId) => ({
   type: ADD_TO_CART,
   payload: productId,
 });

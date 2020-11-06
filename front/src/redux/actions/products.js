@@ -53,13 +53,7 @@ export const fetchProduct = (name) => async (dispatch, state) => {
     // }
   })
   const products = await response.json()
-  console.log(products)
   dispatch(receiveProducts(products))
-
-  // axios
-  //   .get(`/api/products/searh?name=${name}`)
-  //   .then((res) => res.data)
-  //   .then((product) => dispatch(receiveProducts(product)));
 }
 
 // recordar validacion, esto solo deberia ser accesible para admin

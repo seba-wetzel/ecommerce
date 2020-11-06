@@ -18,7 +18,7 @@ const ProductosComponent = ({ producto }) => {
                     <img src={producto.imgURL} alt="" />
 
                     <i className="btn-floating halfway-fab waves-effect waves-light #880e4f pink darken-4">
-                        <i onClick={() => add(producto._id)} className="material-icons">shopping_basket</i>
+                        <i onClick={() => add(producto)} className="material-icons">shopping_basket</i>
                     </i>
                 </div>
 
