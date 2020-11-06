@@ -1,9 +1,23 @@
-import React from 'react';
+import React, {useEffect } from 'react';
 import {Link} from 'react-router-dom'
 import SoloProductoComponent from './SoloProductoComponent';
+import { useDispatch, useSelector} from "react-redux"
+
+import { fetchProducts } from '../constants-actioncreators/action-creators/products'
 
 
 const ProductosComponent = ({producto}) => {
+    const datos1 = useSelector(state => state.products)
+    const dispatch = useDispatch()
+        useEffect(() => {
+            dispatch(fetchProducts())
+            return () => { }
+        }, [])
+
+  useEffect(() => {
+    console.log(datos1)
+    return () => { }
+  }, [datos1])
     return (
             
      

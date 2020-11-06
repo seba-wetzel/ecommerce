@@ -1,11 +1,32 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Login from './Login'
 import Sidenav from './Sidenav';
+import { useDispatch, useSelector } from 'react-redux';
+
+
+import { fetchProduct, fetchProducts } from '../constants-actioncreators/action-creators/products'
+
+const useInput = (name) => {
+  const [value, setValue] = useState("");
+  const onChange = ({ target: { value } }) => setValue(value);
+  return { value, onChange, name };
+}
+
 
 
 const NavBar = () => {
+  const dispatch = useDispatch()
+  const input = useInput("search")
+
+  const handleSubmit = e => {
+    e.preventDefault()
+    if (input.value === "") dispatch(fetchProducts())
+    else dispatch(fetchProduct(input.value))
+  }
 return (
+
+
    //NABVAR //
   <div className="App">
     <nav>
@@ -14,7 +35,9 @@ return (
         <ul className="right hide-on-med-and-down">
           <li><a href="sass.html"><i className="material-icons">search</i></a></li>
           <li className="input-field">
-              <input  type="text" id="autocomplete-input" class="autocomplete" placeholder="Busqueda"/>
+          <form onSubmit={handleSubmit}>
+                <input {...input} type="text" id="autocomplete-input" class="autocomplete" placeholder="Busqueda" />
+              </form>
           </li>
         </ul>
           <ul className="lefth hide-on-med-and-down">

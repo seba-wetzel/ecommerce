@@ -6,7 +6,7 @@ import {reducer as ProductsReducer} from '../reducers/Products-reducer'
 
 
 const reducers = combineReducers({
-    productos:ProductsReducer
+    products:ProductsReducer
 })
 
 
