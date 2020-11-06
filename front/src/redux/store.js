@@ -3,10 +3,11 @@ import { createLogger } from 'redux-logger';
 import thunkMiddleware from 'redux-thunk';
 
 import { reducer as products } from './reducers/Products-reducer'
-
+import { reducer as cart } from './reducers/cart'
 
 const reducers = combineReducers({
     products,
+    cart
 })
 
 

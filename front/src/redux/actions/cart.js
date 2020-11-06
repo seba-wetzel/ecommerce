@@ -13,7 +13,7 @@ import {
 
 const addToCart = (productId) => ({
   type: ADD_TO_CART,
-  productId,
+  payload: productId,
 });
 
 const addToQuantity = (productId) => ({
