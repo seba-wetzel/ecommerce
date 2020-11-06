@@ -38,8 +38,8 @@ const Sidenav = () => {
                 </li>
 
                 <li><div className="divider"></div></li>
-                <li><Link to='/shopping' className="btn blue">Check Out</Link></li>
-                <li><a className="sidenav-close btn" href="#!">Volver</a></li>
+                <li><Link to='/shopping' className="btn blue waves-effect waves-purple">Check Out</Link></li>
+                
             </ul>
             <a href="/shopping" data-target="slide-out" className="sidenav-trigger show-on-large"><i className="material-icons">shopping_cart</i></a>
         </div>
