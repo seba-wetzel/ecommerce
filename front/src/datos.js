@@ -1,4 +1,4 @@
-export default [
+const datos =[
     {
         "nombre": "Corpiño Lucy",
         "categoria" : ["Corpiño"],
@@ -60,4 +60,6 @@ export default [
         "disponibilidad": true
     }
 ]
+
+export default datos
 
