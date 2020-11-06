@@ -4,12 +4,12 @@ const SoloProductoComponent = ({producto}) => {
     console.log(producto, 'SOLO PRODUCTO PA')
     return ( 
     <div id='idModal' className='modal'>
-        <div class='modal-content'>
+        <div className='modal-content'>
         <div className="card">
             <div className="card-image large">
-                <img src={producto.imgURL} height="50%" />
+                <img src={producto.imgURL} height="50%" alt="" />
                 <span className="card-title">Card Title</span>
-                <a className="btn-floating halfway-fab waves-effect waves-light #880e4f pink darken-4"><i class="material-icons">shopping_basket</i></a>
+                <a className="btn-floating halfway-fab waves-effect waves-light #880e4f pink darken-4"> <i className="material-icons">shopping_basket</i></a>
             </div>
             <div className="card-content">
                 <table className='striped centered'>
@@ -24,7 +24,7 @@ const SoloProductoComponent = ({producto}) => {
                         <tr>
                             <td>{producto.nombre}</td>
                             <td>{producto.precio}</td>
-                            <td> <span class="new badge green" data-badge-caption="">{producto.stock}</span></td>
+                            <td> <span className="new badge green" data-badge-caption="">{producto.stock}</span></td>
                         </tr>
         
                     </tbody>
