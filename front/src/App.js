@@ -9,9 +9,9 @@ import { Provider } from "react-redux";
 import store from './redux/store'
 //Components
 import NavBar from "./components/NavBar";
-import ProductosContainer from "./containers/ProductosContainer";
-import LoginUserNew from './components/LoginUserNew';
-
+import ProductosContainer from "./containers/ProductosContainer"
+import SoloProductoComponent from './components/SoloProductoComponent'
+import Login from './components/Login'
 import Carrito from "./components/Carrito";
 import Footer from './components/Footer'
 
@@ -46,8 +46,9 @@ function App({ user, signOut, signInWithGoogle, signInWithFacebook }) {
         <BrowserRouter>
           <div >
             <Switch>
-            <Route exact path='/login' component={LoginUserNew}></Route>
+            <Route exact path='/login' component={Login}></Route>
               <Route exact path='/shopping' component={Carrito}></Route>
+              <Route path='/products/:id' component={SoloProductoComponent}></Route>
               <Route exact path='/' component={ProductosContainer}></Route>
             </Switch>
           </div>

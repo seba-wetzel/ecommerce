@@ -1,5 +1,9 @@
 import express from "express";
 import api from './src/routes/index.js'
+import path, { dirname } from 'path';
+import { fileURLToPath } from 'url';
+
+const __dirname = dirname(fileURLToPath(import.meta.url));
 
 const app = express();
 
@@ -16,6 +20,12 @@ app.use(function (err, req, res, next) {
 });
 
 app.use("/api", api)
+
+app.get('/*', (req, res) => {
+    console.log(path.join('C:\Users\Daniel\Desktop\seba\ecommerce\back\front'), 'path join')
+    console.log(('front'), 'path resolve')
+    res.sendFile(path.resolve(__dirname, '../front/dist/index.html')) 	
+    });
 
 app.listen(8000, () => {
     console.log(`Server listening at port 8000`);
