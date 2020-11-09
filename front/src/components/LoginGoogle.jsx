@@ -15,7 +15,7 @@ import {
 import withFirebaseAuth from '../firebase/login'
 
 
-function Login({ user, signOut, signInWithGoogle }) {
+function LoginGoogle({ user, signOut, signInWithGoogle }) {
     return (
 
     <FirebaseAuthProvider firebase={firebase} >
@@ -38,4 +38,4 @@ function Login({ user, signOut, signInWithGoogle }) {
   );
 }
 
-export default withFirebaseAuth(Login);
+export default withFirebaseAuth(LoginGoogle);
