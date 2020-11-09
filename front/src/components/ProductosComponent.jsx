@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
-import SoloProductoComponent from './SoloProductoComponent';
 import { useDispatch } from 'react-redux'
 import { addToCart } from "../redux/actions/cart"
 
@@ -24,10 +23,10 @@ const ProductosComponent = ({ producto }) => {
 
                 <div className="card-content">
                     <span className="card-title">{producto.name}</span>
-                    <p>{producto.description}</p>
+                    <p>{producto.description}</p>   
                 </div>
                 <div className="card-action center">
-                    <a href="#idModal" className='btn modal-trigger red '>Detalles</a>
+                    <Link to={'/products/' + producto._id} className='btn red'>Detalles</Link>
                 </div>
             </div>
         </div>
