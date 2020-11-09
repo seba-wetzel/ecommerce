@@ -1,6 +1,6 @@
 import React from "react";
 import {connect} from 'react-redux';
-import { fetchProducts } from "../constants-actioncreators/action-creators/products";
+import { fetchProduct } from "../redux/actions/products";
 
 import Nabvar from "../components/NavBar"
 
@@ -23,7 +23,7 @@ class NavbarContainer extends React.Component {
     });}
       handleSubmit(evt){
         evt.preventDefault();  
-       this.props.fetchProducts(this.state.Search)
+       this.props.fetchProduct(this.state.Search)
      }
     
      render(){
