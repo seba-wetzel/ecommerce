@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 function Carrito() {
 
     return (
+
         <div className="container">
             <div className="row mb-6">
                 <div className="col">
@@ -27,21 +28,21 @@ function Carrito() {
                                 <tbody>
                                 </tbody>
                                 <tr>
-                                    <th colspan="4" scope="col" className="text-right">SUB TOTAL :</th>
+                                    <th colSpan="4" scope="col" className="text-right">SUB TOTAL :</th>
                                     <th scope="col">
                                         <p id="subtotal"></p>
                                     </th>
                                     <th scope="col"></th>
                                 </tr>
                                 <tr>
-                                    <th colspan="4" scope="col" className="text-right">IGV :</th>
+                                    <th colSpan="4" scope="col" className="text-right">IGV :</th>
                                     <th scope="col">
                                         <p id="igv"></p>
                                     </th>
                                     <th scope="col"></th>
                                 </tr>
                                 <tr>
-                                    <th colspan="4" scope="col" className="text-right">TOTAL :</th>
+                                    <th colSpan="4" scope="col" className="text-right">TOTAL :</th>
                                     <th scope="col">
                                         <p id="total"></p>
                                     </th>
@@ -64,6 +65,7 @@ function Carrito() {
                 </div>
             </div>
         </div>
+
     );
 }
 

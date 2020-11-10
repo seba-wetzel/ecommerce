@@ -2,7 +2,6 @@
 import React from "react";
 import { Route, Switch, BrowserRouter } from 'react-router-dom';
 
-
 import firebaseConfig from '../../firebase-config';
 //Redux
 import { Provider } from "react-redux";
@@ -32,30 +31,23 @@ import {
 
 
 function App({ user, signOut, signInWithGoogle, signInWithFacebook }) {
-  console.log(user)
+  if (user) console.log(user._lat)
   return (
-
-
     <FirebaseAuthProvider firebase={firebase} {...firebaseConfig}>
       <Provider store={store}>
-        <>
+        <BrowserRouter>
           <style>
             {'body{background-image: url(https://media.discordapp.net/attachments/771492002147598348/774013141330952272/flowers.jpg?width=860&height=532);background-position: center center;background-repeat: no-repeat;background-attachment: fixed;background-size: cover;height: 100%; }'}
           </style>
           <NavBar />
-          <BrowserRouter>
-            <div >
-              <Switch>
+          <Switch>
 
-                <Route exact path='/shopping' component={Carrito}></Route>
-                <Route exact path='/products/:id' component={SoloProductoComponent}></Route>
-                <Route path='/' render={() => <ProductosContainer />}></Route>
-              </Switch>
-            </div>
-          </BrowserRouter>
-
+            <Route path='/shopping' component={Carrito}></Route>
+            <Route path='/products/:id' component={SoloProductoComponent}></Route>
+            <Route path='/' render={() => <ProductosContainer />}></Route>
+          </Switch>
           <Footer />
-        </>
+        </BrowserRouter>
       </Provider>
     </FirebaseAuthProvider>
 

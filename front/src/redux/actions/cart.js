@@ -16,14 +16,14 @@ export const addToCart = (productId) => ({
   payload: productId,
 });
 
-const addToQuantity = (productId) => ({
+export const addToQuantity = (productId) => ({
   type: ADD_TO_QUANTITY,
-  productId,
+  payload: productId,
 });
 
-const substractFromQuantity = (productId) => ({
+export const substractFromQuantity = (productId) => ({
   type: SUBSTRACT_FROM_QUANTITY,
-  productId,
+  payload: productId,
 });
 
 const deleteItem = (productId) => ({
