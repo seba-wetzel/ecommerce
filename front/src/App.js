@@ -56,16 +56,16 @@ function App({ user, signOut, signInWithGoogle, signInWithFacebook }) {
               <div >
                 <Switch>
                   <Route exact path='/shopping' component={Carrito}></Route>
-                  <Route path='/products/:id' component={SoloProductoComponent}></Route>
-                  <Route exact path='/' component={ProductosContainer}></Route>
+                  <Route exact path='/products/:id' component={SoloProductoComponent}></Route>                  
                   <PrivateRoute exact path="/dashboard" component={Dashboard} />
-                  <Route path="/adminpanel" component={AdminPanelContainer}></Route>
-                  <Route path="/newproduct" component={NewProduct}></Route>                             
-                  <Route path="/products/:id" component={SoloProductoComponent}></Route>
-                  <Route path="/" render={() => <ProductosContainer />}></Route>
-                  <Route path="/signup" component={Signup} />
-                  <Route path="/login" component={Login} />
-                  <Route path="/forgot-password" component={ForgotPassword} />
+                  <Route exact path="/adminpanel" component={AdminPanelContainer}></Route>
+                  <Route exact path="/newproduct" component={NewProduct}></Route>                             
+                  <Route exact path="/products/:id" component={SoloProductoComponent}></Route>
+                  <Route exact path="/" render={() => <ProductosContainer />}></Route>
+                  <Route exact path="/signup" component={Signup} />
+                  <Route exact path="/login" component={Login} />
+                  <Route exact path="/forgot-password" component={ForgotPassword} />
+                  <Route exact path='/' component={ProductosContainer}></Route>
                 </Switch>
               </div>
             </AuthProvider>
