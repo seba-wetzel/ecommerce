@@ -1,6 +1,6 @@
 
 import React from "react";
-import { Route,  Switch,BrowserRouter } from 'react-router-dom';
+import { Route, Switch, BrowserRouter } from 'react-router-dom';
 
 
 import firebaseConfig from '../../firebase-config';
@@ -39,22 +39,22 @@ function App({ user, signOut, signInWithGoogle, signInWithFacebook }) {
     <FirebaseAuthProvider firebase={firebase} {...firebaseConfig}>
       <Provider store={store}>
         <>
-      <style>
-      {'body{background-image: url(https://media.discordapp.net/attachments/771492002147598348/774013141330952272/flowers.jpg?width=860&height=532);background-position: center center;background-repeat: no-repeat;background-attachment: fixed;background-size: cover;height: 100%; }'}
-    </style>
-        <NavBar />
-        <BrowserRouter>
-          <div >
-            <Switch>
-              
-              <Route exact path='/shopping' component={Carrito}></Route>
-              <Route path='/products/:id' component={SoloProductoComponent}></Route>
-              <Route exact path='/' component={ProductosContainer}></Route>
-            </Switch>
-          </div>
-        </BrowserRouter>
-        
-       <Footer/> 
+          <style>
+            {'body{background-image: url(https://media.discordapp.net/attachments/771492002147598348/774013141330952272/flowers.jpg?width=860&height=532);background-position: center center;background-repeat: no-repeat;background-attachment: fixed;background-size: cover;height: 100%; }'}
+          </style>
+          <NavBar />
+          <BrowserRouter>
+            <div >
+              <Switch>
+
+                <Route exact path='/shopping' component={Carrito}></Route>
+                <Route exact path='/products/:id' component={SoloProductoComponent}></Route>
+                <Route path='/' render={() => <ProductosContainer />}></Route>
+              </Switch>
+            </div>
+          </BrowserRouter>
+
+          <Footer />
         </>
       </Provider>
     </FirebaseAuthProvider>
