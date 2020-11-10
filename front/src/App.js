@@ -45,8 +45,7 @@ function App({ user, signOut, signInWithGoogle, signInWithFacebook }) {
         <NavBar />
         <BrowserRouter>
           <div >
-            <Switch>
-              
+            <Switch> 
               <Route exact path='/shopping' component={Carrito}></Route>
               <Route path='/products/:id' component={SoloProductoComponent}></Route>
               <Route exact path='/' component={ProductosContainer}></Route>

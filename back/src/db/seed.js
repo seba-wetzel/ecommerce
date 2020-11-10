@@ -11,10 +11,19 @@ import "./config/index.js"
     const newCategories = await Category.insertMany(Categories)
 
     const Products = [
-        { name: "vedetina", imgURL: ["/assets/1.jpg"], price: 9.90, available: true, description: "En rosa, negro, blanco, talles especiales.", categories: [newCategories[0]._id] },
-        { name: "tanga", imgURL: ["/assets/2.jpg"], price: 10.53, available: true, description: "En rosa, negro, blanco, talles especiales.", categories: [newCategories[0]._id] },
-        { name: "colaless", imgURL: ["/assets/3.jpg"], price: 15.33, available: true, description: "En rosa, negro, blanco, talles especiales.", categories: [newCategories[0]._id] },
-        { name: "top", imgURL: ["/assets/4.jpg"], price: 5.33, available: true, description: "En rosa, negro, blanco, talles especiales.", categories: [newCategories[1]._id] },
+        { name: "corpiño anita", imgURL: ["https://i.imgur.com/PFsJ54s.jpg"], price: 9.90, available: true, description: "En rosa, negro, blanco, talles especiales.", categories: [newCategories[1]._id] },
+        { name: "conjunto carla", imgURL: ["https://i.imgur.com/r0T1OhP.jpg"], price: 10.53, available: false, description: "En rosa, negro, blanco, talles especiales.", categories: [newCategories[2]._id] },
+        { name: "colaless pepita", imgURL: ["https://i.imgur.com/NG1AMMh.jpg"], price: 15.33, available: true, description: "En rosa, negro, blanco, talles especiales.", categories: [newCategories[0]._id] },
+        { name: "top celia", imgURL: ["https://i.imgur.com/8oqDRwi.jpg"], price: 5.33, available: true, description: "En rosa, negro, blanco, talles especiales.", categories: [newCategories[1]._id] },
+        { name: "corpiño anita", imgURL: ["https://i.imgur.com/PFsJ54s.jpg"], price: 9.90, available: false, description: "En rosa, negro, blanco, talles especiales.", categories: [newCategories[1]._id] },
+        { name: "conjunto carla", imgURL: ["https://i.imgur.com/r0T1OhP.jpg"], price: 10.53, available: true, description: "En rosa, negro, blanco, talles especiales.", categories: [newCategories[2]._id] },
+        { name: "colaless pepita", imgURL: ["https://i.imgur.com/NG1AMMh.jpg"], price: 15.33, available: true, description: "En rosa, negro, blanco, talles especiales.", categories: [newCategories[0]._id] },
+        { name: "top celia", imgURL: ["https://i.imgur.com/8oqDRwi.jpg"], price: 5.33, available: true, description: "En rosa, negro, blanco, talles especiales.", categories: [newCategories[1]._id] },
+        { name: "corpiño anita", imgURL: ["https://i.imgur.com/PFsJ54s.jpg"], price: 9.90, available: true, description: "En rosa, negro, blanco, talles especiales.", categories: [newCategories[1]._id] },
+        { name: "conjunto carla", imgURL: ["https://i.imgur.com/r0T1OhP.jpg"], price: 10.53, available: true, description: "En rosa, negro, blanco, talles especiales.", categories: [newCategories[2]._id] },
+        { name: "colaless pepita", imgURL: ["https://i.imgur.com/NG1AMMh.jpg"], price: 15.33, available: true, description: "En rosa, negro, blanco, talles especiales.", categories: [newCategories[0]._id] },
+        { name: "top celia", imgURL: ["https://i.imgur.com/8oqDRwi.jpg"], price: 5.33, available: true, description: "En rosa, negro, blanco, talles especiales.", categories: [newCategories[1]._id] },
+
     ]
     const products = await Product.insertMany(Products)
     const newProducts = await Product.find().populate({ path: "categories", populate: { path: "categories" } })

@@ -22,8 +22,6 @@ app.use(function (err, req, res, next) {
 app.use("/api", api)
 
 app.get('/*', (req, res) => {
-    console.log(path.join('C:\Users\Daniel\Desktop\seba\ecommerce\back\front'), 'path join')
-    console.log(('front'), 'path resolve')
     res.sendFile(path.resolve(__dirname, '../front/dist/index.html')) 	
     });
 
