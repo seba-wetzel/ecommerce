@@ -17,7 +17,7 @@ import {
 
 import withFirebaseAuth from '../../firebase/login'
 
- function Login({ user, signOut, signInWithGoogle }) {
+ function Login({ user, signOut, signInWithGoogle, signInWithFacebook }) {
   const emailRef = useRef()
   const passwordRef = useRef()
   const { login } = useAuth()
@@ -41,7 +41,7 @@ import withFirebaseAuth from '../../firebase/login'
   }
 
   useEffect(()=>{
-    if(user)history.push("/")
+    if(user)history.push("/dashboard")
 
   },[user])
 
@@ -81,8 +81,11 @@ import withFirebaseAuth from '../../firebase/login'
           <div class="account">          
             <div class="span2">
             
-              <li ><i  onClick={signInWithGoogle}
-              className="material-icons">person_outline</i></li>
+              <li > <img src="assets/google.png" alt="" onClick={signInWithGoogle}/>   
+              Sign In with Google</li>
+              <li > <img src="assets/facebook.png" alt="" onClick={signInWithFacebook}/>   
+              Sign In with Facebook</li>
+
             </div>
         </div>
         </div>
