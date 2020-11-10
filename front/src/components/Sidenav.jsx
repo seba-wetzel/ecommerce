@@ -5,6 +5,8 @@ import CartItem from "./CartItem"
 const Sidenav = () => {
     const user = useSelector(state => state.user.user)
     const cart = useSelector(state => state.cart.added)
+    const units = useSelector(state => state.cart.units)
+    const total = useSelector(state => state.cart.total)
     return (
 
         <div>
@@ -31,7 +33,7 @@ const Sidenav = () => {
 
                 <li>
                     <a href="#!"><i className="material-icons">shopping_cart</i>
-                        <span className="new badge gray" data-badge-caption="">3 Total: 4999$ </span></a></li>
+                        <span className="new badge gray" data-badge-caption="">{units} Total: ${total} </span></a></li>
                 <li><div className="divider"></div></li>
 
                 {(cart && cart.length) ? cart.map(item => (
