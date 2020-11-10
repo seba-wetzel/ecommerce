@@ -22,8 +22,7 @@ const providers = {
 };
 
 export default withFirebaseAuth({
-  providers,
-  
+  providers, 
 });
 
 
