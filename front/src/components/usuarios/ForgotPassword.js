@@ -35,19 +35,16 @@ export default function ForgotPassword() {
               <h6 htmlFor="">Email</h6>
               <input className="form-Control" type="email" ref={emailRef} />
             </div>
-            <button  disabled={loading} type="submit" className="waves-effect waves-light btn-small"><i className="material-icons right">cloud</i>Reset Password</button>             
-            
-          </form>
+            <button  disabled={loading} type="submit" className="waves-effect waves-light btn-small"><i className="material-icons right">cloud</i>Reset Password</button>           
+            </form>
           <div className="w-100 text-center mt-3">
             <Link to="/login">Login</Link>
             <div className="w-100 text-center mt-2">
         Need an account? <Link to="/signup">Sign Up</Link>
       </div>
           </div>
-
         </div>
-      </div>
-      
+      </div>      
     </div>
   )
 }

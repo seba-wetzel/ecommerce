@@ -1,9 +1,23 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useAuth } from "../../contexts/AuthContext";
 import { Link, useHistory } from "react-router-dom";
-import LoginGoogle from '../LoginGoogle';
 
-export default function Login() {
+
+
+//Firebase
+
+import firebase from "firebase/app";
+import "firebase/auth";
+//import config from '../../firebase-config';
+
+import {
+  FirebaseAuthProvider,
+  IfFirebaseAuthed
+} from "@react-firebase/auth";
+
+import withFirebaseAuth from '../../firebase/login'
+
+ function Login({ user, signOut, signInWithGoogle }) {
   const emailRef = useRef()
   const passwordRef = useRef()
   const { login } = useAuth()
@@ -18,7 +32,7 @@ export default function Login() {
       setError("")
       setLoading(true)
       await login(emailRef.current.value, passwordRef.current.value)
-      history.push("/")
+      //history.push("/dashboard")
     } catch {
       setError("Failed to log in")
     }
@@ -26,13 +40,26 @@ export default function Login() {
     setLoading(false)
   }
 
+  useEffect(()=>{
+    if(user)history.push("/")
+
+  },[user])
+
   return (
+    <FirebaseAuthProvider firebase={firebase} >
     <div className="container">
       <div className="col s6 m4 l6">
         <div className="#eeeeee grey lighten-3">
           <div className="content-center">
             <h2 >Log In</h2>
             {error && <span>Error al iniciar sesion </span>}
+            <IfFirebaseAuthed >
+                  <ul>
+            <li className="right hide-on-med-and-down">{user ? user.displayName : null}</li>
+            <li className="right hide-on-med-and-down" ><i className="material-icons" onClick={signOut}>logout</i></li>
+           
+                </ul>
+                 </IfFirebaseAuthed>
             <form className="col s12 m4 l6" onSubmit={handleSubmit}>
               <h6 htmlFor="email"> Tu Correo Electronico </h6>
               <div className="input-field">
@@ -51,12 +78,18 @@ export default function Login() {
                Need an account? <Link to="/signup">Sign Up</Link>
             </div>            
           </div>
-          <div class="account">            
-          <div class="span"><LoginGoogle/></div>
-          <div class="span2"><Link to="/logingoogle"><i>Sign In with Google+</i><div class="clear"></div></Link></div>
+          <div class="account">          
+            <div class="span2">
+            
+              <li ><i  onClick={signInWithGoogle}
+              className="material-icons">person_outline</i></li>
+            </div>
         </div>
         </div>
       </div>
     </div>
+    </FirebaseAuthProvider>
   )
 }
+
+export default withFirebaseAuth(Login);

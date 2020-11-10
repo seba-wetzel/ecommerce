@@ -21,6 +21,7 @@ import ForgotPassword from "./components/usuarios/ForgotPassword"
 import Signup from "./components/usuarios/Signup"
 
 ////Firebase
+import withFirebaseAuth from './firebase/login'
 import firebaseConfig from '../../firebase-config';
 import firebase from "firebase/app";
 import "firebase/auth";
@@ -30,7 +31,7 @@ import {
  //// IfFirebaseAuthed,
  // IfFirebaseAuthedAnd,
 } from "@react-firebase/auth";
-import withFirebaseAuth from './firebase/firebase'
+
 
 
 

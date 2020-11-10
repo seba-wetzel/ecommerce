@@ -2,6 +2,7 @@ import React from 'react';
 
 
 //Firebase
+
 import firebase from "firebase/app";
 import "firebase/auth";
 //import config from '../../firebase-config';
@@ -12,7 +13,7 @@ import {
 } from "@react-firebase/auth";
 
 
-import withFirebaseAuth from '../firebase/firebase'
+
 
 
 function LoginGoogle({ user, signOut, signInWithGoogle }) {
@@ -29,13 +30,11 @@ function LoginGoogle({ user, signOut, signInWithGoogle }) {
               </IfFirebaseAuthed>
               <li ><i  onClick={signInWithGoogle}
               className="material-icons">person_outline</i></li>
-
              </div>
-
           </div>
         </FirebaseAuthProvider>
 
   );
 }
 
-export default withFirebaseAuth(LoginGoogle);
+export default LoginGoogle;

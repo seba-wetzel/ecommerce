@@ -5,6 +5,7 @@ import Sidenav from './Sidenav';
 import { useDispatch } from 'react-redux';
 
 
+
 import { fetchProduct, fetchProducts } from '../redux/actions/products'
 
 const useInput = (name) => {
@@ -39,9 +40,7 @@ const NavBar = () => {
             <li>
               <Link to="/login"><i className="material-icons prefix">person_outline</i></Link>
             </li>
-            <li>
-              <Link to="/signup"><i className="material-icons prefix">group_add</i></Link>
-            </li>
+                     
             <li><Link to="/">Productos</Link></li>
             <li><Link to="/" ><Sidenav /></Link></li>
           </ul>

@@ -22,7 +22,7 @@ export default function Signup() {
       setError("")
       setLoading(true)
       await signup(emailRef.current.value, passwordRef.current.value)
-      history.push("/")
+      //history.push("/dashboard")
     } catch {
       setError("Failed to create an account")
     }
@@ -31,9 +31,10 @@ export default function Signup() {
   }
 
   return (
-    <div className="row">
-      <div className="col s12 m6">
+    <div className="container">
+      <div className="col s6 m4 l6">
         <div className="#eeeeee grey lighten-3">
+        <div className="content-center">
           <h2>Sign Up</h2>
           {error && <span>Error al iniciar sesion</span>}
           <form className="col s12 m4 l6" onSubmit={handleSubmit}>
@@ -57,6 +58,7 @@ export default function Signup() {
           </form>
           <div>
             Already have an account? <Link to="/login">Log In</Link>
+          </div>
           </div>
         </div>
       </div>
