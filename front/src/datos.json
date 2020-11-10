@@ -1,0 +1,65 @@
+[
+        {
+                "name": "Corpiño Lucy",
+                "categories": ["Corpiño"],
+                "price": 1200,
+                "description": "Soutien triángulo de puntilla y microfibra, sin aro. Este soutien viene con dos pares de breteles: los standard, regulables de elástico y una versión de breteles con detalle triangular de puntilla en la espalda.",
+                "stock": 5,
+                "imgURL": "/assets/1.jpg",
+                "available": true
+
+        },
+
+        {
+                "name": "Tanga Lucho",
+                "categories": ["Tanga"],
+                "price": 300,
+                "description": "Soutien triángulo de puntilla y microfibra, sin aro. Este soutien viene con dos pares de breteles: los standard, regulables de elástico y una versión de breteles con detalle triangular de puntilla en la espalda.",
+                "stock": 1,
+                "imgURL": "/assets/2.jpg",
+                "available": true
+        },
+
+        {
+                "name": "Colaless Romina",
+                "categories": ["Colaless"],
+                "price": 450,
+                "description": "Soutien triángulo de puntilla y microfibra, sin aro. Este soutien viene con dos pares de breteles: los standard, regulables de elástico y una versión de breteles con detalle triangular de puntilla en la espalda.",
+                "stock": 3,
+                "imgURL": "/assets/8.jpg",
+                "available": true
+        },
+
+        {
+                "name": "Colaless Fabricio",
+                "categories": ["Colaless"],
+                "price": 650,
+                "description": "Soutien triángulo de puntilla y microfibra, sin aro. Este soutien viene con dos pares de breteles: los standard, regulables de elástico y una versión de breteles con detalle triangular de puntilla en la espalda.",
+                "stock": 3,
+                "imgURL": "/assets/4.jpg",
+                "available": true
+        },
+
+        {
+                "name": "Colaless Beunito",
+                "categories": ["Colaless"],
+                "price": 800,
+                "description": "Soutien triángulo de puntilla y microfibra, sin aro. Este soutien viene con dos pares de breteles: los standard, regulables de elástico y una versión de breteles con detalle triangular de puntilla en la espalda.",
+                "stock": 0,
+                "imgURL": "/assets/9.jpg",
+                "available": true
+        },
+
+        {
+                "name": "Corpiño Larita",
+                "categories": ["Corpiño"],
+                "price": 150,
+                "description": "Soutien triángulo de puntilla y microfibra, sin aro. Este soutien viene con dos pares de breteles: los standard, regulables de elástico y una versión de breteles con detalle triangular de puntilla en la espalda.",
+                "stock": 10,
+                "imgURL": "/assets/7.jpg",
+                "available": true
+        }
+]
+
+
+
