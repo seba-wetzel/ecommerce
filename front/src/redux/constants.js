@@ -5,6 +5,8 @@ export const DELETE_ITEM = "DELETE_ITEM";
 export const CHECKOUT = "CHECKOUT";
 export const ADD_TO_CART = "ADD_TO_CART";
 export const EMPTY_CART = "EMPTY_CART";
+export const CALCULATE_UNITS = "CALCULATE_UNITS"
+export const CALCULATE_TOTAL = "CALCULATE_TOTAL"
 
 // Products
 // ----------(User)
