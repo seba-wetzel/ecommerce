@@ -31,11 +31,12 @@ function App() {
     
       <Provider store={store}>
         <>
+         <BrowserRouter>
           <style>
             {'body{background-image: url(https://media.discordapp.net/attachments/771492002147598348/774013141330952272/flowers.jpg?width=860&height=532);background-position: center center;background-repeat: no-repeat;background-attachment: fixed;background-size: cover;height: 100%; }'}
           </style>
           <NavBar />
-          <BrowserRouter>
+         
             <AuthProvider>
               <div >
                 <Switch>
@@ -50,10 +51,12 @@ function App() {
                 </Switch>
               </div>
             </AuthProvider>
-          </BrowserRouter>
+          
           <Footer />
+          </BrowserRouter>
         </>
-      </Provider>    
+      </Provider>  
+
 
   );
 }
