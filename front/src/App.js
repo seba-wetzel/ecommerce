@@ -43,6 +43,8 @@ function App({ user, signOut, signInWithGoogle, signInWithFacebook }) {
           <NavBar />
           <Switch>
             <Route path="/shopping" component={Carrito}></Route>
+            <Route path="/adminpanel" component={AdminPanelContainer}></Route>
+            <Route path="/newproduct" component={NewProduct}></Route>
             <Route
               path="/products/:id"
               component={SoloProductoComponent}
