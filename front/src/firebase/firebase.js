@@ -1,3 +1,4 @@
+import withFirebaseAuth from 'react-with-firebase-auth';
 import firebase from "firebase/app"
 import "firebase/auth"
 
@@ -12,5 +13,23 @@ const app = firebase.initializeApp({
     measurementId: "G-FXWFEH2VDR"
 })
 
+
 export const auth = app.auth()
-export default app
+
+const providers = {
+  googleProvider: new firebase.auth.GoogleAuthProvider(),
+  facebookProvider:new firebase.auth.FacebookAuthProvider()
+};
+
+export default withFirebaseAuth({
+  providers,
+  
+});
+
+
+
+
+
+
+
+

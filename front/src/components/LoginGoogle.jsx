@@ -12,7 +12,7 @@ import {
 } from "@react-firebase/auth";
 
 
-import withFirebaseAuth from '../firebase/login'
+import withFirebaseAuth from '../firebase/firebase'
 
 
 function LoginGoogle({ user, signOut, signInWithGoogle }) {

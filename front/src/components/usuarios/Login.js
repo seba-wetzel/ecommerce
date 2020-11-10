@@ -53,7 +53,7 @@ export default function Login() {
           </div>
           <div class="account">            
           <div class="span"><LoginGoogle/></div>
-          <div class="span2"><Link to="/logingoogle"><img src="" alt="https://www.flaticon.es/svg/static/icons/svg/281/281764.svg"/><i>Sign In with Google+</i><div class="clear"></div></Link></div>
+          <div class="span2"><Link to="/logingoogle"><i>Sign In with Google+</i><div class="clear"></div></Link></div>
         </div>
         </div>
       </div>

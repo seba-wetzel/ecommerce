@@ -1,8 +1,5 @@
-
 import React from "react";
 import { Route, Switch, BrowserRouter } from 'react-router-dom';
-
-
 
 //Redux
 import { Provider } from "react-redux";
@@ -29,11 +26,11 @@ import firebase from "firebase/app";
 import "firebase/auth";
 import {
   FirebaseAuthProvider,
-  FirebaseAuthConsumer,
-  IfFirebaseAuthed,
-  IfFirebaseAuthedAnd,
+ //FirebaseAuthConsumer,
+ //// IfFirebaseAuthed,
+ // IfFirebaseAuthedAnd,
 } from "@react-firebase/auth";
-import withFirebaseAuth from './firebase/login'
+import withFirebaseAuth from './firebase/firebase'
 
 
 
