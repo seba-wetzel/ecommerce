@@ -20,15 +20,27 @@ import Dashboard from "./components/usuarios/Dashboard"
 import Login from "./components/usuarios/Login"
 import PrivateRoute from "./components/usuarios/PrivateRoute"
 import ForgotPassword from "./components/usuarios/ForgotPassword"
-import UpdateProfile from "./components/usuarios/UpdateProfile"
+
 import Signup from "./components/usuarios/Signup"
 
+////Firebase
+import firebaseConfig from '../../firebase-config';
+import firebase from "firebase/app";
+import "firebase/auth";
+import {
+  FirebaseAuthProvider,
+  FirebaseAuthConsumer,
+  IfFirebaseAuthed,
+  IfFirebaseAuthedAnd,
+} from "@react-firebase/auth";
+import withFirebaseAuth from './firebase/login'
 
 
-function App() {
+
+function App({ user, signOut, signInWithGoogle, signInWithFacebook }) {
 
   return (
-    
+    <FirebaseAuthProvider firebase={firebase} {...firebaseConfig}>
       <Provider store={store}>
         <>
          <BrowserRouter>
@@ -44,7 +56,7 @@ function App() {
                   <Route path='/products/:id' component={SoloProductoComponent}></Route>
                   <Route exact path='/' component={ProductosContainer}></Route>
                   <PrivateRoute exact path="/dashboard" component={Dashboard} />
-                  <PrivateRoute path="/update-profile" component={UpdateProfile} />
+                  
                   <Route path="/signup" component={Signup} />
                   <Route path="/login" component={Login} />
                   <Route path="/forgot-password" component={ForgotPassword} />
@@ -56,9 +68,10 @@ function App() {
           </BrowserRouter>
         </>
       </Provider>  
+      </FirebaseAuthProvider>
 
 
   );
 }
 
-export default App;
+export default withFirebaseAuth(App);

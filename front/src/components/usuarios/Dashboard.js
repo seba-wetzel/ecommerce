@@ -19,22 +19,17 @@ export default function Dashboard() {
   }
 
   return (
-    <div className="row">
+    <div className="container">
       <div className="col s12 m6">
-        <div className="card blue-grey darken-1">
+        <div className="#eeeeee grey lighten-3">
           <h2 className="text-center mb-4">Profile</h2>
           {error && <span>error</span>}
           <strong>Email:</strong> {currentUser.email}
-          <Link to="/update-profile" className="btn btn-primary w-100 mt-3">
-            Update Profile
-          </Link>
+          <div>       
+          <button onClick={handleLogout} type="submit" className="waves-effect waves-light btn-small"><i className="material-icons right">cloud</i>Log Out</button>
+          </div>          
         </div>
-      </div>
-      <div className="w-100 text-center mt-2">
-        <button variant="link" onClick={handleLogout}>
-          Log Out
-        </button>
-      </div>
+      </div>      
     </div>
   )
 }

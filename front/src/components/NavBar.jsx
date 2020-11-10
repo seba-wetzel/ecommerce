@@ -25,7 +25,6 @@ const NavBar = () => {
     //NABVAR //
     <div className="App">
       <nav>
-
         <div className="nav-wrapper #880e4f pink darken-4">
           <a href="/shopping" className="brand-logo center">Lenceria</a>
           <ul className="right hide-on-med-and-down">
@@ -38,17 +37,16 @@ const NavBar = () => {
           </ul>
           <ul className="lefth hide-on-med-and-down">
             <li>
-              <Link to="/login"><i>person_outline</i></Link>
+              <Link to="/login"><i className="material-icons prefix">person_outline</i></Link>
             </li>
             <li>
-              <Link to="/signup"><i>person_outline</i></Link>
+              <Link to="/signup"><i className="material-icons prefix">group_add</i></Link>
             </li>
             <li><Link to="/">Productos</Link></li>
             <li><Link to="/" ><Sidenav /></Link></li>
           </ul>
         </div>
       </nav>
-
     </div>
   )
 }

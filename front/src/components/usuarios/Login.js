@@ -1,6 +1,7 @@
-import React, { useRef, useState } from "react"
-import { useAuth } from "../../contexts/AuthContext"
-import { Link, useHistory } from "react-router-dom"
+import React, { useRef, useState } from "react";
+import { useAuth } from "../../contexts/AuthContext";
+import { Link, useHistory } from "react-router-dom";
+import LoginGoogle from '../LoginGoogle';
 
 export default function Login() {
   const emailRef = useRef()
@@ -27,36 +28,35 @@ export default function Login() {
 
   return (
     <div className="container">
-       <div className="card">
-         <div className="col s12 m6">
-           <div className="card blue-grey darken-1">
-             <div className="card-content white-text">
-             <h2 className="text-center mb-4">Log In</h2>
-             {error && <span>Error al iniciar sesion </span>}
-             <form className="col s12" onSubmit={handleSubmit}>
-               <div className="form-group" id="email">
-                 <label htmlFor="email">Email</label>
-                 <input className="form-Control" type="email" ref={emailRef} placeholder="Enter email" />
-               </div>
-               <div className="form-group" id="password">
-                 <input className="form-Control" type="password" ref={passwordRef} placeholder="Enter Password" required />
-               </div>
-               <a  href="/" disabled={loading} type="submit" className="waves-effect waves-light btn"><i className="material-icons right">cloud</i>Log In</a>
-
-             </form>   
-             <div>
-             <Link to="/forgot-password">Forgot Password?</Link>            
+      <div className="col s6 m4 l6">
+        <div className="#eeeeee grey lighten-3">
+          <div className="content-center">
+            <h2 >Log In</h2>
+            {error && <span>Error al iniciar sesion </span>}
+            <form className="col s12 m4 l6" onSubmit={handleSubmit}>
+              <h6 htmlFor="email"> Tu Correo Electronico </h6>
+              <div className="input-field">
+                <i className="material-icons prefix">person</i>
+                <input className="form-Control" type="email" ref={emailRef} placeholder="Enter email" />
+              </div>
+              <div className="input-field">
+                <i className="material-icons prefix">lock</i>
+                <input className="form-Control" type="password" ref={passwordRef} placeholder="Enter Password" required />
+              </div>
+              <button disabled={loading} type="submit" className="waves-effect waves-light btn-small"><i className="material-icons right">cloud</i>Log In</button>
+              
+            </form>
+            <div>
+              <Link to="/forgot-password">Forgot Password?</Link>
                Need an account? <Link to="/signup">Sign Up</Link>
-
-             </div>
-
-             </div>         
-           </div>
-         </div>
-
-       </div>
-     </div>
-
-
+            </div>            
+          </div>
+          <div class="account">            
+          <div class="span"><LoginGoogle/></div>
+          <div class="span2"><Link to="/logingoogle"><img src="" alt="https://www.flaticon.es/svg/static/icons/svg/281/281764.svg"/><i>Sign In with Google+</i><div class="clear"></div></Link></div>
+        </div>
+        </div>
+      </div>
+    </div>
   )
 }

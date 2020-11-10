@@ -24,28 +24,30 @@ export default function ForgotPassword() {
   }
 
   return (
-    <div className="row">
-    <div className="col s12 m6">
-      <div className="card blue-grey darken-1">
+    <div className="container">
+      <div className="col s12 m6">
+        <div className="#eeeeee grey lighten-3">
           <h2 className="text-center mb-4">Password Reset</h2>
           {error && <span>error</span>}
           {message && <span variant="success">{message}</span>}
-          <form onSubmit={handleSubmit}>
+          <form  className="col s12 m4 l6" onSubmit={handleSubmit}>
             <div className="form-group" id="email">
-              <label className="form-Control" type="email" ref={emailRef} >Email</label>             
+              <h6 htmlFor="">Email</h6>
+              <input className="form-Control" type="email" ref={emailRef} />
             </div>
-            <button disabled={loading} className="w-100" type="submit">
-              Reset Password
-            </button>
+            <button  disabled={loading} type="submit" className="waves-effect waves-light btn-small"><i className="material-icons right">cloud</i>Reset Password</button>             
+            
           </form>
           <div className="w-100 text-center mt-3">
             <Link to="/login">Login</Link>
-          </div>
-        </div>
-      </div>
-      <div className="w-100 text-center mt-2">
+            <div className="w-100 text-center mt-2">
         Need an account? <Link to="/signup">Sign Up</Link>
       </div>
+          </div>
+
+        </div>
+      </div>
+      
     </div>
   )
 }

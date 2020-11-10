@@ -6,7 +6,7 @@ export default function Signup() {
   const emailRef = useRef()
   const passwordRef = useRef()
   const passwordConfirmRef = useRef()
-  const  {signup}  = useAuth()
+  const { signup } = useAuth()
   const [error, setError] = useState("")
   const [loading, setLoading] = useState(false)
   const history = useHistory()
@@ -31,32 +31,34 @@ export default function Signup() {
   }
 
   return (
-    <div class="row">
-    <div class="col s12 m6">
-      <div class="card blue-grey darken-1">
-          <h2 className="text-center mb-4">Sign Up</h2>
-          {error && <span>error</span>}
-          <form class="col s12" onSubmit={handleSubmit}>
-            <div class="form-group" id="email">
-            <label>Email</label>
-            <input class="form-Control" type="email" ref={emailRef}  placeholder="Enter email" required />
-            </div>
+    <div className="row">
+      <div className="col s12 m6">
+        <div className="#eeeeee grey lighten-3">
+          <h2>Sign Up</h2>
+          {error && <span>Error al iniciar sesion</span>}
+          <form className="col s12 m4 l6" onSubmit={handleSubmit}>
+          <div className="input-field"> 
+            <i className="material-icons prefix">person</i>
+            <input class="form-Control" type="email" ref={emailRef} placeholder="Enter email" required />
+          </div>
+          <div className="input-field"> 
             <div class="form-group" id="password">
-            <label>Password</label>
-            <input class="form-Control" type="password" ref={passwordRef}  placeholder="Enter Password" required />
+              <i className="material-icons prefix">lock</i>
+              <input class="form-Control" type="password" ref={passwordRef} placeholder="Enter Password" required />
             </div>
+          </div>
+          <div className="input-field">
             <div class="form-group" id="password-confirm">
-            <label>Password Confirmation</label>
-            <input class="form-Control" type="password" ref={passwordConfirmRef}  placeholder="Enter Password" required />
-            </div>           
-            <button disabled={loading} className="w-100" type="submit">
-              Sign Up
-            </button>
+              <i className="material-icons prefix">lock</i>
+              <input class="form-Control" type="password" ref={passwordConfirmRef} placeholder="Enter Password" required />
+            </div>
+          </div>
+          <button  disabled={loading} type="submit" className="waves-effect waves-light btn-small"><i className="material-icons right">cloud</i>Sign Up</button>
           </form>
+          <div>
+            Already have an account? <Link to="/login">Log In</Link>
+          </div>
         </div>
-      </div>
-      <div className="w-100 text-center mt-2">
-        Already have an account? <Link to="/login">Log In</Link>
       </div>
     </div>
   )
