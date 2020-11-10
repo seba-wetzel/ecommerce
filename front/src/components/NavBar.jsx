@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import Login from "./Login";
+
 import Sidenav from "./Sidenav";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -48,18 +48,11 @@ const NavBar = () => {
           </ul>
           <ul className="lefth hide-on-med-and-down">
             <li>
-              <Link to="/prueba">
-                <Login />
-              </Link>
+              <Link to="/login"><i className="material-icons prefix">person_outline</i></Link>
             </li>
-            <li>
-              <Link to="/">Productos</Link>
-            </li>
-            <li>
-              <Link to="/">
-                <Sidenav />
-              </Link>
-            </li>
+                     
+            <li><Link to="/">Productos</Link></li>
+            <li><Link to="/" ><Sidenav /></Link></li>
           </ul>
         </div>
       </nav>
