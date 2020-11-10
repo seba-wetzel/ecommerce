@@ -1,24 +1,29 @@
 import React from "react";
-import { Route, Switch, BrowserRouter } from 'react-router-dom';
+import { Route, Switch, BrowserRouter } from "react-router-dom";
+
 
 //Redux
 import { Provider } from "react-redux";
-import store from './redux/store'
+import store from "./redux/store";
 //Components
 import NavBar from "./components/NavBar";
 import ProductosContainer from "./containers/ProductosContainer"
 import SoloProductoComponent from './components/SoloProductoComponent'
 
 import Carrito from "./components/Carrito";
-import Footer from './components/Footer'
+import Footer from './components/Footer';
+
 // componenetes, usuarios
 import { AuthProvider } from "./contexts/AuthContext"
 import Dashboard from "./components/usuarios/Dashboard"
 import Login from "./components/usuarios/Login"
 import PrivateRoute from "./components/usuarios/PrivateRoute"
 import ForgotPassword from "./components/usuarios/ForgotPassword"
-
 import Signup from "./components/usuarios/Signup"
+import AdminPanelContainer from "./containers/AdminPanelContainer";
+import NewProduct from "./components/NewProduct";
+
+
 
 ////Firebase
 import withFirebaseAuth from './firebase/login'
@@ -54,7 +59,10 @@ function App({ user, signOut, signInWithGoogle, signInWithFacebook }) {
                   <Route path='/products/:id' component={SoloProductoComponent}></Route>
                   <Route exact path='/' component={ProductosContainer}></Route>
                   <PrivateRoute exact path="/dashboard" component={Dashboard} />
-                  
+                  <Route path="/adminpanel" component={AdminPanelContainer}></Route>
+                  <Route path="/newproduct" component={NewProduct}></Route>                             
+                  <Route path="/products/:id" component={SoloProductoComponent}></Route>
+                  <Route path="/" render={() => <ProductosContainer />}></Route>
                   <Route path="/signup" component={Signup} />
                   <Route path="/login" component={Login} />
                   <Route path="/forgot-password" component={ForgotPassword} />
@@ -68,8 +76,8 @@ function App({ user, signOut, signInWithGoogle, signInWithFacebook }) {
       </Provider>  
       </FirebaseAuthProvider>
 
-
-  );
+  )
 }
+
 
 export default withFirebaseAuth(App);

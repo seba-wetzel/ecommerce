@@ -1,17 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter, Route } from 'react-router-dom';
-///import { Provider } from "react-redux";
-//import store from './redux/store'
-import Materialize from 'materialize-css'
-
 import App from './App';
-
+import Materialize from "materialize-css"
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
+<<<<<<< HEAD
   <React.StrictMode>  
             <App/>
+=======
+  <React.StrictMode>
+    <App />
+>>>>>>> 374bf7ae679f423e1f844c372b89149d5e2b27a5
   </React.StrictMode>,
   document.getElementById('root')
 );

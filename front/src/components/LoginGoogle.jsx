@@ -1,6 +1,6 @@
-import React from 'react';
-
-
+import React, { useEffect } from 'react';
+import { useDispatch } from 'react-redux'
+import { setUser, resetUser } from '../redux/actions/user'
 //Firebase
 
 import firebase from "firebase/app";
