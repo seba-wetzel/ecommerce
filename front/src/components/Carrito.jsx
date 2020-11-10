@@ -28,21 +28,21 @@ function Carrito() {
                                 <tbody>
                                 </tbody>
                                 <tr>
-                                    <th colSpan="4" scope="col" className="text-right">SUB TOTAL :</th>
+                                    <th colSpan="4" scope="col" className="text-right">TOTAL :</th>
                                     <th scope="col">
                                         <p id="subtotal"></p>
                                     </th>
                                     <th scope="col"></th>
                                 </tr>
                                 <tr>
-                                    <th colSpan="4" scope="col" className="text-right">IGV :</th>
+                                    <th colSpan="4" scope="col" className="text-right">DIR. DE ENVIO :</th>
                                     <th scope="col">
                                         <p id="igv"></p>
                                     </th>
                                     <th scope="col"></th>
                                 </tr>
                                 <tr>
-                                    <th colSpan="4" scope="col" className="text-right">TOTAL :</th>
+                                    <th colSpan="4" scope="col" className="text-right">Nº TARJETA :</th>
                                     <th scope="col">
                                         <p id="total"></p>
                                     </th>
@@ -58,7 +58,7 @@ function Carrito() {
                             </div>
                             <hr></hr>
                             <div className="col-xs-12 col-md-4">
-                                <a href="/" className="btn btn-success btn-block" id="procesar-compra">Realizar compra</a>
+                                <Link to="/" className="btn btn-success btn-block" id="procesar-compra">Realizar compra</Link>
                             </div>
                         </div>
                     </form>
