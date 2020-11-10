@@ -12,9 +12,9 @@ const receiveProducts = (products) => ({
   payload: products,
 });
 
-const receiveSingleProduct = (product) => ({
+const receiveSingleProduct = (selectProduct) => ({
   type: RECEIVE_SINGLE_PRODUCT,
-  product,
+  payload: selectProduct,
 });
 
 const addProduct = (product) => ({
@@ -43,6 +43,13 @@ export const fetchProducts = () => async (dispatch, state) => {
   const products = await response.json()
   dispatch(receiveProducts(products))
 }
+
+export const fetchProductById = (id) => (dispatch) =>
+  axios
+    .get(`/api/products/${id}`)
+    .then((res) => res.data)
+    .then((product) => dispatch(receiveSingleProduct(product)));
+
 
 export const fetchProduct = (name) => async (dispatch, state) => {
   const response = await fetch(`/api/products/search?name=${name}`, {

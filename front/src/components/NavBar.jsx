@@ -25,9 +25,9 @@ const NavBar = () => {
     <div className="App">
       <nav>
         <div className="nav-wrapper #880e4f pink darken-4">
-          <a href="/shopping" className="brand-logo center">
+          <Link to="/shopping" className="brand-logo center">
             Lenceria
-          </a>
+          </Link>
           <ul className="right hide-on-med-and-down">
             <li>
               <a href="sass.html">
