@@ -56,7 +56,7 @@ export const substractFromQuantity = (productId) => (dispatch) => {
 
 export const deleteItem = (itemId) => (dispatch) => {
   dispatch({
-    type:  DELETE_ITEM,
+    type: DELETE_ITEM,
     payload: itemId,
   })
   dispatch({
@@ -71,7 +71,7 @@ const checkout = () => ({
   type: CHECKOUT,
 });
 
-const emptyCart = () => ({
+export const emptyCart = () => ({
   type: EMPTY_CART,
 });
 

@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { fetchShopping } from "../redux/actions/checkout";
+import { createTicket } from "../redux/actions/checkout";
 function Carrito() {
   const TOTAL = useSelector((state) => state.cart.total);
   const dispatch = useDispatch();
@@ -56,7 +56,7 @@ function Carrito() {
             className="btn btn-success btn-block"
             id="procesar-compra"
             onClick={() => {
-              dispatch(fetchShopping());
+              dispatch(createTicket());
             }}
           >
             Realizar compra
