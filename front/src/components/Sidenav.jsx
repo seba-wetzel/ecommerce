@@ -2,11 +2,15 @@ import React from 'react'
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux'
 import CartItem from "./CartItem"
+
+
 const Sidenav = () => {
     const user = useSelector(state => state.user.user)
     const cart = useSelector(state => state.cart.added)
     const units = useSelector(state => state.cart.units)
     const total = useSelector(state => state.cart.total)
+    console.log( "esto sidenav....", user)
+
     return (
 
         <div>
@@ -17,9 +21,8 @@ const Sidenav = () => {
                     </a>
                 </li>
             </ul>
-
-
-            <ul id="slide-out" className="sidenav">
+            
+             <ul id="slide-out" className="sidenav">
                 <div className="user-view" style={{ display: "flex" }}>
                     (user?
                     (<img className="circle" src={user.photoURL} alt="" />
