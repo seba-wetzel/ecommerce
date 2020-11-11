@@ -1,15 +1,12 @@
 import React, { useEffect } from "react";
 import { Route, Switch, BrowserRouter } from "react-router-dom";
-
-
 //Redux
 import { useDispatch } from "react-redux";
-import { setUser, fetchUserDB } from "./redux/actions/user"
+import { resetUser, setUser, fetchUserDB } from "./redux/actions/user"
 //Components
 import NavBar from "./components/NavBar";
 import ProductosContainer from "./containers/ProductosContainer"
 import SoloProductoComponent from './components/SoloProductoComponent'
-
 import Carrito from "./components/Carrito";
 import Footer from './components/Footer';
 
@@ -22,8 +19,6 @@ import ForgotPassword from "./components/usuarios/ForgotPassword"
 import Signup from "./components/usuarios/Signup"
 import AdminPanelContainer from "./containers/AdminPanelContainer";
 import NewProduct from "./components/NewProduct";
-
-
 
 ////Firebase
 import withFirebaseAuth from './firebase/login'
@@ -41,9 +36,10 @@ import {
 
 
 function App({ user, signOut, signInWithGoogle, signInWithFacebook }) {
-
+  
   if (user) console.log(user._lat)
   const dispatch = useDispatch()
+  
   useEffect(() => {
     if (user) {
       console.log(user._lat)

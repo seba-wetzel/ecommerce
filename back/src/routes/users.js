@@ -20,4 +20,15 @@ users.get("/me", auth, async (req, res) => {
     res.send(user)
 })
 
+
+users.get("/all",  async (req,res)=>{
+    
+    const users = await User.find()
+     
+    res.send(users)
+})
+
+
+
+
 export default users

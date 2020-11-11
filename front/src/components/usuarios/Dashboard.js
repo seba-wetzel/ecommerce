@@ -17,7 +17,7 @@ export default function Dashboard() {
       setError("Failed to log out")
     }
   }
-    
+    console.log("esto es current", currentUser.displayName)
   return (
     <div className="container">
       <div className="col s12 m6">
@@ -25,7 +25,8 @@ export default function Dashboard() {
           <h2 className="text-center mb-4">Profile</h2>
           {error && <span>error</span>}
           <strong>Email:</strong> {currentUser.email}
-          <strong>Name:</strong> {currentUser.name}
+          <br/>
+          <strong>Name:</strong> {currentUser.displayName}
           <div>       
           <button onClick={handleLogout} type="submit" className="waves-effect waves-light btn-small"><i className="material-icons right">cloud</i>Log Out</button>
           </div>          
