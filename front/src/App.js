@@ -32,34 +32,34 @@ import firebase from "firebase/app";
 import "firebase/auth";
 import {
   FirebaseAuthProvider,
- //FirebaseAuthConsumer,
- //// IfFirebaseAuthed,
- // IfFirebaseAuthedAnd,
+  //FirebaseAuthConsumer,
+  //// IfFirebaseAuthed,
+  // IfFirebaseAuthedAnd,
 } from "@react-firebase/auth";
 
 
 
 
 function App({ user, signOut, signInWithGoogle, signInWithFacebook }) {
-
+  if (user) console.log(user._lat)
   return (
     <FirebaseAuthProvider firebase={firebase} {...firebaseConfig}>
       <Provider store={store}>
         <>
-         <BrowserRouter>
-          <style>
-            {'body{background-image: url(https://media.discordapp.net/attachments/771492002147598348/774013141330952272/flowers.jpg?width=860&height=532);background-position: center center;background-repeat: no-repeat;background-attachment: fixed;background-size: cover;height: 100%; }'}
-          </style>
-          <NavBar />
-         
+          <BrowserRouter>
+            <style>
+              {'body{background-image: url(https://media.discordapp.net/attachments/771492002147598348/774013141330952272/flowers.jpg?width=860&height=532);background-position: center center;background-repeat: no-repeat;background-attachment: fixed;background-size: cover;height: 100%; }'}
+            </style>
+            <NavBar />
+
             <AuthProvider>
               <div >
                 <Switch>
                   <Route exact path='/shopping' component={Carrito}></Route>
-                  <Route exact path='/products/:id' component={SoloProductoComponent}></Route>                  
+                  <Route exact path='/products/:id' component={SoloProductoComponent}></Route>
                   <PrivateRoute exact path="/dashboard" component={Dashboard} />
                   <Route exact path="/adminpanel" component={AdminPanelContainer}></Route>
-                  <Route exact path="/newproduct" component={NewProduct}></Route>                             
+                  <Route exact path="/newproduct" component={NewProduct}></Route>
                   <Route exact path="/products/:id" component={SoloProductoComponent}></Route>
                   <Route exact path="/" render={() => <ProductosContainer />}></Route>
                   <Route exact path="/signup" component={Signup} />
@@ -69,12 +69,12 @@ function App({ user, signOut, signInWithGoogle, signInWithFacebook }) {
                 </Switch>
               </div>
             </AuthProvider>
-          
-          <Footer />
+
+            <Footer />
           </BrowserRouter>
         </>
-      </Provider>  
-      </FirebaseAuthProvider>
+      </Provider>
+    </FirebaseAuthProvider>
 
   )
 }
