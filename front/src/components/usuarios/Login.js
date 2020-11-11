@@ -1,8 +1,8 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useAuth } from "../../contexts/AuthContext";
 import { Link, useHistory } from "react-router-dom";
-
-
+import { useDispatch } from "react-redux";
+import {setUser, resetUser} from "../../redux/actions/user";
 
 //Firebase
 
@@ -16,8 +16,6 @@ import {
 } from "@react-firebase/auth";
 
 import withFirebaseAuth from '../../firebase/login'
-import { useDispatch } from "react-redux";
-import { setUser, resetUser } from '../../redux/actions/user'
 
  function Login({ user, signOut, signInWithGoogle, signInWithFacebook }) {
   const emailRef = useRef()  
@@ -27,8 +25,6 @@ import { setUser, resetUser } from '../../redux/actions/user'
   const [loading, setLoading] = useState(false)
   const history = useHistory()
   const dispatch = useDispatch()
-
-  
 
   async function handleSubmit(e) {
     e.preventDefault()
@@ -46,11 +42,12 @@ import { setUser, resetUser } from '../../redux/actions/user'
   }
 
   useEffect(()=>{
-    
     if(user){
       dispatch(setUser(user))
-      history.push("/dashboard")}
-      else dispatch(resetUser())
+    history.push("/dashboard")
+    }else{
+      dispatch(resetUser())
+    }
   },[user])
   console.log("esto de donde sale", user)
   return (

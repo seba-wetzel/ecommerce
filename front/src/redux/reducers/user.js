@@ -1,13 +1,15 @@
 import {
     LOGIN,
     LOGOUT,
-    SET_USERS_LIST
+    SET_USERS_LIST,
+    SET_USER_DB
 } from '../constants'
 
 
 const initialState = {
     user: {},
-    users:[]
+    users:[],
+    db: {}
 }
 
 export const reducer = (state = initialState, action) => {
@@ -16,7 +18,7 @@ export const reducer = (state = initialState, action) => {
         case LOGIN: return { ...state, user: action.payload }
         case LOGOUT: return { ...state, user: {} }
         case SET_USERS_LIST: return {...state,users:action.payload}
-
+        case SET_USER_DB: return { ...state, db: action.payload }
         default: return state
     }
 }

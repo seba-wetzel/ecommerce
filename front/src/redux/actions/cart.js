@@ -54,16 +54,24 @@ export const substractFromQuantity = (productId) => (dispatch) => {
   })
 }
 
-export const deleteItem = (productId) => ({
-  type: DELETE_ITEM,
-  payload: productId,
-});
+export const deleteItem = (itemId) => (dispatch) => {
+  dispatch({
+    type: DELETE_ITEM,
+    payload: itemId,
+  })
+  dispatch({
+    type: CALCULATE_UNITS
+  })
+  dispatch({
+    type: CALCULATE_TOTAL
+  })
+}
 
 const checkout = () => ({
   type: CHECKOUT,
 });
 
-const emptyCart = () => ({
+export const emptyCart = () => ({
   type: EMPTY_CART,
 });
 
