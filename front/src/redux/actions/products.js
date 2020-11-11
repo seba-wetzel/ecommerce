@@ -19,17 +19,17 @@ const receiveSingleProduct = (selectProduct) => ({
 
 const addProduct = (product) => ({
   type: ADD_PRODUCT,
-  product,
+  payload:product,
 });
 
 const deleteProduct = (product) => ({
   type: DELETE_PRODUCT,
-  product,
+  payload:product,
 });
 
 const updateProduct = (product) => ({
   type: UPDATE_PRODUCT,
-  product,
+  payload:product,
 });
 
 export const fetchProducts = () => async (dispatch, state) => {
@@ -64,9 +64,9 @@ export const fetchProduct = (name) => async (dispatch, state) => {
 }
 
 // recordar validacion, esto solo deberia ser accesible para admin
-export const postProduct = () => (dispatch) =>
+export const postProduct = (newProduct) => (dispatch) =>
   axios
-    .post("/api/products")
+    .post("/api/products",{newProduct})
     .then((res) => res.data)
     .then((product) => dispatch(addProduct(product)));
 

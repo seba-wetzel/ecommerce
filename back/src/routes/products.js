@@ -33,9 +33,8 @@ products.get("/:id", async (req, res) => {
 });
 
 products.post("/", async (req, res) => {
-    const { nombre } = req.body;
-
-    const product = await Product.create({ nombre });
+    console.log(req.body, "el bodyyyyyyyyyyyyyyy")
+    const product = await Product.create(req.body);
     res.status(201).send(product);
 });
 

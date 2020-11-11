@@ -1,10 +1,9 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Route, Switch, BrowserRouter } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { setUser, resetUser } from './redux/actions/user'
 
 
-//Redux
-import { Provider } from "react-redux";
-import store from "./redux/store";
 //Components
 import NavBar from "./components/NavBar";
 import ProductosContainer from "./containers/ProductosContainer"
@@ -41,10 +40,31 @@ import {
 
 
 function App({ user, signOut, signInWithGoogle, signInWithFacebook }) {
+  
+  const dispatch = useDispatch()
+  useEffect(()=>{
+    if (user){ console.log(user._lat)
+      fetch("http://localhost:8000/api/users/me", {
+  "method": "GET",
+  "headers": {
+    "authorization": `Bearer ${user._lat}`
+  }
+})
+.then(response => {
+  console.log(response)
+  dispatch(setUser(user))
+})
+.catch(err => {
+  console.error(err);
+});
+
+    } 
+
+  },[user])
 
   return (
     <FirebaseAuthProvider firebase={firebase} {...firebaseConfig}>
-      <Provider store={store}>
+      
         <>
          <BrowserRouter>
           <style>
@@ -73,7 +93,7 @@ function App({ user, signOut, signInWithGoogle, signInWithFacebook }) {
           <Footer />
           </BrowserRouter>
         </>
-      </Provider>  
+        
       </FirebaseAuthProvider>
 
   )
