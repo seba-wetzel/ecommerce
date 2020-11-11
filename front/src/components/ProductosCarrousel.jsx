@@ -19,14 +19,12 @@ const ProductosCarrousel = () => {
             alt=""
           />
           <div className="caption left-align">
-            <h3>!</h3>
             <h5 className="light grey-text text-lighten-3">Unica.</h5>
           </div>
         </li>
         <li>
           <img src="../assets/14.jpg" alt="" />
           <div className="caption right-align">
-            <h3>!</h3>
             <h5 className="light grey-text text-lighten-3">She.</h5>
           </div>
         </li>

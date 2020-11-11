@@ -15,6 +15,7 @@ const useInput = (name) => {
 const NavBar = () => {
   const input = useInput("search");
   const dispatch = useDispatch();
+  const user = useSelector(state => state.user.user)
   const handleSubmit = (e) => {
     e.preventDefault();
     if (input.value === "") dispatch(fetchProducts());
@@ -48,9 +49,19 @@ const NavBar = () => {
           </ul>
           <ul className="lefth hide-on-med-and-down">
             <li>
-              <Link to="/login"><i className="material-icons prefix">person_outline</i></Link>
+
+              {user.email ? (
+                <Link to="/login">
+                  <i>{user.displayName}</i>
+                </Link>
+              ) : (
+                  <Link to="/login">
+                    <i className="material-icons prefix">person_outline</i>
+                  </Link>
+                )}
+
             </li>
-                     
+
             <li><Link to="/">Productos</Link></li>
             <li><Link to="/" ><Sidenav /></Link></li>
           </ul>

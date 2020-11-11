@@ -31,3 +31,4 @@ export const DELETE_COMMENT = "DELETE_COMMENT";
 // Users
 export const LOGIN = "LOGIN";
 export const LOGOUT = "LOGOUT";
+export const SET_USER_DB = "SET_USER_DB"
