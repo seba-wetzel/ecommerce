@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import {
   fetchProducts,
+  removeProduct,
   
 } from "../redux/actions/products";
 
@@ -20,13 +21,18 @@ const AdminPanelContainer = () => {
   const dispatch = useDispatch();
 
   
+
+  
   useEffect(() => {
     dispatch(fetchProducts());
-    dispatch(fetchUsers())
+    dispatch(fetchUsers());
+    
     return () => {};
   }, []);
 
- 
+  const handleDelete = (id) => { 
+    dispatch(removeProduct(id))
+   }
 
   useEffect(() => {
     console.log(productos,usuarios);
@@ -62,7 +68,7 @@ const AdminPanelContainer = () => {
             </thead>
             <tbody>
               {productos.products.map((producto, i) => {
-                return <ProductPanel key={i} producto={producto} />;
+                return <ProductPanel key={i} producto={producto} handleDelete={handleDelete} />;
               })}
             </tbody>
           </table>

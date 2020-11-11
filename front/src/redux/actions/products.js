@@ -71,10 +71,11 @@ export const postProduct = (newProduct) => (dispatch) =>
     .then((product) => dispatch(addProduct(product)));
 
 export const removeProduct = (id) => (dispatch) =>
-  axios
+
+axios 
     .delete(`/api/products/${id}`)
     .then((res) => res.data)
-    .then((product) => dispatch(deleteProduct(product)));
+    .then((product) => dispatch(fetchProducts()));
 
 export const updatedProduct = (id) => (dispatch) => {
   axios
