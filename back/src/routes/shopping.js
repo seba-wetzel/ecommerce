@@ -37,6 +37,7 @@ shopping.get("/", auth, async (req, res) => {
 //              ]
 // }  Esto es lo que hay que mandar por el body
 shopping.post("/", auth, async (req, res) => {
+    
     const products = req.body.products;
     const email = req.user.email;
     const user = await User.findOne({ email });

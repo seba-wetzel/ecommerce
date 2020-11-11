@@ -1,6 +1,10 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useAuth } from "../../contexts/AuthContext";
 import { Link, useHistory } from "react-router-dom";
+import {useDispatch} from "react-redux";
+import {setUser, resetUser} from "../../redux/actions/user";
+
+
 
 
 
@@ -24,6 +28,7 @@ import withFirebaseAuth from '../../firebase/login'
   const [error, setError] = useState("")
   const [loading, setLoading] = useState(false)
   const history = useHistory()
+  const dispatch = useDispatch()
 
   async function handleSubmit(e) {
     e.preventDefault()
@@ -41,8 +46,12 @@ import withFirebaseAuth from '../../firebase/login'
   }
 
   useEffect(()=>{
-    if(user)history.push("/dashboard")
-
+    if(user){
+      dispatch(setUser(user))
+    history.push("/dashboard")
+    }else{
+      dispatch(resetUser())
+    }
   },[user])
 
   return (
