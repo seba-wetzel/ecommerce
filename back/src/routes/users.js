@@ -31,6 +31,16 @@ users.get("/all", async (req, res) => {
 })
 
 
+users.delete("/:id", async (req, res) => {
+  
+    try {
+        const user = await User.deleteOne({ _id: req.params.id });
+        res.status(202).send(user)
+    }
+
+    catch { res.status(503).end() }
+});
+
 
 
 export default users
