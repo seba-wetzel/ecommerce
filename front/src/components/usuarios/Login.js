@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { useAuth } from "../../contexts/AuthContext";
 import { Link, useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import {setUser, resetUser} from "../../redux/actions/user";
+import {setUser, resetUser,resetUserDb} from "../../redux/actions/user";
 
 //Firebase
 
@@ -47,6 +47,7 @@ import withFirebaseAuth from '../../firebase/login'
     history.push("/dashboard")
     }else{
       dispatch(resetUser())
+      dispatch(resetUserDb())
     }
   },[user])
   console.log("esto de donde sale", user)

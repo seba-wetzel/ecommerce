@@ -1,22 +1,8 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import {
-  postProduct,
-  removeProduct,
-  updatedProduct,
-} from "../redux/actions/products";
+
 
 
 const ProductPanel = ({ producto, handleDelete }) => {
-
-  
-
-  
-
-
-
-console.log(producto, "aqui el producto")
 
   return (
     <tr>

@@ -4,7 +4,11 @@ import { Link } from "react-router-dom";
 import Sidenav from "./Sidenav";
 import { useDispatch, useSelector } from "react-redux";
 
-import { fetchProduct, fetchProducts } from "../redux/actions/products";
+import {
+  fetchProduct,
+  fetchProducts,
+  searchProduct,
+} from "../redux/actions/products";
 
 const useInput = (name) => {
   const [value, setValue] = useState("");
@@ -13,13 +17,31 @@ const useInput = (name) => {
 };
 
 const NavBar = () => {
+  const [texto, setTexto] = useState("");
+
   const input = useInput("search");
   const dispatch = useDispatch();
-  const user = useSelector(state => state.user.user)
+  const user = useSelector((state) => state.user.user);
+  const userRole = useSelector((state) =>
+    state.user.db ? state.user.db.role : null
+  );
+
+  let userAut = false;
+  if (userRole === "admin") {
+    userAut = true;
+  }
+  if (userRole === "superAdmin") {
+    userAut = true;
+  }
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (input.value === "") dispatch(fetchProducts());
-    else dispatch(fetchProduct(input.value));
+    // if (input.value === "") {
+    //   dispatch(fetchProducts());
+    // } else {
+    dispatch(searchProduct(texto));
+    setTexto("");
+    // }
   };
   return (
     //NABVAR //
@@ -38,7 +60,7 @@ const NavBar = () => {
             <li className="input-field">
               <form onSubmit={handleSubmit}>
                 <input
-                  {...input}
+                  onChange={(e) => setTexto(e.target.value)}
                   type="text"
                   id="autocomplete-input"
                   class="autocomplete"
@@ -49,21 +71,32 @@ const NavBar = () => {
           </ul>
           <ul className="lefth hide-on-med-and-down">
             <li>
-
               {user.email ? (
                 <Link to="/login">
-                  <i>{user.displayName}</i>
+                  <i>{user.displayName ? user.displayName : user.email}</i>
                 </Link>
               ) : (
-                  <Link to="/login">
-                    <i className="material-icons prefix">person_outline</i>
-                  </Link>
-                )}
-
+                <Link to="/login">
+                  <i className="material-icons prefix">person_outline</i>
+                </Link>
+              )}
+            </li>
+            <li>
+              {userAut ? (
+                <Link to="/adminpanel">
+                  <i>Admin</i>
+                </Link>
+              ) : null}
             </li>
 
-            <li><Link to="/">Productos</Link></li>
-            <li><Link to="/" ><Sidenav /></Link></li>
+            <li>
+              <Link to="/products" onClick={() => dispatch(searchProduct(""))}>
+                Productos
+              </Link>
+            </li>
+            <li>
+              <Sidenav />
+            </li>
           </ul>
         </div>
       </nav>
