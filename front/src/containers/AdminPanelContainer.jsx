@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import {
   fetchProducts,
   removeProduct,
-  
+
 } from "../redux/actions/products";
 
 import {
@@ -16,28 +16,28 @@ import {
 
 const AdminPanelContainer = () => {
   const productos = useSelector((state) => state.products);
-  const usuarios= useSelector((state)=>state.user.users);
+  const usuarios = useSelector((state) => state.user.users);
 
   const dispatch = useDispatch();
 
-  
 
-  
+
+
   useEffect(() => {
     dispatch(fetchProducts());
     dispatch(fetchUsers());
-    
-    return () => {};
+
+    return () => { };
   }, []);
 
-  const handleDelete = (id) => { 
+  const handleDelete = (id) => {
     dispatch(removeProduct(id))
-   }
+  }
 
   useEffect(() => {
-    console.log(productos,usuarios);
-    return () => {};
-  }, [productos,usuarios]);
+    console.log(productos, usuarios);
+    return () => { };
+  }, [productos, usuarios]);
 
   return (
     <div className="container section">
@@ -96,11 +96,11 @@ const AdminPanelContainer = () => {
               </tr>
             </thead>
             {/* de donde me traigo los usuarios??? */}
-             <tbody>
-            {usuarios.map((users, i) => {
-              return <UserPanel key={i} user={users} />;
-            })}
-          </tbody>  
+            <tbody>
+              {usuarios ? usuarios.map((users, i) => {
+                return <UserPanel key={i} user={users} />;
+              }) : null}
+            </tbody>
           </table>
         </div>
       </div>

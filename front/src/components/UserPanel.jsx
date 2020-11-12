@@ -7,7 +7,7 @@ const UserPanel = ({ user }) => {
     <tr>
       <td>{user.email}</td>
       <td>{user.role}</td>
-      <td>{user.purchases}</td>
+      <td>{user.purchases.map(purchase => <p>{purchase.amount}</p>)}</td>
       <td>{user.cart}</td>
       <td>{user.comments}</td>
       <td>{user.ratings}</td>
