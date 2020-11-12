@@ -19,6 +19,7 @@ import ForgotPassword from "./components/usuarios/ForgotPassword"
 import Signup from "./components/usuarios/Signup"
 import AdminPanelContainer from "./containers/AdminPanelContainer";
 import NewProduct from "./components/NewProduct";
+import EditProduct from "./components/EditProduct";
 
 
 
@@ -33,6 +34,7 @@ import {
   //// IfFirebaseAuthed,
   // IfFirebaseAuthedAnd,
 } from "@react-firebase/auth";
+
 
 
 
@@ -82,6 +84,7 @@ function App({ user, signOut, signInWithGoogle, signInWithFacebook }) {
                 <PrivateRoute exact path="/dashboard" component={Dashboard} />
                 <Route exact path="/adminpanel" component={AdminPanelContainer}></Route>
                 <Route exact path="/newproduct" component={NewProduct}></Route>
+                <Route exact path="/editproduct" component={EditProduct}></Route>
                 <Route exact path="/products/:id" component={SoloProductoComponent}></Route>
                 <Route exact path="/" render={() => <ProductosContainer />}></Route>
                 <Route exact path="/signup" component={Signup} />
