@@ -76,13 +76,13 @@ const Review = () => {
           <div className="row">
             <div className="input-field col s6">
               <i className="material-icons prefix">mode_edit</i>
-              <input
+              <input 
+              placeholder = "Tu comentario!"
                 onChange={(e) => setComentario(e.target.value)}
                 value={comentario}
                 id="icon_prefix2"
                 className="materialize-textarea"
               ></input>
-              <label for="icon_prefix2">Dejanos tu opinion</label>
               <a
                 className="btn #4a148c purple darken-4"
                 onClick={(e) => {

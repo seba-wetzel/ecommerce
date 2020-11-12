@@ -58,7 +58,7 @@ const NavBar = () => {
 
               {user.email ? (
                 <Link to="/login">
-                  <i>{user.displayName}</i>
+                  <i>{user.displayName ? user.displayName : user.email}</i>
                 </Link>
               ) : (
                   <Link to="/login">
