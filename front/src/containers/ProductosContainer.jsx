@@ -19,7 +19,7 @@ const ProductosContainer = () => {
   }, []);
 
   useEffect(() => {
-    console.log(datos1);
+    console.log(datos);
     return () => {};
   }, [datos1]);
 
@@ -68,7 +68,7 @@ const ProductosContainer = () => {
             })
           : datos1.products.map((producto, i) => {
               return <ProductosComponent key={i} producto={producto} />;
-            })}
+            })} 
       </div>
     </div>
   );
