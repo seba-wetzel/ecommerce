@@ -2,20 +2,24 @@ import React, { useEffect } from "react";
 import ProductosComponent from "../components/ProductosComponent";
 import ProductosCarrousel from "../components/ProductosCarrousel";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchProducts } from "../redux/actions/products";
+import { fetchProducts, filterProductsByCategory } from "../redux/actions/products";
 
 const ProductosContainer = () => {
   const datos1 = useSelector((state) => state.products);
+  const productsFiltered = useSelector((state) => state.products.filterProducts);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchProducts());
-    return () => {};
+    return () => { };
   }, []);
 
   useEffect(() => {
     console.log(datos1);
-    return () => {};
+    return () => { };
   }, [datos1]);
+
+  const handlerTab = (filter) => dispatch(filterProductsByCategory(filter))
+
 
   return (
     <div className="container section">
@@ -23,37 +27,28 @@ const ProductosContainer = () => {
         <ProductosCarrousel />
         <ul class="tabs tabs-fixed-width tab-demo z-depth-2 #880e4f pink darken-4">
           <li class="tab active">
-            <a href="#test1">Todos</a>
+            <a href="#test1" onClick={() => handlerTab("")}>Todos</a>
           </li>
           <li class="tab">
-            <a href="#test1">Corpiños</a>
+            <a href="#test1" onClick={() => handlerTab("corpiños")}>Corpiños</a>
           </li>
           <li class="tab">
-            <a href="#test2">Tanga</a>
+            <a href="#test2" onClick={() => handlerTab("tanga")}>Tanga</a>
           </li>
           <li class="tab">
-            <a href="#test3">Pijamas</a>
+            <a href="#test3" onClick={() => handlerTab("pijama")}>Pijamas</a>
           </li>
           <li class="tab">
-            <a href="#test4">Bombacha</a>
+            <a href="#test4" onClick={() => handlerTab("bombacha")}>Bombacha</a>
           </li>
         </ul>
-        <div id="test1" class="col s12">
-          <p>Test 1</p>
-        </div>
-        <div id="test2" class="col s12">
-          <p>Test 2</p>
-        </div>
-        <div id="test3" class="col s12">
-          <p>Test 3</p>
-        </div>
-        <div id="test4" class="col s12">
-          <p>Test 4</p>
-        </div>
 
-        {datos1.products.map((producto, i) => {
+        {productsFiltered ? productsFiltered.map((producto, i) => {
+          return <ProductosComponent key={i} producto={producto} />;
+        }) : datos1.products.map((producto, i) => {
           return <ProductosComponent key={i} producto={producto} />;
         })}
+
       </div>
     </div>
   );

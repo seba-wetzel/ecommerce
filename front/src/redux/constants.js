@@ -12,6 +12,7 @@ export const CALCULATE_TOTAL = "CALCULATE_TOTAL"
 // ----------(User)
 export const RECEIVE_PRODUCTS = "RECEIVE_PRODUCTS";
 export const RECEIVE_SINGLE_PRODUCT = "RECEIVE_SINGLE_PRODUCT";
+export const FILTER_PRODUCTS = "FILTER_PRODUCTS"
 
 // ----------(Admin)
 export const ADD_PRODUCT = "ADD_PRODUCT";

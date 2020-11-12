@@ -5,6 +5,7 @@ import {
   ADD_PRODUCT,
   DELETE_PRODUCT,
   UPDATE_PRODUCT,
+  FILTER_PRODUCTS
 } from "../constants";
 
 const receiveProducts = (products) => ({
@@ -19,17 +20,22 @@ const receiveSingleProduct = (selectProduct) => ({
 
 const addProduct = (product) => ({
   type: ADD_PRODUCT,
-  payload:product,
+  payload: product,
 });
 
-const deleteProduct = (product) => ({
+export const deleteProduct = (product) => ({
   type: DELETE_PRODUCT,
-  payload:product,
+  payload: product,
 });
 
 const updateProduct = (product) => ({
   type: UPDATE_PRODUCT,
-  payload:product,
+  payload: product,
+});
+
+export const filterProductsByCategory = (filter) => ({
+  type: FILTER_PRODUCTS,
+  payload: filter,
 });
 
 export const fetchProducts = () => async (dispatch, state) => {
@@ -66,13 +72,13 @@ export const fetchProduct = (name) => async (dispatch, state) => {
 // recordar validacion, esto solo deberia ser accesible para admin
 export const postProduct = (newProduct) => (dispatch) =>
   axios
-    .post("/api/products",{newProduct})
+    .post("/api/products", { newProduct })
     .then((res) => res.data)
     .then((product) => dispatch(addProduct(product)));
 
 export const removeProduct = (id) => (dispatch) =>
 
-axios 
+  axios
     .delete(`/api/products/${id}`)
     .then((res) => res.data)
     .then((product) => dispatch(fetchProducts()));

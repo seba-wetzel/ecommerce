@@ -6,7 +6,7 @@ const products = express.Router();
 products.get("/", async (req, res) => {
 
     try {
-        const results = await Product.find();
+        const results = await Product.find().populate("categories");
         res.send(results);
     } catch {
         res.status(500).end();
@@ -33,7 +33,7 @@ products.get("/:id", async (req, res) => {
 });
 
 products.post("/", async (req, res) => {
-    
+
     const product = await Product.create(req.body);
     res.status(201).send(product);
 });
