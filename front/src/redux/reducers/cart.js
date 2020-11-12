@@ -45,6 +45,7 @@ export const reducer = (state = initialState, action) => {
         case SUBSTRACT_FROM_QUANTITY: return { ...state, added: findAndDecrement(state.added, action.payload) }
         case CALCULATE_TOTAL: return { ...state, total: state.added.reduce((acc, item) => (acc + (item.units * item.price)), 0) }
         case CALCULATE_UNITS: return { ...state, units: state.added.reduce((acc, item) => (acc + item.units), 0) }
+        case EMPTY_CART: return { ...state, added: [], total: 0, units: 0 }
         default: return state
     }
 }

@@ -5,23 +5,39 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import {
   fetchProducts,
-  postProduct,
   removeProduct,
-  updatedProduct,
+  
 } from "../redux/actions/products";
+
+import {
+  fetchUsers
+} from "../redux/actions/user"
+
 
 const AdminPanelContainer = () => {
   const productos = useSelector((state) => state.products);
+  const usuarios= useSelector((state)=>state.user.users);
+
   const dispatch = useDispatch();
+
+  
+
+  
   useEffect(() => {
     dispatch(fetchProducts());
+    dispatch(fetchUsers());
+    
     return () => {};
   }, []);
 
+  const handleDelete = (id) => { 
+    dispatch(removeProduct(id))
+   }
+
   useEffect(() => {
-    console.log(productos);
+    console.log(productos,usuarios);
     return () => {};
-  }, [productos]);
+  }, [productos,usuarios]);
 
   return (
     <div className="container section">
@@ -52,7 +68,7 @@ const AdminPanelContainer = () => {
             </thead>
             <tbody>
               {productos.products.map((producto, i) => {
-                return <ProductPanel key={i} producto={producto} />;
+                return <ProductPanel key={i} producto={producto} handleDelete={handleDelete} />;
               })}
             </tbody>
           </table>
@@ -80,11 +96,11 @@ const AdminPanelContainer = () => {
               </tr>
             </thead>
             {/* de donde me traigo los usuarios??? */}
-            {/* <tbody>
-            {productos.products.map((producto, i) => {
-              return <UserPanel key={i} user={user} />;
+             <tbody>
+            {usuarios.map((users, i) => {
+              return <UserPanel key={i} user={users} />;
             })}
-          </tbody> */}
+          </tbody>  
           </table>
         </div>
       </div>

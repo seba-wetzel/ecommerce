@@ -1,8 +1,8 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useAuth } from "../../contexts/AuthContext";
 import { Link, useHistory } from "react-router-dom";
-
-
+import { useDispatch } from "react-redux";
+import {setUser, resetUser} from "../../redux/actions/user";
 
 //Firebase
 
@@ -18,12 +18,13 @@ import {
 import withFirebaseAuth from '../../firebase/login'
 
  function Login({ user, signOut, signInWithGoogle, signInWithFacebook }) {
-  const emailRef = useRef()
+  const emailRef = useRef()  
   const passwordRef = useRef()
   const { login } = useAuth()
   const [error, setError] = useState("")
   const [loading, setLoading] = useState(false)
   const history = useHistory()
+  const dispatch = useDispatch()
 
   async function handleSubmit(e) {
     e.preventDefault()
@@ -41,27 +42,31 @@ import withFirebaseAuth from '../../firebase/login'
   }
 
   useEffect(()=>{
-    if(user)history.push("/dashboard")
-
+    if(user){
+      dispatch(setUser(user))
+    history.push("/dashboard")
+    }else{
+      dispatch(resetUser())
+    }
   },[user])
-
+  console.log("esto de donde sale", user)
   return (
     <FirebaseAuthProvider firebase={firebase} >
+      <IfFirebaseAuthed >
+                  <ul>
+            <li className="right hide-on-med-and-down">{user ? user.displayName : null}</li>
+            <li className="right hide-on-med-and-down" ><i className="material-icons" onClick={signOut}>logout</i></li>           
+                </ul>
+                 </IfFirebaseAuthed>
     <div className="container">
       <div className="col s6 m4 l6">
         <div className="#eeeeee grey lighten-3">
           <div className="content-center">
             <h2 >Log In</h2>
             {error && <span>Error al iniciar sesion </span>}
-            <IfFirebaseAuthed >
-                  <ul>
-            <li className="right hide-on-med-and-down">{user ? user.displayName : null}</li>
-            <li className="right hide-on-med-and-down" ><i className="material-icons" onClick={signOut}>logout</i></li>
-           
-                </ul>
-                 </IfFirebaseAuthed>
+            
             <form className="col s12 m4 l6" onSubmit={handleSubmit}>
-              <h6 htmlFor="email"> Tu Correo Electronico </h6>
+             <h6 htmlFor="email"> Tu Correo Electronico </h6>
               <div className="input-field">
                 <i className="material-icons prefix">person</i>
                 <input className="form-Control" type="email" ref={emailRef} placeholder="Enter email" />

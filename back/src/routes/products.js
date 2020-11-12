@@ -33,9 +33,8 @@ products.get("/:id", async (req, res) => {
 });
 
 products.post("/", async (req, res) => {
-    const { nombre } = req.body;
-
-    const product = await Product.create({ nombre });
+    
+    const product = await Product.create(req.body);
     res.status(201).send(product);
 });
 
@@ -49,8 +48,9 @@ products.put("/:id", async (req, res) => {
 });
 
 products.delete("/:id", async (req, res) => {
+    console.log(req.params.id)
     try {
-        const product = await Products.deleteOne({ _id: req.params.id });
+        const product = await Product.deleteOne({ _id: req.params.id });
         res.status(202).send(product)
     }
 

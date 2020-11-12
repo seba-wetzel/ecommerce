@@ -18,6 +18,11 @@ export const ADD_PRODUCT = "ADD_PRODUCT";
 export const DELETE_PRODUCT = "DELETE_PRODUCT";
 export const UPDATE_PRODUCT = "UPDATE_PRODUCT";
 
+// ----------(Users)
+export const SET_USERS_LIST = "SET_USERS_LIST";
+
+
+
 // Categories
 export const ADD_CATEGORY = "ADD_CATEGORY";
 export const DELETE_CATEGORY = "DELETE_CATEGORY";
@@ -31,3 +36,4 @@ export const DELETE_COMMENT = "DELETE_COMMENT";
 // Users
 export const LOGIN = "LOGIN";
 export const LOGOUT = "LOGOUT";
+export const SET_USER_DB = "SET_USER_DB"

@@ -7,7 +7,9 @@ const users = express.Router()
 
 users.get("/me", auth, async (req, res) => {
     const email = req.user.email;
-    const user = await User.findOne({ email })
+    const user = await User.findOne({ email }).populate("purchases")
+        .populate({ path: "purchases", populate: { path: "products", populate: { path: "product" } } })
+        .populate({ path: "purchases", populate: { path: "products", populate: { path: "product", populate: { path: "categories", populate: "categories" } } } })
     if (!user) {
         const newUser = await User.create({ email })
         const cart = await Cart.create({ user: newUser._id })
@@ -17,5 +19,16 @@ users.get("/me", auth, async (req, res) => {
     }
     res.send(user)
 })
+
+
+users.get("/all",  async (req,res)=>{
+    
+    const users = await User.find()
+     
+    res.send(users)
+})
+
+
+
 
 export default users
