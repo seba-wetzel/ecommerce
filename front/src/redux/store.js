@@ -5,11 +5,13 @@ import thunkMiddleware from 'redux-thunk';
 import { reducer as products } from './reducers/Products-reducer'
 import { reducer as cart } from './reducers/cart'
 import { reducer as user } from './reducers/user'
+import { reducer as comments} from './reducers/comments'
 
 const reducers = combineReducers({
     products,
     cart,
-    user
+    user,
+    comments
 })
 
 

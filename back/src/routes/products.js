@@ -1,6 +1,7 @@
 import express from "express";
 import Product from "../db/db_models/products.js";
 
+
 const products = express.Router();
 
 products.get("/", async (req, res) => {
@@ -56,6 +57,9 @@ products.delete("/:id", async (req, res) => {
 
     catch { res.status(503).end() }
 });
+
+
+
 export default products;
 
 /* .get = "/" = devuelve todos los productos

@@ -25,6 +25,7 @@ export const DELETE_CATEGORY = "DELETE_CATEGORY";
 // Comments
 // ----------(User)
 export const ADD_COMMENT = "ADD_COMMENT";
+export const SET_COMMENTS ='SET_COMMENTS'
 // ----------(Admin)
 export const DELETE_COMMENT = "DELETE_COMMENT";
 

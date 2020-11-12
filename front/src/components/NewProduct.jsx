@@ -7,30 +7,30 @@ const NewProduct = () => {
       <p>falta completar</p>
       <div classname="container">
         <div className="row">
-          <form class="col s12">
-            <div class="row">
-              <div class="input-field col s12">
+          <form className="col s12">
+            <div className="row">
+              <div className="input-field col s12">
                 <textarea
                   id="productname"
-                  class="materialize-textarea"
+                  className="materialize-textarea"
                 ></textarea>
                 <label for="productname">Nombre</label>
               </div>
             </div>
-            <div class="row">
-              <div class="input-field col s12">
+            <div className="row">
+              <div className="input-field col s12">
                 <textarea
                   id="productdescription"
-                  class="materialize-textarea"
+                  className="materialize-textarea"
                 ></textarea>
                 <label for="productdescription">Descripcion</label>
               </div>
             </div>
-            <div class="row">
-              <div class="input-field col s12">
+            <div className="row">
+              <div className="input-field col s12">
                 <textarea
                   id="productprice"
-                  class="materialize-textarea"
+                  className="materialize-textarea"
                 ></textarea>
                 <label for="productprice">Precio</label>
               </div>
@@ -38,11 +38,11 @@ const NewProduct = () => {
           </form>
         </div>
         <br />
-        <a class="waves-effect waves-light btn #880e4f pink darken-4">
+        <a className="waves-effect waves-light btn #880e4f pink darken-4">
           Agregar Producto
         </a>{" "}
-        <a class="waves-effect waves-light btn #880e4f pink darken-4">
-          <i class="material-icons left">delete</i>
+        <a className="waves-effect waves-light btn #880e4f pink darken-4">
+          <i className="material-icons left">delete</i>
         </a>
         <br />
       </div>

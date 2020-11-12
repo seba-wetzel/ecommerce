@@ -18,9 +18,9 @@ const ProductPanel = ({ producto }) => {
       <td>{producto.imgURL}</td>
       <td>{producto.available}</td>
       <td>
-        <a class="waves-effect waves-light btn #880e4f pink darken-4">Editar</a>{" "}
-        <a class="waves-effect waves-light btn #880e4f pink darken-4">
-          <i class="material-icons left">delete</i>
+        <a className="waves-effect waves-light btn #880e4f pink darken-4">Editar</a>{" "}
+        <a className="waves-effect waves-light btn #880e4f pink darken-4">
+          <i className="material-icons left">delete</i>
         </a>
       </td>
     </tr>

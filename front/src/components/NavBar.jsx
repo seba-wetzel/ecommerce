@@ -56,9 +56,7 @@ const NavBar = () => {
               <Link to="/">Productos</Link>
             </li>
             <li>
-              <Link to="/">
                 <Sidenav />
-              </Link>
             </li>
           </ul>
         </div>
