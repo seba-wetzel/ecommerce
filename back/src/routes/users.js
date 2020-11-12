@@ -21,13 +21,25 @@ users.get("/me", auth, async (req, res) => {
 })
 
 
-users.get("/all",  async (req,res)=>{
-    
-    const users = await User.find()
-     
+users.get("/all", async (req, res) => {
+
+    const users = await User.find().populate("purchases")
+        .populate({ path: "purchases", populate: { path: "products", populate: { path: "product" } } })
+        .populate({ path: "purchases", populate: { path: "products", populate: { path: "product", populate: { path: "categories", populate: "categories" } } } })
+
     res.send(users)
 })
 
+
+users.delete("/:id", async (req, res) => {
+  
+    try {
+        const user = await User.deleteOne({ _id: req.params.id });
+        res.status(202).send(user)
+    }
+
+    catch { res.status(503).end() }
+});
 
 
 

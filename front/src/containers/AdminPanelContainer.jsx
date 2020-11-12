@@ -6,41 +6,51 @@ import { Link } from "react-router-dom";
 import {
   fetchProducts,
   removeProduct,
-  
 } from "../redux/actions/products";
 
 import {
-  fetchUsers
+  fetchUsers,
+  removeUser,
+  updatedUser
 } from "../redux/actions/user"
 
 
 const AdminPanelContainer = () => {
   const productos = useSelector((state) => state.products);
-  const usuarios= useSelector((state)=>state.user.users);
-
+  const usuarios = useSelector((state) => state.user.users);
+  const userRole=useSelector(state => state.user.db.role)
+  let userAut=false
+  if(userRole==="admin"){ userAut=true}
+  if(userRole==="superAdmin"){userAut=true}
   const dispatch = useDispatch();
 
-  
 
-  
+
+
   useEffect(() => {
     dispatch(fetchProducts());
     dispatch(fetchUsers());
-    
-    return () => {};
+
+    return () => { };
   }, []);
 
-  const handleDelete = (id) => { 
+  const handleDelete = (id) => {
     dispatch(removeProduct(id))
-   }
+  }
+
+  const handleDeleteUser = (id) => {    
+    dispatch(removeUser(id))
+  }
 
   useEffect(() => {
-    console.log(productos,usuarios);
-    return () => {};
-  }, [productos,usuarios]);
+    console.log(productos, usuarios);
+    return () => { };
+  }, [productos, usuarios]);
 
   return (
-    <div className="container section">
+    <>
+    {userAut ? ( 
+      <div className="container section">
       <div className="row">
         <ul className="tabs tabs-fixed-width tabs-swipe-demo z-depth-2 #880e4f pink darken-4">
           <li className="tab">
@@ -82,6 +92,7 @@ const AdminPanelContainer = () => {
           </Link>
         </div>
 
+              {userRole === "superAdmin" ? (
         <div id="usuarios_tabla">
           <table class="striped grey lighten-4">
             <thead>
@@ -96,16 +107,17 @@ const AdminPanelContainer = () => {
               </tr>
             </thead>
             {/* de donde me traigo los usuarios??? */}
-             <tbody>
-            {usuarios.map((users, i) => {
-              return <UserPanel key={i} user={users} />;
-            })}
-          </tbody>  
+            <tbody>
+              {usuarios ? usuarios.map((users, i) => {
+                return <UserPanel key={i} user={users}  handleDeleteUser={handleDeleteUser}/>;
+              }) : null}
+            </tbody>
           </table>
-        </div>
+        </div> ):( <h3>Solo Para Super Admin</h3> )}
       </div>
     </div>
-  );
+            ):(<h3> Solo para administradores</h3>)}
+            </>);
 };
 
 export default AdminPanelContainer;

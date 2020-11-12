@@ -59,7 +59,7 @@ export const postProduct = () => (dispatch) =>
     .then((product) => dispatch(addProduct(product)));
 
 export const removeProduct = (id) => (dispatch) =>
-  axios
+axios 
     .delete(`/api/products/${id}`)
     .then((res) => res.data)
     .then((product) => dispatch(deleteProduct(product)));
