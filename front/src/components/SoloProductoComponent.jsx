@@ -5,7 +5,7 @@ import {addToCart} from '../redux/actions/cart'
 import { fetchComments} from '../redux/actions/comments'
 import { useParams, Link } from "react-router-dom";
 import Review from './Review';
-import axios from 'axios'
+
 
 const SoloProductoComponent = () => {
     const producto = useSelector(state => state.products.selectProduct)
@@ -43,7 +43,7 @@ const SoloProductoComponent = () => {
                         <div className="card-content">
                                 <p>{producto.description}</p>
                                 <p><h3>${producto.price}</h3></p>
-                                {producto.available==true? <p className="btn green waves-effect waves-purple">Stock</p> : <p className="btn grey waves-effect waves-purple">Sin stock</p>}
+                                {producto.available===true? <p className="btn green waves-effect waves-purple">Stock</p> : <p className="btn grey waves-effect waves-purple">Sin stock</p>}
                                 <div><Review/></div>
                         </div>
                         <div className="card-action #ba68c8 purple lighten-2">
