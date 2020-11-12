@@ -1,9 +1,11 @@
-
+import axios from "axios";
 import {
     LOGIN,
     LOGOUT,
     SET_USERS_LIST,
-    SET_USER_DB
+    SET_USER_DB,
+    DELETE_USER,
+    UPDATE_USER,
 } from "../constants";
 
 export const setUser = (user) => ({
@@ -18,6 +20,16 @@ export const resetUser = () => ({
 const receiveUsers= (users) => ({
     type: SET_USERS_LIST,
     payload: users,
+  });
+
+  const deleteUser = (user) => ({
+    type: DELETE_USER,
+    payload:user,
+  });
+  
+  const updateUser = (user) => ({
+    type: UPDATE_USER,
+    payload:user,
   });
 
 
@@ -51,6 +63,17 @@ export const fetchUserDB = () => async (dispatch, getState) => {
     })
     const user = await response.json()
     dispatch(setUserDB(user))
-
-
 }
+
+export const removeUser = (id) => (dispatch) =>
+axios 
+    .delete(`/api/users/${id}`)
+    .then((res) => res.data)
+    .then((users) => dispatch(fetchUsers()));
+
+export const updatedUser = (id) => (dispatch) => {
+        axios
+          .put(`/api/products/${id}`)
+          .then((res) => res.data)
+          .then((users) => dispatch(updateUser()));
+      }

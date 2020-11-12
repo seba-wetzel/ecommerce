@@ -1,8 +1,8 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import { useDispatch } from "react-redux";
 
-const UserPanel = ({ user }) => {
+
+const UserPanel = ({ user,handleDeleteUser }) => {
+
   return (
     <tr>
       <td>{user.email}</td>
@@ -11,7 +11,15 @@ const UserPanel = ({ user }) => {
       <td>{user.cart}</td>
       <td>{user.comments}</td>
       <td>{user.ratings}</td>
+      <td>
+        <a class="waves-effect waves-light btn #880e4f pink darken-4">Editar</a>{" "}
+        <button  className="waves-effect waves-light btn #880e4f pink darken-4"
+        onClick={()=>handleDeleteUser(user._id)}>
+          <i class="material-icons left" >delete</i>
+        </button>
+      </td>
     </tr>
+    
   );
 };
 

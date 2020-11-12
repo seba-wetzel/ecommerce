@@ -18,8 +18,13 @@ export const ADD_PRODUCT = "ADD_PRODUCT";
 export const DELETE_PRODUCT = "DELETE_PRODUCT";
 export const UPDATE_PRODUCT = "UPDATE_PRODUCT";
 
+
+
+
 // ----------(Users)
 export const SET_USERS_LIST = "SET_USERS_LIST";
+export const DELETE_USER = "DELETE_USER";
+export const UPDATE_USER = "UPDATE_USER";
 
 
 
