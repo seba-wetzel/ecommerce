@@ -21,10 +21,12 @@ users.get("/me", auth, async (req, res) => {
 })
 
 
-users.get("/all",  async (req,res)=>{
-    
-    const users = await User.find()
-     
+users.get("/all", async (req, res) => {
+
+    const users = await User.find().populate("purchases")
+        .populate({ path: "purchases", populate: { path: "products", populate: { path: "product" } } })
+        .populate({ path: "purchases", populate: { path: "products", populate: { path: "product", populate: { path: "categories", populate: "categories" } } } })
+
     res.send(users)
 })
 

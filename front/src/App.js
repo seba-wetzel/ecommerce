@@ -36,10 +36,10 @@ import {
 
 
 function App({ user, signOut, signInWithGoogle, signInWithFacebook }) {
-  
+
   if (user) console.log(user._lat)
   const dispatch = useDispatch()
-  
+
   useEffect(() => {
     if (user) {
       console.log(user._lat)
