@@ -5,6 +5,7 @@ import {
   ADD_PRODUCT,
   DELETE_PRODUCT,
   UPDATE_PRODUCT,
+  SET_SEARCH_PRODUCT,
 } from "../constants";
 
 const receiveProducts = (products) => ({
@@ -17,39 +18,43 @@ const receiveSingleProduct = (selectProduct) => ({
   payload: selectProduct,
 });
 
+export const searchProduct = (searchText) => ({
+  type: SET_SEARCH_PRODUCT,
+  payload: searchText,
+});
+
 const addProduct = (product) => ({
   type: ADD_PRODUCT,
-  payload:product,
+  payload: product,
 });
 
 const deleteProduct = (product) => ({
   type: DELETE_PRODUCT,
-  payload:product,
+  payload: product,
 });
 
 const updateProduct = (product) => ({
   type: UPDATE_PRODUCT,
-  payload:product,
+  payload: product,
 });
 
 export const fetchProducts = () => async (dispatch, state) => {
   const response = await fetch(`/api/products/`, {
-    "method": "GET",
+    method: "GET",
     // "headers": {
     //   "Access-Control-Allow-Origin": "*",
     //   "authorization": `Bearer ${state.user._lat}`
     // }
-  })
-  const products = await response.json()
-  dispatch(receiveProducts(products))
-}
+  });
+  const products = await response.json();
+  dispatch(receiveProducts(products));
+};
 
 export const fetchProductById = (id) => (dispatch) =>
   axios
     .get(`/api/products/${id}`)
     .then((res) => res.data)
     .then((product) => dispatch(receiveSingleProduct(product)));
-
 
 // recordar validacion, esto solo deberia ser accesible para admin
 export const postProduct = () => (dispatch) =>
@@ -59,7 +64,7 @@ export const postProduct = () => (dispatch) =>
     .then((product) => dispatch(addProduct(product)));
 
 export const removeProduct = (id) => (dispatch) =>
-axios 
+  axios
     .delete(`/api/products/${id}`)
     .then((res) => res.data)
     .then((product) => dispatch(deleteProduct(product)));
@@ -69,8 +74,4 @@ export const updatedProduct = (id) => (dispatch) => {
     .put(`/api/products/${id}`)
     .then((res) => res.data)
     .then((product) => dispatch(updateProduct(product)));
-}
-
-
-
-
+};

@@ -2,10 +2,25 @@ import React, { useEffect } from "react";
 import ProductosComponent from "../components/ProductosComponent";
 import ProductosCarrousel from "../components/ProductosCarrousel";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchProducts } from "../redux/actions/products";
+import { fetchProducts, searchProduct } from "../redux/actions/products";
 
 const ProductosContainer = () => {
   const datos1 = useSelector((state) => state.products);
+  const searchTerm = useSelector((state) =>
+    state.products.searchText ? state.products.searchText : ""
+  );
+  const productsState = useSelector((state) =>
+    state.products.products ? state.products.products : []
+  );
+  const filteredProducts = productsState
+    ? searchTerm
+      ? productsState.filter((product) =>
+          product.name.toLowerCase().includes(searchTerm.toLowerCase())
+        )
+      : ""
+    : "";
+
+  const isFound = filteredProducts.length;
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchProducts());
@@ -51,9 +66,19 @@ const ProductosContainer = () => {
           <p>Test 4</p>
         </div>
 
-        {datos1.products.map((producto, i) => {
-          return <ProductosComponent key={i} producto={producto} />;
-        })}
+        {searchTerm ? (
+          isFound ? (
+            filteredProducts.map((producto, i) => {
+              return <ProductosComponent key={i} producto={producto} />;
+            })
+          ) : (
+            <h1>Producto no encontrado</h1>
+          )
+        ) : (
+          productsState.map((producto, i) => {
+            return <ProductosComponent key={i} producto={producto} />;
+          })
+        )}
       </div>
     </div>
   );
