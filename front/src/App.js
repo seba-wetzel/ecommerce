@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { Route, Switch, BrowserRouter } from "react-router-dom";
 //Redux
 import { useDispatch } from "react-redux";
-import { resetUser, setUser, fetchUserDB } from "./redux/actions/user"
+import {  setUser, fetchUserDB } from "./redux/actions/user"
 //Components
 import NavBar from "./components/NavBar";
 import ProductosContainer from "./containers/ProductosContainer"

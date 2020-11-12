@@ -16,6 +16,10 @@ const NavBar = () => {
   const input = useInput("search");
   const dispatch = useDispatch();
   const user = useSelector(state => state.user.user)
+  const userRole=useSelector(state => state.user.db.role)
+  let userAut=false
+  if(userRole==="admin"){ userAut=true}
+  if(userRole==="superAdmin"){userAut=true}
   const handleSubmit = (e) => {
     e.preventDefault();
     if (input.value === "") dispatch(fetchProducts());
@@ -58,6 +62,16 @@ const NavBar = () => {
                   <Link to="/login">
                     <i className="material-icons prefix">person_outline</i>
                   </Link>
+                )}
+
+            </li>
+            <li>
+              {userAut ? (
+                <Link to="/adminpanel">
+                  <i>Admin</i>
+                </Link>
+              ) : (
+                  null
                 )}
 
             </li>

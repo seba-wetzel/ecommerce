@@ -18,7 +18,10 @@ import {
 const AdminPanelContainer = () => {
   const productos = useSelector((state) => state.products);
   const usuarios = useSelector((state) => state.user.users);
-
+  const userRole=useSelector(state => state.user.db.role)
+  let userAut=false
+  if(userRole==="admin"){ userAut=true}
+  if(userRole==="superAdmin"){userAut=true}
   const dispatch = useDispatch();
 
 
@@ -45,7 +48,9 @@ const AdminPanelContainer = () => {
   }, [productos, usuarios]);
 
   return (
-    <div className="container section">
+    <>
+    {userAut ? ( 
+      <div className="container section">
       <div className="row">
         <ul className="tabs tabs-fixed-width tabs-swipe-demo z-depth-2 #880e4f pink darken-4">
           <li className="tab">
@@ -87,6 +92,7 @@ const AdminPanelContainer = () => {
           </Link>
         </div>
 
+              {userRole === "superAdmin" ? (
         <div id="usuarios_tabla">
           <table class="striped grey lighten-4">
             <thead>
@@ -107,10 +113,11 @@ const AdminPanelContainer = () => {
               }) : null}
             </tbody>
           </table>
-        </div>
+        </div> ):( <h3>Solo Para Super Admin</h3> )}
       </div>
     </div>
-  );
+            ):(<h3> Solo para administradores</h3>)}
+            </>);
 };
 
 export default AdminPanelContainer;
