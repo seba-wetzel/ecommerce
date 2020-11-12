@@ -5,6 +5,7 @@ import {
   ADD_PRODUCT,
   DELETE_PRODUCT,
   UPDATE_PRODUCT,
+  FILTER_PRODUCTS,
 } from "../constants";
 
 const receiveProducts = (products) => ({
@@ -43,6 +44,11 @@ export const fetchProducts = () => async (dispatch, state) => {
   const products = await response.json()
   dispatch(receiveProducts(products))
 }
+
+export const filterProductsByCategory = (filter) => ({
+  type: FILTER_PRODUCTS,
+  payload: filter,
+});
 
 export const fetchProductById = (id) => (dispatch) =>
   axios

@@ -7,7 +7,7 @@ const products = express.Router();
 products.get("/", async (req, res) => {
 
     try {
-        const results = await Product.find();
+        const results = await Product.find().populate("categories");
         res.send(results);
     } catch {
         res.status(500).end();
