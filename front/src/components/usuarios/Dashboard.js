@@ -26,7 +26,7 @@ export default function Dashboard() {
           {error && <span>error</span>}
           <strong>Email:</strong> {currentUser.email}
           <br/>
-          <strong>Name:</strong> {currentUser.displayName}
+          <strong>Name:</strong> {currentUser.displayName  ? currentUser.displayName: currentUser.email }
           <div>       
           <button onClick={handleLogout} type="submit" className="waves-effect waves-light btn-small"><i className="material-icons right">cloud</i>Log Out</button>
           </div>          

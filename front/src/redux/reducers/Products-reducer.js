@@ -4,12 +4,20 @@ import {
   ADD_PRODUCT,
   DELETE_PRODUCT,
   SET_SEARCH_PRODUCT,
+  FILTER_PRODUCTS,
 } from "../constants";
 
 const initialState = {
   products: [],
   selectProduct: {},
   searchText: "",
+  filterProducts: [],
+};
+
+const filterProducts = (products, filter) => {
+  return filter
+    ? products.filter((product) => product.categories[0].name === filter)
+    : products;
 };
 
 export const reducer = (state = initialState, action) => {
@@ -24,6 +32,11 @@ export const reducer = (state = initialState, action) => {
       return { ...state, products: action.payload };
     case SET_SEARCH_PRODUCT:
       return { ...state, searchText: action.payload };
+    case FILTER_PRODUCTS:
+      return {
+        ...state,
+        filterProducts: filterProducts(state.products, action.payload),
+      };
 
     default:
       return state;

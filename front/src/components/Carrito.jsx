@@ -2,12 +2,19 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { createTicket } from "../redux/actions/checkout";
+
 function Carrito() {
   const TOTAL = useSelector((state) => state.cart.total);
   const dispatch = useDispatch();
+  const usuarios = useSelector((state) => state.user.user);
+  
+
+
 
   return (
-    <div className="container">
+    <div>
+    { usuarios.email ? (
+      <div className="container">
       <div className="row mb-6">
         <div className="col">
           <h2 className="d-flex justify-content-center mb-3">
@@ -62,8 +69,17 @@ function Carrito() {
             Realizar compra
           </button>
         </div>
+      </div> 
       </div>
-    </div>
+
+    ) : (<h4>
+
+      <Link className="nav-wrapper #880e4f pink darken-4" to="/login">Iniciar sesión para poder comprar</Link>
+    </h4>
+    )
+    
+          }
+          </div>
   );
 }
 

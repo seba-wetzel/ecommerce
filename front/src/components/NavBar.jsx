@@ -22,7 +22,10 @@ const NavBar = () => {
   const input = useInput("search");
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user.user);
-  const userRole = useSelector((state) => state.user.db.role);
+  const userRole = useSelector((state) =>
+    state.user.db ? state.user.db.role : null
+  );
+
   let userAut = false;
   if (userRole === "admin") {
     userAut = true;
@@ -30,6 +33,7 @@ const NavBar = () => {
   if (userRole === "superAdmin") {
     userAut = true;
   }
+
   const handleSubmit = (e) => {
     e.preventDefault();
     // if (input.value === "") {
@@ -69,7 +73,7 @@ const NavBar = () => {
             <li>
               {user.email ? (
                 <Link to="/login">
-                  <i>{user.displayName}</i>
+                  <i>{user.displayName ? user.displayName : user.email}</i>
                 </Link>
               ) : (
                 <Link to="/login">

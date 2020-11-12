@@ -2,7 +2,11 @@ import React, { useEffect } from "react";
 import ProductosComponent from "../components/ProductosComponent";
 import ProductosCarrousel from "../components/ProductosCarrousel";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchProducts, searchProduct } from "../redux/actions/products";
+import {
+  fetchProducts,
+  searchProduct,
+  filterProductsByCategory,
+} from "../redux/actions/products";
 
 const ProductosContainer = () => {
   const datos1 = useSelector((state) => state.products);
@@ -11,6 +15,9 @@ const ProductosContainer = () => {
   );
   const productsState = useSelector((state) =>
     state.products.products ? state.products.products : []
+  );
+  const productsFiltered = useSelector(
+    (state) => state.products.filterProducts
   );
   const filteredProducts = productsState
     ? searchTerm
@@ -21,6 +28,7 @@ const ProductosContainer = () => {
     : "";
 
   const isFound = filteredProducts.length;
+
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchProducts());
@@ -32,39 +40,44 @@ const ProductosContainer = () => {
     return () => {};
   }, [datos1]);
 
+  const handlerTab = (filter) => dispatch(filterProductsByCategory(filter));
+
   return (
     <div className="container section">
       <div className="row">
         <ProductosCarrousel />
         <ul class="tabs tabs-fixed-width tab-demo z-depth-2 #880e4f pink darken-4">
+          {/* faltan ternarios, si hay estos productos que se muestren, de lo contrario que responda "NO HAY STOCK" */}
           <li class="tab active">
-            <a href="#test1">Todos</a>
+            <a href="#test1" onClick={() => handlerTab("")}>
+              Todos
+            </a>
           </li>
+          {/* faltan ternarios */}
           <li class="tab">
-            <a href="#test1">Corpiños</a>
+            <a href="#test1" onClick={() => handlerTab("corpiños")}>
+              Corpiños
+            </a>
           </li>
+          {/* faltan ternarios */}
           <li class="tab">
-            <a href="#test2">Tanga</a>
+            <a href="#test2" onClick={() => handlerTab("tanga")}>
+              Tanga
+            </a>
           </li>
+          {/* faltan ternarios */}
           <li class="tab">
-            <a href="#test3">Pijamas</a>
+            <a href="#test3" onClick={() => handlerTab("pijama")}>
+              Pijamas
+            </a>
           </li>
+          {/* faltan ternarios */}
           <li class="tab">
-            <a href="#test4">Bombacha</a>
+            <a href="#test4" onClick={() => handlerTab("bombacha")}>
+              Bombacha
+            </a>
           </li>
         </ul>
-        <div id="test1" class="col s12">
-          <p>Test 1</p>
-        </div>
-        <div id="test2" class="col s12">
-          <p>Test 2</p>
-        </div>
-        <div id="test3" class="col s12">
-          <p>Test 3</p>
-        </div>
-        <div id="test4" class="col s12">
-          <p>Test 4</p>
-        </div>
 
         {searchTerm ? (
           isFound ? (
@@ -74,8 +87,12 @@ const ProductosContainer = () => {
           ) : (
             <h1>Producto no encontrado</h1>
           )
+        ) : productsFiltered ? (
+          productsFiltered.map((producto, i) => {
+            return <ProductosComponent key={i} producto={producto} />;
+          })
         ) : (
-          productsState.map((producto, i) => {
+          datos1.products.map((producto, i) => {
             return <ProductosComponent key={i} producto={producto} />;
           })
         )}
