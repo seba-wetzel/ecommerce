@@ -77,7 +77,7 @@ const NavBar = () => {
             </li>
 
             <li><Link to="/">Productos</Link></li>
-            <li><Link to="/" ><Sidenav /></Link></li>
+            <li><Sidenav /></li>
           </ul>
         </div>
       </nav>

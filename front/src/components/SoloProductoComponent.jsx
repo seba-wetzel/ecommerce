@@ -2,45 +2,76 @@ import React, {useEffect} from 'react';
 import { useDispatch ,useSelector} from 'react-redux'
 import {fetchProductById} from '../redux/actions/products'
 import {addToCart} from '../redux/actions/cart'
+import { fetchComments} from '../redux/actions/comments'
 import { useParams, Link } from "react-router-dom";
 import Review from './Review';
+import axios from 'axios'
 
 const SoloProductoComponent = () => {
     const producto = useSelector(state => state.products.selectProduct)
+    const comentarios = useSelector(state => state.comments)
+    const comentario = useSelector(state => state.comments.comment)
     const dispatch = useDispatch()
     const params = useParams();
+
+
     useEffect(()=>{
         dispatch(fetchProductById(params.id))
     }, [])
 
+    useEffect(async()=>{
+      dispatch(fetchComments(producto._id)) 
+  }, [comentario])
+
+    
+
     
     const add = (id) => {
     dispatch(addToCart(id))
-    console.log('producto', producto) 
 }
    return  ( 
          
     <div className='container'>   
         <div className='row'>   
-            <div class="col s12">
-                <div class="card horizontal">
-                    <div class="card-image">
+            <div className="col s12">
+                <div className="card horizontal">
+                    <div className="card-image">
                         {producto.imgURL? <img src={producto.imgURL[0]} alt=''/> : null}
                     </div>
-                    <div class="card-stacked">
-                    <h1 class="header">{producto.name}</h1>
-                        <div class="card-content">
+                    <div className="card-stacked">
+                    <h1 className="header">{producto.name}</h1>
+                        <div className="card-content">
                                 <p>{producto.description}</p>
                                 <p><h3>${producto.price}</h3></p>
-                                {producto.available==true? <p className="btn green waves-effect waves-purple">Stock</p> : <p className="btn gray waves-effect waves-purple">Sin stock</p>}
+                                {producto.available==true? <p className="btn green waves-effect waves-purple">Stock</p> : <p className="btn grey waves-effect waves-purple">Sin stock</p>}
                                 <div><Review/></div>
                         </div>
-                        <div class="card-action #ba68c8 purple lighten-2">
+                        <div className="card-action #ba68c8 purple lighten-2">
                                 <Link to='/' className='btn #4a148c purple darken-4'><i className="material-icons">arrow_back</i>Volver</Link>
-                                <a onClick={() => add(producto._id)} className='btn #4a148c purple darken-4'><i className="material-icons">shopping_basket </i>Agregar al Carrito</a>
+                                <a onClick={() => add(producto)} className='btn #4a148c purple darken-4'><i className="material-icons">shopping_basket </i>Agregar al Carrito</a>
                         </div>
                     </div>
                 </div>
+                <div class="row">
+    <div className="col s12 m6">
+      <div className="card blue-grey darken-1">
+        <div className="card-content white-text">
+          <span className="card-title">Comentarios!</span>
+             {comentarios.comments.length? comentarios.comments.map((comment,i)=>{
+                return (<p key={i}>
+                  <h4>{comment.content}</h4>
+                  <h6>{comment.user.email}---{comment.date}</h6>
+                </p>) 
+            }): null}
+        </div>
+        <div className="card-action">
+          <a href="#">This is a link</a>
+          <a href="#">This is a link</a>
+        </div>
+      </div>
+    </div>
+  </div>
+            
             </div>
         </div> 
     </div>
