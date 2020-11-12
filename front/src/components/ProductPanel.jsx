@@ -7,7 +7,10 @@ import {
   updatedProduct,
 } from "../redux/actions/products";
 
-const ProductPanel = ({ producto }) => {
+
+const ProductPanel = ({ producto, handleDelete }) => {
+console.log(producto, "aqui el producto")
+
   return (
     <tr>
       <td>{producto.name}</td>
@@ -18,10 +21,11 @@ const ProductPanel = ({ producto }) => {
       <td>{producto.imgURL}</td>
       <td>{producto.available}</td>
       <td>
-        <a className="waves-effect waves-light btn #880e4f pink darken-4">Editar</a>{" "}
-        <a className="waves-effect waves-light btn #880e4f pink darken-4">
-          <i className="material-icons left">delete</i>
-        </a>
+        <a class="waves-effect waves-light btn #880e4f pink darken-4">Editar</a>{" "}
+        <button  className="waves-effect waves-light btn #880e4f pink darken-4"
+        onClick={()=>handleDelete(producto._id)}>
+          <i class="material-icons left" >delete</i>
+        </button>
       </td>
     </tr>
   );

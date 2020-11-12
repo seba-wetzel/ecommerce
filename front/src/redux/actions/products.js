@@ -19,17 +19,17 @@ const receiveSingleProduct = (selectProduct) => ({
 
 const addProduct = (product) => ({
   type: ADD_PRODUCT,
-  product,
+  payload:product,
 });
 
 const deleteProduct = (product) => ({
   type: DELETE_PRODUCT,
-  product,
+  payload:product,
 });
 
 const updateProduct = (product) => ({
   type: UPDATE_PRODUCT,
-  product,
+  payload:product,
 });
 
 export const fetchProducts = () => async (dispatch, state) => {
@@ -51,18 +51,6 @@ export const fetchProductById = (id) => (dispatch) =>
     .then((product) => dispatch(receiveSingleProduct(product)));
 
 
-export const fetchProduct = (name) => async (dispatch, state) => {
-  const response = await fetch(`/api/products/search?name=${name}`, {
-    "method": "GET",
-    // "headers": {
-    //   "Access-Control-Allow-Origin": "*",
-    //   "authorization": `Bearer ${state.user._lat}`
-    // }
-  })
-  const products = await response.json()
-  dispatch(receiveProducts(products))
-}
-
 // recordar validacion, esto solo deberia ser accesible para admin
 export const postProduct = () => (dispatch) =>
   axios
@@ -82,4 +70,7 @@ export const updatedProduct = (id) => (dispatch) => {
     .then((res) => res.data)
     .then((product) => dispatch(updateProduct(product)));
 }
+
+
+
 

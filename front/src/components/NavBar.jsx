@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import Login from "./Login";
+
 import Sidenav from "./Sidenav";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -15,6 +15,7 @@ const useInput = (name) => {
 const NavBar = () => {
   const input = useInput("search");
   const dispatch = useDispatch();
+  const user = useSelector(state => state.user.user)
   const handleSubmit = (e) => {
     e.preventDefault();
     if (input.value === "") dispatch(fetchProducts());
@@ -48,16 +49,21 @@ const NavBar = () => {
           </ul>
           <ul className="lefth hide-on-med-and-down">
             <li>
-              <Link to="/prueba">
-                <Login />
-              </Link>
+
+              {user.email ? (
+                <Link to="/login">
+                  <i>{user.displayName}</i>
+                </Link>
+              ) : (
+                  <Link to="/login">
+                    <i className="material-icons prefix">person_outline</i>
+                  </Link>
+                )}
+
             </li>
-            <li>
-              <Link to="/">Productos</Link>
-            </li>
-            <li>
-                <Sidenav />
-            </li>
+
+            <li><Link to="/">Productos</Link></li>
+            <li><Sidenav /></li>
           </ul>
         </div>
       </nav>

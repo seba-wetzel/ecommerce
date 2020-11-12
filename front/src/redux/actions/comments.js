@@ -52,5 +52,3 @@ export const removeComment = ({productId,commentId}) => (dispatch) =>
     .delete(`/api/products/${productId}/comments/${commentId}`)
     .then((res) => res.data)
     .then((comment) => dispatch(deleteComment(comment)));
-
-

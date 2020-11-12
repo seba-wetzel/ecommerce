@@ -5,6 +5,7 @@ import { fileURLToPath } from "url";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
+
 const app = express();
 
 app.use(express.json());
@@ -24,9 +25,6 @@ app.get("/*", (req, res) => {
   res.sendFile(path.resolve(__dirname, "../front/dist/index.html"));
 });
 
-app.get("/*", (req, res) => {
-  res.sendFile(path.resolve(__dirname, "../front/dist/index.html"));
-});
 
 app.listen(8000, () => {
   console.log(`Server listening at port 8000`);

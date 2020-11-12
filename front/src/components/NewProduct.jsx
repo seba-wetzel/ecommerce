@@ -1,49 +1,146 @@
-import React from "react";
+import React, { useState, useRef, useEffect } from "react";
+import { useHistory } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { postProduct } from "../redux/actions/products";
+import axios from 'axios'
+
 
 const NewProduct = () => {
+  
+   const [name,setName] = useState("");
+   const [imgURL,setImgURL] = useState("");
+   const [price,setPrice] = useState("");
+   const [description,setDescription] = useState("");
+   const [available,setAvailable] = useState("");
+   const [categories,setCategories] = useState("");
+     
+  const history = useHistory();
+ // const [error, setError] = useState("")
+  const dispatch = useDispatch();
+
+
+
+
+  async function handleSubmit(e) {
+
+    e.preventDefault()
+         
+     
+      const res = await axios.post('/api/products',{ 
+        name,
+        categories:[categories],
+        price,
+        imgURL:[imgURL],
+        available,
+        description
+
+      })
+
+      const data= await res.data
+      console.log(data)
+
+      history.push("/adminpanel")
+    
+
+  }
+
+  useEffect(() => {
+    dispatch(postProduct());
+    return () => { };
+  }, []);
+
+
+
+
   return (
+
     <div className="striped grey lighten-4">
       <h1>Agregar Producto</h1>
       <p>falta completar</p>
+     
       <div classname="container">
         <div className="row">
-          <form className="col s12">
-            <div className="row">
-              <div className="input-field col s12">
+          <form class="col s12" onSubmit={handleSubmit}>
+            <div class="row">
+              <div class="input-field col s12">
                 <textarea
+                value={name}
+                onChange={e=>setName(e.target.value)}
                   id="productname"
-                  className="materialize-textarea"
-                ></textarea>
-                <label for="productname">Nombre</label>
+                  class="materialize-textarea"
+                />
+                <label for="productname" >Nombre</label>
               </div>
             </div>
-            <div className="row">
-              <div className="input-field col s12">
+            <div class="row">
+              <div class="input-field col s12">
                 <textarea
-                  id="productdescription"
-                  className="materialize-textarea"
+                value={imgURL}
+                onChange={e=>setImgURL(e.target.value)}
+                  id="imgURL"
+                  class="materialize-textarea"
                 ></textarea>
-                <label for="productdescription">Descripcion</label>
+                <label for="imgURL" >Imagen URL</label>
               </div>
             </div>
-            <div className="row">
-              <div className="input-field col s12">
+            <div class="row">
+              <div class="input-field col s12">
                 <textarea
+                  value={price}
+                  onChange={e=>setPrice(e.target.value)}
                   id="productprice"
-                  className="materialize-textarea"
+                  class="materialize-textarea"
                 ></textarea>
-                <label for="productprice">Precio</label>
+                <label for="productprice" >Precio</label>
               </div>
             </div>
+
+            <div class="row">
+              <div class="input-field col s12">
+                <textarea
+                value={available}
+                onChange={e=>setAvailable(e.target.value)}
+                  id="available"
+                  class="materialize-textarea"
+                ></textarea>
+                <label for="available" >
+                  <input type="checkbox" class="filled-in" checked="checked" />
+                  <span>Available</span>
+                </label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12">
+                <textarea
+                value={description}
+                onChange={e=>setDescription(e.target.value)}
+                  id="productdescription"
+                  class="materialize-textarea"
+                ></textarea>
+                <label for="productdescription"  >Descripcion del Producto</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12">
+              <textarea
+                value={categories}
+                onChange={e=>setCategories(e.target.value)}
+                  id="productcategories"
+                  class="materialize-textarea"
+                ></textarea>
+                <label for="categories" >Categorias</label>
+              </div>
+            </div>  
+            <button className="waves-effect waves-light btn #880e4f pink darken-4" type="submit"> 
+          Agregar Producto
+          </button>  
+          <a className="waves-effect waves-light btn #880e4f pink darken-4">
+          <i class="material-icons left">delete</i>
+        </a>        
           </form>
         </div>
-        <br />
-        <a className="waves-effect waves-light btn #880e4f pink darken-4">
-          Agregar Producto
-        </a>{" "}
-        <a className="waves-effect waves-light btn #880e4f pink darken-4">
-          <i className="material-icons left">delete</i>
-        </a>
+        <br />             
+        
         <br />
       </div>
     </div>
