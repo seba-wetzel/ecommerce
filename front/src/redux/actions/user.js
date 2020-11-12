@@ -30,7 +30,7 @@ export const fetchUsers = () => async (dispatch, state) => {
       }
     })
     const users = await response.json()
-    console.log(users,"aqui el axiooooo")
+
     dispatch(receiveUsers(users))
   }
 
