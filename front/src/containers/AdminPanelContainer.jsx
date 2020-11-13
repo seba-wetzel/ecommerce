@@ -3,11 +3,7 @@ import ProductPanel from "../components/ProductPanel";
 import UserPanel from "../components/UserPanel";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import {
-  fetchProducts,
-  removeProduct,
-  updatedProduct,
-} from "../redux/actions/products";
+import { fetchProducts, removeProduct } from "../redux/actions/products";
 
 import { fetchUsers, removeUser, updatedUser } from "../redux/actions/user";
 
@@ -33,10 +29,6 @@ const AdminPanelContainer = () => {
 
   const handleDelete = (id) => {
     dispatch(removeProduct(id));
-  };
-
-  const handleUpdate = (id) => {
-    dispatch(updatedProduct(id));
   };
 
   const handleDeleteUser = (id) => {
@@ -85,7 +77,6 @@ const AdminPanelContainer = () => {
                             key={i}
                             producto={producto}
                             handleDelete={handleDelete}
-                            handleUpdate={handleUpdate}
                           />
                         );
                       })
