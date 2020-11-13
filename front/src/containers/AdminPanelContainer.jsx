@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import ProductPanel from "../components/ProductPanel";
 import UserPanel from "../components/UserPanel";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import {
   fetchProducts,
   removeProduct,
@@ -77,9 +77,9 @@ const AdminPanelContainer = () => {
               </tr>
             </thead>
             <tbody>
-              {productos.products.map((producto, i) => {
+              {productos.products ? productos.products.map((producto, i) => {
                 return <ProductPanel key={i} producto={producto} handleDelete={handleDelete} />;
-              })}
+              }): null}
             </tbody>
           </table>
 

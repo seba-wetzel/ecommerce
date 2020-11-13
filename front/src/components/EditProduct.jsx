@@ -5,7 +5,7 @@ import { postProduct } from "../redux/actions/products";
 import axios from 'axios'
 
 
-const EditProduct = () => {
+const EditProduct = ({producto}) => {
   const productos = useSelector((state) => state.products);
 console.log("como me llega un solo producto", productos)
    const [name,setName] = useState("");
@@ -27,7 +27,7 @@ console.log("como me llega un solo producto", productos)
     e.preventDefault()
          
      
-      const res = await axios.put('/api/products',{ 
+      const res = await axios.put('/api/products/',{ 
         name,
         categories:[categories],
         price,
