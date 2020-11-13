@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import "../config/index.js"
+import "../config/index.js";
 const Schema = mongoose.Schema;
 
 const productSchema = new Schema({
@@ -9,7 +9,7 @@ const productSchema = new Schema({
   stock: { type: Number },
   imgURL: { type: Array },
   available: { type: Boolean, default: true },
-  description: { type: String }
+  description: { type: String },
 });
 
 const Product = mongoose.model("Product", productSchema);

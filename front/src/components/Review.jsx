@@ -1,11 +1,9 @@
-
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { FaStar } from "react-icons/fa";
 import { postComment, fetchComments } from "../redux/actions/comments";
 import axios from "axios";
 import { Link } from "react-router-dom";
-
 
 const Review = () => {
   const [rating, setRating] = useState(null);
@@ -76,8 +74,8 @@ const Review = () => {
           <div className="row">
             <div className="input-field col s6">
               <i className="material-icons prefix">mode_edit</i>
-              <input 
-              placeholder = "Tu comentario!"
+              <input
+                placeholder="Tu comentario!"
                 onChange={(e) => setComentario(e.target.value)}
                 value={comentario}
                 id="icon_prefix2"

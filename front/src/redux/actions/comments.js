@@ -16,38 +16,36 @@ export const setComments = (comments) => ({
   payload: comments,
 });
 
+export const fetchComments = (id) => async (dispatch, getState) => {
+  const res = await axios.get(`/api/comments/${id}`);
+  const comment = await res.data;
+  dispatch(setComments(comment));
+};
 
-export const fetchComments = (id) => async(dispatch, getState) => {
-  const res = await axios.get(`/api/comments/${id}`)
-     const comment = await res.data
-     dispatch(setComments(comment)) 
-}
-
-
-export const postComment = (productId, comentario) => async(dispatch, getState) => {
-  const {user} = getState()
+export const postComment = (productId, comentario) => async (
+  dispatch,
+  getState
+) => {
+  const { user } = getState();
   const response = await fetch(`/api/comments/${productId}`, {
+    method: "POST",
 
-    "method": "POST",
-  
-    "headers": {
+    headers: {
       "content-type": "application/json",
       "Access-Control-Allow-Origin": "*",
-      "authorization": `Bearer ${user.user._lat}`
+      authorization: `Bearer ${user.user._lat}`,
     },
-    "body": JSON.stringify({content: comentario})
-  })
-  
-  const comment = await response.json()
-  
-  dispatch(addComment(comment));
-}
- 
+    body: JSON.stringify({ content: comentario }),
+  });
 
+  const comment = await response.json();
+
+  dispatch(addComment(comment));
+};
 
 // SOLO ADMIN PUEDE BORRAR COMENTARIOS
 
-export const removeComment = ({productId,commentId}) => (dispatch) =>
+export const removeComment = ({ productId, commentId }) => (dispatch) =>
   axios
     .delete(`/api/products/${productId}/comments/${commentId}`)
     .then((res) => res.data)

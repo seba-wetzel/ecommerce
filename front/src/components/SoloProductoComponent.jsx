@@ -58,8 +58,10 @@ const SoloProductoComponent = () => {
                   onClick={() => add(producto)}
                   className="btn #4a148c purple darken-4"
                 >
-                  <i className="material-icons" onClick={() => add(producto)} >shopping_basket </i>Agregar al
-                  Carrito
+                  <i className="material-icons" onClick={() => add(producto)}>
+                    shopping_basket{" "}
+                  </i>
+                  Agregar al Carrito
                 </a>
               </div>
             </div>
