@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
 const ComprasDetalle = () => {
+  
   const compras = useSelector((state) => state.user.db);
 
   console.log(compras, "luchito");
