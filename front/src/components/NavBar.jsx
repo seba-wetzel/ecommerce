@@ -72,14 +72,14 @@ const NavBar = () => {
           <ul className="lefth hide-on-med-and-down">
             <li>
               {user.email ? (
-                <Link to="/login">
+                <Link to="/dashboard">
                   <i>{user.displayName ? user.displayName : user.email}</i>
                 </Link>
               ) : (
-                <Link to="/login">
-                  <i className="material-icons prefix">person_outline</i>
-                </Link>
-              )}
+                  <Link to="/login">
+                    <i className="material-icons prefix">person_outline</i>
+                  </Link>
+                )}
             </li>
             <li>
               {userAut ? (

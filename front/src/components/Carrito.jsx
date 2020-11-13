@@ -3,6 +3,7 @@ import { Link, useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { createTicket } from "../redux/actions/checkout";
 import { dispatchCart } from '../redux/actions/cart'
+import { fetchUserDB } from "../redux/actions/user"
 
 function Carrito() {
   const TOTAL = useSelector((state) => state.cart.total);
@@ -10,6 +11,20 @@ function Carrito() {
   const usuarios = useSelector((state) => state.user.user);
   const cart = useSelector((state) => state.cart.dispatched);
   const history = useHistory();
+
+  useEffect(() => {
+    fetch("http://localhost:8000/api/users/me", {
+      method: "GET",
+      headers: {
+        authorization: `Bearer ${usuarios._lat}`,
+      },
+    }).then(response => {
+      dispatch(fetchUserDB());
+    })
+    return () => {
+
+    }
+  }, [])
 
   useEffect(() => {
     if (cart === true) {

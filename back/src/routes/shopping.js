@@ -70,6 +70,12 @@ shopping.post("/ticket", auth, async (req, res) => {
     email,
     JSON.stringify(populatedTicket, null, " \t")
   );
+  const cart = await Cart.findByIdAndUpdate(
+    user.cart,
+    { products: [] },
+    () => { }
+  )
+  console.log(cart)
   console.log(populatedTicket);
   res.send(populatedTicket);
 });
@@ -83,7 +89,7 @@ shopping.post("/", auth, async (req, res) => {
   const products = req.body.products;
   const email = req.user.email;
   const user = await User.findOne({ email });
-  const cart = await Cart.findByIdAndUpdate(user.cart, { products }, () => {})
+  const cart = await Cart.findByIdAndUpdate(user.cart, { products }, () => { })
     .populate("user", "email")
     .populate({ path: "products", populate: { path: "product" } })
     .populate({
@@ -100,7 +106,7 @@ shopping.delete("/", auth, async (req, res) => {
   const cart = await Cart.findByIdAndUpdate(
     user.cart,
     { products: [] },
-    () => {}
+    () => { }
   ).populate("user", "email");
   res.send(cart);
 });
