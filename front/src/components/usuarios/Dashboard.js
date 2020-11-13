@@ -1,16 +1,18 @@
-import React, { useState } from "react";
-import { useAuth } from "../../contexts/AuthContext";
-import { useHistory } from "react-router-dom";
-import ComprasDetalle from "../ComprasDetalle";
-
+import React, { useState } from "react"
+import { useAuth } from "../../contexts/AuthContext"
+import { useHistory } from "react-router-dom"
+import { useDispatch } from 'react-redux'
+import { emptyCart } from '../../redux/actions/cart'
+import ComprasDetalle from '../ComprasDetalle'
 export default function Dashboard() {
-  const [error, setError] = useState("");
-  const { currentUser, logout } = useAuth();
-  const history = useHistory();
+  const [error, setError] = useState("")
+  const { currentUser, logout } = useAuth()
+  const history = useHistory()
+  const dispatch = useDispatch()
 
   async function handleLogout() {
-    setError("");
-
+    dispatch(emptyCart())
+    setError("")
     try {
       await logout();
       history.push("/login");
@@ -18,7 +20,6 @@ export default function Dashboard() {
       setError("Failed to log out");
     }
   }
-  console.log("esto es current", currentUser.displayName);
   return (
     <div className="container">
       <div className="col s12 m6">

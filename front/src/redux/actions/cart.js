@@ -8,9 +8,15 @@ import {
   EMPTY_CART,
   CALCULATE_UNITS,
   CALCULATE_TOTAL,
+  DISPATCH_CART,
+  RETRIEVED_CART
 } from "../constants";
 
 //COMO HAGO AQUI??? CADA CARRITO TIENE QUE TENER UN ID UNICO QUE SE RELACIONE CON EL USUARIO PERO QUE NO ES UNICO?
+export const saveToStoreCart = payload => ({
+  type: RETRIEVED_CART,
+  payload
+})
 
 export const addToCart = (productId) => (dispatch) => {
   dispatch({
@@ -67,6 +73,11 @@ export const deleteItem = (itemId) => (dispatch) => {
 const checkout = () => ({
   type: CHECKOUT,
 });
+
+export const dispatchCart = (state) => ({
+  type: DISPATCH_CART,
+  payload: state
+})
 
 export const emptyCart = () => ({
   type: EMPTY_CART,

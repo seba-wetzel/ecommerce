@@ -1,8 +1,9 @@
 import React, { useEffect } from "react";
 import { Route, Switch, BrowserRouter } from "react-router-dom";
 //Redux
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setUser, fetchUserDB } from "./redux/actions/user";
+import { saveCart, retrievedCart } from './redux/actions/checkout'
 //Components
 import NavBar from "./components/NavBar";
 import ProductosContainer from "./containers/ProductosContainer";
@@ -35,6 +36,11 @@ import {
 function App({ user, signOut, signInWithGoogle, signInWithFacebook }) {
   if (user) console.log(user._lat);
   const dispatch = useDispatch();
+  const cart = useSelector(state => state.cart.added)
+  useEffect(() => {
+    if (cart.length) dispatch(saveCart())
+    return () => { }
+  }, [cart])
 
   useEffect(() => {
     if (user) {
@@ -49,6 +55,7 @@ function App({ user, signOut, signInWithGoogle, signInWithFacebook }) {
           console.log(response);
           dispatch(setUser(user));
           dispatch(fetchUserDB());
+          dispatch(retrievedCart())
         })
         .catch((err) => {
           console.error(err);

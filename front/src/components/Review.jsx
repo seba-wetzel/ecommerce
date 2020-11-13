@@ -34,7 +34,7 @@ const Review = () => {
     setComentario("");
   };
 
-  useEffect(async () => {
+  useEffect(() => {
     if (producto._id) {
       dispatch(fetchComments(producto._id));
     }
@@ -81,20 +81,21 @@ const Review = () => {
                 id="icon_prefix2"
                 className="materialize-textarea"
               ></input>
-              <a
+              <button
                 className="btn #4a148c purple darken-4"
                 onClick={(e) => {
                   e.preventDefault();
                   addComentario();
                 }}
+                disabled={!rating}
               >
                 Enviar
-              </a>
+              </button>
             </div>
           </div>
         ) : (
-          <Link to="/login">Logueate para dejar tu comentario</Link>
-        )}
+            <Link to="/login">Logueate para dejar tu comentario</Link>
+          )}
       </form>
     </div>
   );

@@ -29,7 +29,7 @@ const addProduct = (product) => ({
   payload: product,
 });
 
-const deleteProduct = (product) => ({
+export const deleteProduct = (product) => ({
   type: DELETE_PRODUCT,
   payload: product,
 });
