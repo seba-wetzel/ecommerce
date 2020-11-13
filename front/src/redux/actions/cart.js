@@ -1,4 +1,3 @@
-
 import axios from "axios";
 import {
   ADD_TO_CART,
@@ -8,64 +7,62 @@ import {
   CHECKOUT,
   EMPTY_CART,
   CALCULATE_UNITS,
-  CALCULATE_TOTAL
+  CALCULATE_TOTAL,
 } from "../constants";
 
 //COMO HAGO AQUI??? CADA CARRITO TIENE QUE TENER UN ID UNICO QUE SE RELACIONE CON EL USUARIO PERO QUE NO ES UNICO?
-
 
 export const addToCart = (productId) => (dispatch) => {
   dispatch({
     type: ADD_TO_CART,
     payload: productId,
-  })
+  });
   dispatch({
-    type: CALCULATE_UNITS
-  })
+    type: CALCULATE_UNITS,
+  });
   dispatch({
-    type: CALCULATE_TOTAL
-  })
-}
-
+    type: CALCULATE_TOTAL,
+  });
+};
 
 export const addToQuantity = (productId) => (dispatch) => {
   dispatch({
     type: ADD_TO_QUANTITY,
     payload: productId,
-  })
+  });
   dispatch({
-    type: CALCULATE_UNITS
-  })
+    type: CALCULATE_UNITS,
+  });
   dispatch({
-    type: CALCULATE_TOTAL
-  })
-}
+    type: CALCULATE_TOTAL,
+  });
+};
 
 export const substractFromQuantity = (productId) => (dispatch) => {
   dispatch({
     type: SUBSTRACT_FROM_QUANTITY,
     payload: productId,
-  })
+  });
   dispatch({
-    type: CALCULATE_UNITS
-  })
+    type: CALCULATE_UNITS,
+  });
   dispatch({
-    type: CALCULATE_TOTAL
-  })
-}
+    type: CALCULATE_TOTAL,
+  });
+};
 
 export const deleteItem = (itemId) => (dispatch) => {
   dispatch({
     type: DELETE_ITEM,
     payload: itemId,
-  })
+  });
   dispatch({
-    type: CALCULATE_UNITS
-  })
+    type: CALCULATE_UNITS,
+  });
   dispatch({
-    type: CALCULATE_TOTAL
-  })
-}
+    type: CALCULATE_TOTAL,
+  });
+};
 
 const checkout = () => ({
   type: CHECKOUT,
@@ -107,5 +104,4 @@ export const removeAllItems = () => (dispatch) => {
     .delete("??????")
     .then((res) => res.data)
     .then((allItems) => dispatch(emptyCart(allItems)));
-}
-
+};

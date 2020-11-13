@@ -1,23 +1,24 @@
-import React, { useState } from "react"
-import { useAuth } from "../../contexts/AuthContext"
-import {  useHistory } from "react-router-dom"
+import React, { useState } from "react";
+import { useAuth } from "../../contexts/AuthContext";
+import { useHistory } from "react-router-dom";
+import ComprasDetalle from "../ComprasDetalle";
 
 export default function Dashboard() {
-  const [error, setError] = useState("")
-  const { currentUser, logout } = useAuth()
-  const history = useHistory()
+  const [error, setError] = useState("");
+  const { currentUser, logout } = useAuth();
+  const history = useHistory();
 
   async function handleLogout() {
-    setError("")
+    setError("");
 
     try {
-      await logout()
-      history.push("/login")
+      await logout();
+      history.push("/login");
     } catch {
-      setError("Failed to log out")
+      setError("Failed to log out");
     }
   }
-    console.log("esto es current", currentUser.displayName)
+  console.log("esto es current", currentUser.displayName);
   return (
     <div className="container">
       <div className="col s12 m6">
@@ -25,13 +26,23 @@ export default function Dashboard() {
           <h2 className="text-center mb-4">Profile</h2>
           {error && <span>error</span>}
           <strong>Email:</strong> {currentUser.email}
-          <br/>
-          <strong>Name:</strong> {currentUser.displayName  ? currentUser.displayName: currentUser.email }
-          <div>       
-          <button onClick={handleLogout} type="submit" className="waves-effect waves-light btn-small"><i className="material-icons right">cloud</i>Log Out</button>
-          </div>          
+          <br />
+          <strong>Name:</strong>{" "}
+          {currentUser.displayName
+            ? currentUser.displayName
+            : currentUser.email}
+          <div>
+            <ComprasDetalle />
+            <button
+              onClick={handleLogout}
+              type="submit"
+              className="waves-effect waves-light btn-small"
+            >
+              <i className="material-icons right">cloud</i>Log Out
+            </button>
+          </div>
         </div>
-      </div>      
+      </div>
     </div>
-  )
+  );
 }

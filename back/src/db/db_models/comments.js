@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import "../config/index.js"
+import "../config/index.js";
 const Schema = mongoose.Schema;
 
 const commentSchema = new Schema({
@@ -7,7 +7,7 @@ const commentSchema = new Schema({
   content: { type: String, required: true },
   product: { type: Schema.Types.ObjectId, ref: "Product", required: false },
   user: { type: Schema.Types.ObjectId, ref: "User", required: true },
-  rating: { type: Number}
+  rating: { type: Number },
 });
 
 const Comment = mongoose.model("Comment", commentSchema);
