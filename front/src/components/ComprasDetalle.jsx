@@ -1,5 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
+import {Link} from "react-router-dom";
 
 const ComprasDetalle = () => {
   const compras = useSelector((state) => state.user.db);
@@ -11,6 +12,7 @@ const ComprasDetalle = () => {
       <div class="col s12 m6">
         {compras
           ? compras.purchases.map((compra) => {
+            
               return (
                 <div class="card blue-grey darken-1">
                   <div class="card-content black-text #e0f2f1 teal lighten-5">
@@ -28,8 +30,25 @@ const ComprasDetalle = () => {
                         $ {compra.amount}
                       </span>
                     </h6>
+                    <h6>
+                      Fecha: 
+                      <span className="blue-text text-darken-2">
+                         {compra.date}
+                      </span>
+                      
+                    </h6>
+                    {compra.products.map((product )=>{
+                      
+                      
+                      return(
+                      
+                      <Link to="/products/product.product._id"><h5>{product.product.name}</h5></Link>
+                      )
+                    })}
+                    
                   </div>
                 </div>
+                
               );
             })
           : null}
