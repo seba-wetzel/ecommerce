@@ -4,14 +4,31 @@ import ProductosCarrousel from "../components/ProductosCarrousel";
 import { useDispatch, useSelector } from "react-redux";
 import {
   fetchProducts,
+  searchProduct,
   filterProductsByCategory,
 } from "../redux/actions/products";
 
 const ProductosContainer = () => {
   const datos1 = useSelector((state) => state.products);
+  const searchTerm = useSelector((state) =>
+    state.products.searchText ? state.products.searchText : ""
+  );
+  const productsState = useSelector((state) =>
+    state.products.products ? state.products.products : []
+  );
   const productsFiltered = useSelector(
     (state) => state.products.filterProducts
   );
+  const filteredProducts = productsState
+    ? searchTerm
+      ? productsState.filter((product) =>
+          product.name.toLowerCase().includes(searchTerm.toLowerCase())
+        )
+      : ""
+    : "";
+
+  const isFound = filteredProducts.length;
+
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchProducts());
@@ -19,7 +36,7 @@ const ProductosContainer = () => {
   }, []);
 
   useEffect(() => {
-    console.log(datos);
+    console.log(datos1);
     return () => {};
   }, [datos1]);
 
@@ -62,13 +79,23 @@ const ProductosContainer = () => {
           </li>
         </ul>
 
-        {productsFiltered
-          ? productsFiltered.map((producto, i) => {
+        {searchTerm ? (
+          isFound ? (
+            filteredProducts.map((producto, i) => {
               return <ProductosComponent key={i} producto={producto} />;
             })
-          : datos1.products.map((producto, i) => {
-              return <ProductosComponent key={i} producto={producto} />;
-            })} 
+          ) : (
+            <h1>Producto no encontrado</h1>
+          )
+        ) : productsFiltered ? (
+          productsFiltered.map((producto, i) => {
+            return <ProductosComponent key={i} producto={producto} />;
+          })
+        ) : (
+          datos1.products.map((producto, i) => {
+            return <ProductosComponent key={i} producto={producto} />;
+          })
+        )}
       </div>
     </div>
   );
