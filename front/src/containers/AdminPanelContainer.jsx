@@ -70,17 +70,15 @@ const AdminPanelContainer = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  {productos
-                    ? productos.products.map((producto, i) => {
-                        return (
-                          <ProductPanel
-                            key={i}
-                            producto={producto}
-                            handleDelete={handleDelete}
-                          />
-                        );
-                      })
-                    : null}
+                  {productos.products.map((producto, i) => {
+                    return (
+                      <ProductPanel
+                        key={i}
+                        producto={producto}
+                        handleDelete={handleDelete}
+                      />
+                    );
+                  })}
                 </tbody>
               </table>
 
@@ -107,6 +105,7 @@ const AdminPanelContainer = () => {
                       <th>Editar</th>
                     </tr>
                   </thead>
+                  {/* de donde me traigo los usuarios??? */}
                   <tbody>
                     {usuarios
                       ? usuarios.map((users, i) => {
