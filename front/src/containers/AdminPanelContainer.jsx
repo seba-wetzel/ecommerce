@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import ProductPanel from "../components/ProductPanel";
 import UserPanel from "../components/UserPanel";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link,useHistory } from "react-router-dom";
 import { fetchProducts, removeProduct } from "../redux/actions/products";
 
 import { fetchUsers, removeUser, updatedUser } from "../redux/actions/user";
@@ -11,6 +11,7 @@ const AdminPanelContainer = () => {
   const productos = useSelector((state) => state.products);
   const usuarios = useSelector((state) => state.user.users);
   const userRole = useSelector((state) => state.user.db.role);
+  const history = useHistory();
   let userAut = false;
   if (userRole === "admin") {
     userAut = true;
@@ -29,6 +30,7 @@ const AdminPanelContainer = () => {
 
   const handleDelete = (id) => {
     dispatch(removeProduct(id));
+    history.push("/products");
   };
 
   const handleDeleteUser = (id) => {

@@ -1,4 +1,5 @@
 import React from "react";
+import {Link} from 'react-router-dom';
 
 
 const UserPanel = ({ user,handleDeleteUser }) => {
@@ -12,7 +13,13 @@ const UserPanel = ({ user,handleDeleteUser }) => {
       <td>{user.comments}</td>
       <td>{user.ratings}</td>
       <td>
-        <a class="waves-effect waves-light btn #880e4f pink darken-4">Editar</a>{" "}
+      <Link
+          class="waves-effect waves-light btn #880e4f pink darken-4"
+          to={`/editusers/${user._id}`}
+        >
+          {" "}
+          Editar{" "}
+        </Link>
         <button  className="waves-effect waves-light btn #880e4f pink darken-4"
         onClick={()=>handleDeleteUser(user._id)}>
           <i class="material-icons left" >delete</i>

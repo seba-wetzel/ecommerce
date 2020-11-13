@@ -41,6 +41,15 @@ users.delete("/:id", async (req, res) => {
     catch { res.status(503).end() }
 });
 
+users.put("/:id", async (req, res) => {   
+    try {
+        const user = await User.findByIdAndUpdate(req.params.id,req.body);
+        res.status(201).send(user);
+    } catch {              
+        res.status(503).end();
+    }
+});
+
 
 
 export default users

@@ -40,10 +40,12 @@ products.post("/", async (req, res) => {
 });
 
 products.put("/:id", async (req, res) => {
+   
     try {
-        const product = await Product.update(req.body);
+        const product = await Product.findByIdAndUpdate(req.params.id,req.body);
         res.status(201).send(product);
-    } catch {
+    } catch { 
+             
         res.status(503).end();
     }
 });
@@ -55,7 +57,7 @@ products.delete("/:id", async (req, res) => {
         res.status(202).send(product)
     }
 
-    catch { res.status(503).end() }
+    catch  { res.status(503).end() }
 });
 
 

@@ -19,12 +19,14 @@ const ProductPanel = ({ producto, handleDelete, handleUpdate }) => {
           {" "}
           Editar{" "}
         </Link>
+        
         <button
           className="waves-effect waves-light btn #880e4f pink darken-4"
           onClick={() => handleDelete(producto._id)}
         >
           <i class="material-icons left">delete</i>
         </button>
+        
       </td>
     </tr>
   );

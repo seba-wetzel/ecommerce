@@ -1,11 +1,14 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useHistory, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { updatedProduct } from "../redux/actions/products";
+//import { updatedProduct } from "../redux/actions/products";
 import axios from "axios";
 
 const EditProduct = () => {
-  let { id } = useParams();
+  
+  const {id} = useParams();
+  console.log("este es un id con iddddddddd", id)
+  
   const prod = useSelector((state) => state.products.products);
   console.log(id, "ESTE ES EL ID");
   const [name, setName] = useState("");
@@ -14,16 +17,33 @@ const EditProduct = () => {
   const [description, setDescription] = useState("");
   const [available, setAvailable] = useState("");
   const [categories, setCategories] = useState("");
-  const dispatch = useDispatch();
+  //const dispatch = useDispatch();
   const history = useHistory();
 
-  async function handleSubmit(e) {
+ /*  async function handleSubmit(e) {
     e.preventDefault();
     dispatch(updatedProduct(id));
     // const data = await res.data;
     // console.log(data);
     history.push("/adminpanel");
+  } */
+  async function handleSubmit(e) {
+    e.preventDefault();
+    const res = await axios.put(`/api/products/${id}`, {
+      name,
+      categories: [categories],
+      price,
+      imgURL: [imgURL],
+      available,
+      description,
+    });
+
+    const data = await res.data;
+    console.log(data);
+    history.push("/adminpanel");
   }
+
+  
 
   useEffect(() => {
     console.log("remontar", prod);
@@ -112,11 +132,8 @@ const EditProduct = () => {
               className="waves-effect waves-light btn #880e4f pink darken-4"
               type="submit"
             >
-              Agregar Producto
-            </button>
-            <a className="waves-effect waves-light btn #880e4f pink darken-4">
-              <i class="material-icons left">delete</i>
-            </a>
+              Editar Producto
+            </button>         
           </form>
         </div>
         <br />
