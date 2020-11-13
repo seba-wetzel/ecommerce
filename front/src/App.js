@@ -19,6 +19,7 @@ import ForgotPassword from "./components/usuarios/ForgotPassword";
 import Signup from "./components/usuarios/Signup";
 import AdminPanelContainer from "./containers/AdminPanelContainer";
 import NewProduct from "./components/NewProduct";
+import EditProduct from "./components/EditProduct";
 
 ////Firebase
 import withFirebaseAuth from "./firebase/login";
@@ -83,6 +84,7 @@ function App({ user, signOut, signInWithGoogle, signInWithFacebook }) {
                   component={AdminPanelContainer}
                 ></Route>
                 <Route exact path="/newproduct" component={NewProduct}></Route>
+                <Route path="/editproduct/:id" component={EditProduct}></Route>
                 <Route
                   exact
                   path="/products/:id"

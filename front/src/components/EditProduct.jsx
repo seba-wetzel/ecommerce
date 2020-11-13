@@ -1,46 +1,39 @@
 import React, { useState, useRef, useEffect } from "react";
-import { useHistory } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { postProduct } from "../redux/actions/products";
+import { useHistory, useParams } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { updatedProduct } from "../redux/actions/products";
 import axios from "axios";
 
-const NewProduct = () => {
+const EditProduct = () => {
+  let { id } = useParams();
+  const prod = useSelector((state) => state.products.products);
+  console.log(id, "ESTE ES EL ID");
   const [name, setName] = useState("");
   const [imgURL, setImgURL] = useState("");
   const [price, setPrice] = useState("");
   const [description, setDescription] = useState("");
   const [available, setAvailable] = useState("");
   const [categories, setCategories] = useState("");
-
-  const history = useHistory();
-  // const [error, setError] = useState("")
   const dispatch = useDispatch();
+  const history = useHistory();
 
   async function handleSubmit(e) {
     e.preventDefault();
-    const res = await axios.post("/api/products", {
-      name,
-      categories: [categories],
-      price,
-      imgURL: [imgURL],
-      available,
-      description,
-    });
-
-    const data = await res.data;
-    console.log(data);
+    dispatch(updatedProduct(id));
+    // const data = await res.data;
+    // console.log(data);
     history.push("/adminpanel");
   }
 
   useEffect(() => {
-    dispatch(postProduct());
+    console.log("remontar", prod);
     return () => {};
-  }, []);
+  }, [prod]);
 
   return (
     <div className="striped grey lighten-4">
-      <h1>Agregar Producto</h1>
-      <p>falta completar</p>
+      <h1>Editar Producto</h1>
+      <p>completar todos los campos</p>
 
       <div classname="container">
         <div className="row">
@@ -127,10 +120,11 @@ const NewProduct = () => {
           </form>
         </div>
         <br />
+
         <br />
       </div>
     </div>
   );
 };
 
-export default NewProduct;
+export default EditProduct;

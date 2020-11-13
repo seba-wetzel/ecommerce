@@ -3,6 +3,7 @@ import {
   RECEIVE_SINGLE_PRODUCT,
   ADD_PRODUCT,
   DELETE_PRODUCT,
+  UPDATE_PRODUCT,
   SET_SEARCH_PRODUCT,
   FILTER_PRODUCTS,
 } from "../constants";
@@ -29,6 +30,8 @@ export const reducer = (state = initialState, action) => {
     case ADD_PRODUCT:
       return { ...state, products: action.payload };
     case DELETE_PRODUCT:
+      return { ...state, products: action.payload };
+    case UPDATE_PRODUCT:
       return { ...state, products: action.payload };
     case SET_SEARCH_PRODUCT:
       return { ...state, searchText: action.payload };
