@@ -6,7 +6,7 @@ import {
   SET_USER_DB,
   DELETE_USER,
   UPDATE_USER,
-  LOGOUT_DB
+  LOGOUT_DB,
 } from "../constants";
 
 export const setUser = (user) => ({
@@ -15,11 +15,11 @@ export const setUser = (user) => ({
 });
 
 export const resetUser = () => ({
-  type: LOGOUT
+  type: LOGOUT,
 });
 export const resetUserDb = (user) => ({
   type: LOGOUT_DB,
-  payload: user
+  payload: user,
 });
 
 const receiveUsers = (users) => ({
@@ -37,38 +37,37 @@ const updateUser = (user) => ({
   payload: user,
 });
 
-
 export const fetchUsers = () => async (dispatch, state) => {
   const response = await fetch(`/api/users/all`, {
-    "method": "GET",
-    "headers": {
+    method: "GET",
+    headers: {
       "Access-Control-Allow-Origin": "*",
       //"authorization": `Bearer ${state.user._lat}`
-    }
-  })
-  const users = await response.json()
+    },
+  });
+  const users = await response.json();
 
-  dispatch(receiveUsers(users))
-}
+  dispatch(receiveUsers(users));
+};
 
 export const setUserDB = (user) => ({
   type: SET_USER_DB,
-  payload: user
-})
+  payload: user,
+});
 
 export const fetchUserDB = () => async (dispatch, getState) => {
-  const token = getState().user.user._lat
-  const response = await fetch('/api/users/me', {
-    "method": "GET",
-    "headers": {
+  const token = getState().user.user._lat;
+  const response = await fetch("/api/users/me", {
+    method: "GET",
+    headers: {
       "content-type": "application/json",
       "Access-Control-Allow-Origin": "*",
-      "authorization": `Bearer ${token}`
-    }
-  })
-  const user = await response.json()
-  dispatch(setUserDB(user))
-}
+      authorization: `Bearer ${token}`,
+    },
+  });
+  const user = await response.json();
+  dispatch(setUserDB(user));
+};
 
 export const removeUser = (id) => (dispatch) =>
   axios
@@ -81,4 +80,4 @@ export const updatedUser = (id) => (dispatch) => {
     .put(`/api/products/${id}`)
     .then((res) => res.data)
     .then((users) => dispatch(updateUser()));
-}
+};

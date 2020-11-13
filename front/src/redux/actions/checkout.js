@@ -31,7 +31,7 @@ export const saveCart = () => async (dispatch, state) => {
     "headers": {
       "content-type": "application/json",
       "Access-Control-Allow-Origin": "*",
-      "authorization": `Bearer ${user.user._lat}`
+      authorization: `Bearer ${user.user._lat}`,
     },
     "body": JSON.stringify({ products })
   })
@@ -47,7 +47,7 @@ export const createTicket = () => async (dispatch, state) => {
     "headers": {
       "content-type": "application/json",
       "Access-Control-Allow-Origin": "*",
-      "authorization": `Bearer ${user.user._lat}`
+      authorization: `Bearer ${user.user._lat}`,
     },
     "body": JSON.stringify({ products, amount: cart.total })
   })

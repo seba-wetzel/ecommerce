@@ -1,4 +1,5 @@
 import {
+
     ADD_TO_CART,
     ADD_TO_QUANTITY,
     SUBSTRACT_FROM_QUANTITY,
@@ -8,23 +9,23 @@ import {
     CALCULATE_TOTAL,
     DISPATCH_CART,
     RETRIEVED_CART
-} from '../constants'
+} from "../constants";
+
 
 const findAndIncrement = (state, newItem) => {
-    if (!newItem.units) newItem.units = 1
+    if (!newItem.units) newItem.units = 1;
 
     let isNewItem = true;
-    state.map(item => {
+    state.map((item) => {
         if (item._id === newItem._id) {
-            isNewItem = false
-            item.units++
+            isNewItem = false;
+            item.units++;
         }
-        return item
-    }
+        return item;
+    });
+    return isNewItem ? [...state, newItem] : [...state];
+};
 
-    )
-    return (isNewItem ? [...state, newItem] : [...state]);
-}
 const findAndDecrement = (state, newItem) => (
     state.map(item => {
         if (item._id === newItem._id) item.units--
