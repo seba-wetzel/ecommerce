@@ -1,28 +1,31 @@
 import {
+
     ADD_TO_CART,
     ADD_TO_QUANTITY,
     SUBSTRACT_FROM_QUANTITY,
     DELETE_ITEM,
     EMPTY_CART,
     CALCULATE_UNITS,
-    CALCULATE_TOTAL
-} from '../constants'
+    CALCULATE_TOTAL,
+    DISPATCH_CART,
+    RETRIEVED_CART
+} from "../constants";
+
 
 const findAndIncrement = (state, newItem) => {
-    if (!newItem.units) newItem.units = 1
+    if (!newItem.units) newItem.units = 1;
 
     let isNewItem = true;
-    state.map(item => {
+    state.map((item) => {
         if (item._id === newItem._id) {
-            isNewItem = false
-            item.units++
+            isNewItem = false;
+            item.units++;
         }
-        return item
-    }
+        return item;
+    });
+    return isNewItem ? [...state, newItem] : [...state];
+};
 
-    )
-    return (isNewItem ? [...state, newItem] : [...state]);
-}
 const findAndDecrement = (state, newItem) => (
     state.map(item => {
         if (item._id === newItem._id) item.units--
@@ -30,11 +33,16 @@ const findAndDecrement = (state, newItem) => (
     }).filter(item => item.units != 0)
 )
 
+const parseCart = retrieved => {
+
+    return retrieved.products.map(i => ({ ...i.product, units: i.units }))
+}
 
 const initialState = {
     added: [],
     total: 0,
-    units: 0
+    units: 0,
+    dispatched: false
 }
 
 export const reducer = (state = initialState, action) => {
@@ -46,6 +54,8 @@ export const reducer = (state = initialState, action) => {
         case CALCULATE_TOTAL: return { ...state, total: state.added.reduce((acc, item) => (acc + (item.units * item.price)), 0) }
         case CALCULATE_UNITS: return { ...state, units: state.added.reduce((acc, item) => (acc + item.units), 0) }
         case EMPTY_CART: return { ...state, added: [], total: 0, units: 0 }
+        case DISPATCH_CART: return { ...state, dispatched: action.payload }
+        case RETRIEVED_CART: return { ...state, added: parseCart(action.payload) }
         default: return state
     }
 }

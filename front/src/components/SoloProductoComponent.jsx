@@ -58,8 +58,10 @@ const SoloProductoComponent = () => {
                   onClick={() => add(producto)}
                   className="btn #4a148c purple darken-4"
                 >
-                  <i className="material-icons" onClick={() => add(producto)} >shopping_basket </i>Agregar al
-                  Carrito
+                  <i className="material-icons" onClick={() => add(producto)}>
+                    shopping_basket{" "}
+                  </i>
+                  Agregar al Carrito
                 </a>
               </div>
             </div>
@@ -71,6 +73,7 @@ const SoloProductoComponent = () => {
                   <span className="card-title">Comentarios!</span>
                   {comentarios.comments.length
                     ? comentarios.comments.map((comment, i) => {
+                      console.log(comment, "prueba 1-------")
                         return (
                           <p key={i}>
                             <h4>{comment.content}</h4>

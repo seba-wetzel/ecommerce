@@ -1,11 +1,9 @@
-
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { FaStar } from "react-icons/fa";
 import { postComment, fetchComments } from "../redux/actions/comments";
 import axios from "axios";
 import { Link } from "react-router-dom";
-
 
 const Review = () => {
   const [rating, setRating] = useState(null);
@@ -36,7 +34,7 @@ const Review = () => {
     setComentario("");
   };
 
-  useEffect(async () => {
+  useEffect(() => {
     if (producto._id) {
       dispatch(fetchComments(producto._id));
     }
@@ -76,27 +74,28 @@ const Review = () => {
           <div className="row">
             <div className="input-field col s6">
               <i className="material-icons prefix">mode_edit</i>
-              <input 
-              placeholder = "Tu comentario!"
+              <input
+                placeholder="Tu comentario!"
                 onChange={(e) => setComentario(e.target.value)}
                 value={comentario}
                 id="icon_prefix2"
                 className="materialize-textarea"
               ></input>
-              <a
+              <button
                 className="btn #4a148c purple darken-4"
                 onClick={(e) => {
                   e.preventDefault();
                   addComentario();
                 }}
+                disabled={!rating}
               >
                 Enviar
-              </a>
+              </button>
             </div>
           </div>
         ) : (
-          <Link to="/login">Logueate para dejar tu comentario</Link>
-        )}
+            <Link to="/login">Logueate para dejar tu comentario</Link>
+          )}
       </form>
     </div>
   );

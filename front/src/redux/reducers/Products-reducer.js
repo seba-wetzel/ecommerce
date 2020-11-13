@@ -9,16 +9,16 @@ import {
 } from "../constants";
 
 const initialState = {
-  products: [],
-  selectProduct: {},
-  searchText: "",
-  filterProducts: [],
+    products: [],
+    selectProduct: {},
+    searchText: "",
+    filterProducts: [],
 };
 
 const filterProducts = (products, filter) => {
-  return filter
-    ? products.filter((product) => product.categories[0].name === filter)
-    : products;
+    return filter
+        ? products.filter((product) => product.categories[0].name === filter)
+        : products;
 };
 
 export const reducer = (state = initialState, action) => {
@@ -41,7 +41,7 @@ export const reducer = (state = initialState, action) => {
         filterProducts: filterProducts(state.products, action.payload),
       };
 
-    default:
-      return state;
-  }
+        default:
+            return state;
+    }
 };

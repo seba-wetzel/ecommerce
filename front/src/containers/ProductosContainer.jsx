@@ -22,8 +22,8 @@ const ProductosContainer = () => {
   const filteredProducts = productsState
     ? searchTerm
       ? productsState.filter((product) =>
-          product.name.toLowerCase().includes(searchTerm.toLowerCase())
-        )
+        product.name.toLowerCase().includes(searchTerm.toLowerCase())
+      )
       : ""
     : "";
 
@@ -32,12 +32,12 @@ const ProductosContainer = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchProducts());
-    return () => {};
+    return () => { };
   }, []);
 
   useEffect(() => {
     console.log(datos1);
-    return () => {};
+    return () => { };
   }, [datos1]);
 
   const handlerTab = (filter) => dispatch(filterProductsByCategory(filter));
@@ -85,17 +85,17 @@ const ProductosContainer = () => {
               return <ProductosComponent key={i} producto={producto} />;
             })
           ) : (
-            <h1>Producto no encontrado</h1>
-          )
+              <h1>Producto no encontrado</h1>
+            )
         ) : productsFiltered ? (
           productsFiltered.map((producto, i) => {
             return <ProductosComponent key={i} producto={producto} />;
           })
         ) : (
-          datos1.products.map((producto, i) => {
-            return <ProductosComponent key={i} producto={producto} />;
-          })
-        )}
+              datos1.products.map((producto, i) => {
+                return <ProductosComponent key={i} producto={producto} />;
+              })
+            )}
       </div>
     </div>
   );

@@ -1,14 +1,16 @@
 import React from "react";
 import {Link} from 'react-router-dom';
 
-
-const UserPanel = ({ user,handleDeleteUser }) => {
-
+const UserPanel = ({ user, handleDeleteUser }) => {
   return (
     <tr>
       <td>{user.email}</td>
       <td>{user.role}</td>
-      <td>{user.purchases.map(purchase => <p>{purchase.amount}</p>)}</td>
+      <td>
+        {user.purchases.map((purchase) => (
+          <p>{purchase.amount}</p>
+        ))}
+      </td>
       <td>{user.cart}</td>
       <td>{user.comments}</td>
       <td>{user.ratings}</td>
@@ -26,7 +28,6 @@ const UserPanel = ({ user,handleDeleteUser }) => {
         </button>
       </td>
     </tr>
-    
   );
 };
 

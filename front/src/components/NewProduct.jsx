@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState,  useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { postProduct } from "../redux/actions/products";
@@ -126,8 +126,7 @@ const NewProduct = () => {
             </a>
           </form>
         </div>
-        <br />
-        <br />
+        
       </div>
     </div>
   );
