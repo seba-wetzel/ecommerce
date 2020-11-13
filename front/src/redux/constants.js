@@ -7,6 +7,8 @@ export const ADD_TO_CART = "ADD_TO_CART";
 export const EMPTY_CART = "EMPTY_CART";
 export const CALCULATE_UNITS = "CALCULATE_UNITS";
 export const CALCULATE_TOTAL = "CALCULATE_TOTAL";
+export const DISPATCH_CART = "DISPATCH_CART";
+export const RETRIEVED_CART = "RETRIEVED_CART";
 
 // Products
 // ----------(User)
