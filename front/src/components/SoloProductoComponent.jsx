@@ -73,6 +73,7 @@ const SoloProductoComponent = () => {
                   <span className="card-title">Comentarios!</span>
                   {comentarios.comments.length
                     ? comentarios.comments.map((comment, i) => {
+                      console.log(comment, "prueba 1-------")
                         return (
                           <p key={i}>
                             <h4>{comment.content}</h4>

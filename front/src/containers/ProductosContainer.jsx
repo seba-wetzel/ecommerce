@@ -45,37 +45,37 @@ const ProductosContainer = () => {
   return (
     <div className="container section">
       <div className="row">
-        <ProductosCarrousel />
+        {/* <ProductosCarrousel /> */}
         <ul class="tabs tabs-fixed-width tab-demo z-depth-2 #880e4f pink darken-4">
           {/* faltan ternarios, si hay estos productos que se muestren, de lo contrario que responda "NO HAY STOCK" */}
           <li class="tab active">
-            <a href="#test1" onClick={() => handlerTab("")}>
+            <div onClick={() => handlerTab("")}>
               Todos
-            </a>
+            </div>
           </li>
           {/* faltan ternarios */}
-          <li class="tab">
-            <a href="#test1" onClick={() => handlerTab("corpiños")}>
+          <li class="tab white-text">
+            <div onClick={() => handlerTab("corpiños")}>
               Corpiños
-            </a>
+            </div>
           </li>
           {/* faltan ternarios */}
-          <li class="tab">
-            <a href="#test2" onClick={() => handlerTab("tanga")}>
+          <li class="tab white-text">
+            <div onClick={() => handlerTab("tanga")}>
               Tanga
-            </a>
+            </div>
           </li>
           {/* faltan ternarios */}
-          <li class="tab">
-            <a href="#test3" onClick={() => handlerTab("pijama")}>
+          <li class="tab white-text">
+            <div onClick={() => handlerTab("pijama")}>
               Pijamas
-            </a>
+            </div>
           </li>
           {/* faltan ternarios */}
-          <li class="tab">
-            <a href="#test4" onClick={() => handlerTab("bombacha")}>
+          <li class="tab white-text">
+            <div onClick={() => handlerTab("bombacha")}>
               Bombacha
-            </a>
+            </div>
           </li>
         </ul>
 

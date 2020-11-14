@@ -12,12 +12,13 @@ const transporter = nodemailer.createTransport({
 // email sender function
 export const sendEmail = async function (to, body) {
   // Definimos el transporter
+  const json = JSON.parse(body)
   const info = await transporter.sendMail({
     from: account,
     to,
-    subject: "Hello ✔",
-    text: "Gracias por su compra",
-    html: `<b>${body}</b>`,
+    subject: "Gracias por su compra ✔",
+    text: `Gracias por su compra con un valor de $${json.amount}, tus productos ya estan en produccion!
+    Responde este mail para coordinar el pago y la forma de envio. Saludos!`
   });
   return info;
 };

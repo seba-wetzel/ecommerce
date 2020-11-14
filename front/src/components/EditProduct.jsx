@@ -1,24 +1,24 @@
-import React, { useState,  useEffect } from "react";
-import { useHistory } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { postProduct } from "../redux/actions/products";
+import React, { useState, useEffect } from "react";
+import { useHistory, useParams } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchProducts } from "../redux/actions/products";
 import axios from "axios";
 
-const NewProduct = () => {
+const EditProduct = () => {
+  const { id } = useParams();
+  const prod = useSelector((state) => state.products.products);
   const [name, setName] = useState("");
   const [imgURL, setImgURL] = useState("");
   const [price, setPrice] = useState("");
   const [description, setDescription] = useState("");
   const [available, setAvailable] = useState("");
   const [categories, setCategories] = useState("");
-
-  const history = useHistory();
-  // const [error, setError] = useState("")
   const dispatch = useDispatch();
+  const history = useHistory();
 
   async function handleSubmit(e) {
     e.preventDefault();
-    const res = await axios.post("/api/products", {
+    const res = await axios.put(`/api/products/${id}`, {
       name,
       categories: [categories],
       price,
@@ -29,18 +29,21 @@ const NewProduct = () => {
 
     const data = await res.data;
     console.log(data);
+    dispatch(fetchProducts());
     history.push("/adminpanel");
   }
 
+
+
   useEffect(() => {
-    dispatch(postProduct());
-    return () => {};
-  }, []);
+    console.log("remontar", prod);
+    return () => { };
+  }, [prod]);
 
   return (
     <div className="striped grey lighten-4">
-      <h1>Agregar Producto</h1>
-      <p>falta completar</p>
+      <h1>Editar Producto</h1>
+      <p>completar todos los campos</p>
 
       <div classname="container">
         <div className="row">
@@ -119,17 +122,16 @@ const NewProduct = () => {
               className="waves-effect waves-light btn #880e4f pink darken-4"
               type="submit"
             >
-              Agregar Producto
+              Editar Producto
             </button>
-            <a className="waves-effect waves-light btn #880e4f pink darken-4">
-              <i class="material-icons left">delete</i>
-            </a>
           </form>
         </div>
-        
+        <br />
+
+        <br />
       </div>
     </div>
   );
 };
 
-export default NewProduct;
+export default EditProduct;

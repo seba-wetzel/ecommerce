@@ -83,7 +83,7 @@ function Carrito() {
                   <div className="col-xs-12 col-md-4"></div>
                 </div>
               </form>
-              <button
+              <Link to="/dashboard"><button
                 className="btn btn-success btn-block"
                 id="procesar-compra"
                 onClick={() => {
@@ -91,7 +91,8 @@ function Carrito() {
                 }}
               >
                 Realizar compra
-          </button>
+          </button></Link>
+              
             </div>
           </div>
         </div>

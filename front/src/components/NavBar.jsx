@@ -49,7 +49,7 @@ const NavBar = () => {
       <nav>
         <div className="nav-wrapper #880e4f pink darken-4">
           <Link to="/shopping" className="brand-logo center">
-            Lenceria
+            Black Dahlia Lingerie
           </Link>
           <ul className="right hide-on-med-and-down">
             <li>

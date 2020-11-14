@@ -20,6 +20,8 @@ import ForgotPassword from "./components/usuarios/ForgotPassword";
 import Signup from "./components/usuarios/Signup";
 import AdminPanelContainer from "./containers/AdminPanelContainer";
 import NewProduct from "./components/NewProduct";
+import EditProduct from "./components/EditProduct";
+import EditUsers from "./components/EditUsers";
 
 ////Firebase
 import withFirebaseAuth from "./firebase/login";
@@ -32,6 +34,7 @@ import {
   //// IfFirebaseAuthed,
   // IfFirebaseAuthedAnd,
 } from "@react-firebase/auth";
+
 
 function App({ user, signOut, signInWithGoogle, signInWithFacebook }) {
   if (user) console.log(user._lat);
@@ -90,11 +93,17 @@ function App({ user, signOut, signInWithGoogle, signInWithFacebook }) {
                   component={AdminPanelContainer}
                 ></Route>
                 <Route exact path="/newproduct" component={NewProduct}></Route>
+                <Route path="/editproduct/:id" component={EditProduct}></Route>
                 <Route
                   exact
                   path="/products/:id"
                   component={SoloProductoComponent}
                 ></Route>
+                <Route
+                  exact
+                  path="/editusers/:id"
+                  component={EditUsers}
+                />
                 <Route
                   exact
                   path="/"

@@ -3,45 +3,38 @@ import React from "react";
 const ProductosCarrousel = () => {
   return (
     <div className="slider ">
-      <ul className="slides #880e4f pink darken-4">
+      <ul className="slides">
         <li>
-          <img src="../assets/26.jpg" alt="" />
-          {/* <div className="caption center-align">
-            <h3>This is our big Tagline!</h3>
-            <h5 className="light grey-text text-lighten-3">
-              Here's our small slogan.
-            </h5>
-          </div> */}
-        </li>
-        <li>
-          <img
-            src="https://www.calvinklein.com.au/media/wysiwyg/Calvin_Klein/2020/480x575_desktop_SU20_CKJ_REB_X_LILI_01_BW_FINAL_2.jpg"
-            alt=""
-          />
-          <div className="caption left-align">
-            <h5 className="light grey-text text-lighten-3">Unica.</h5>
-          </div>
-        </li>
-        <li>
-          <img src="../assets/14.jpg" alt="" />
-          <div className="caption right-align">
-            <h5 className="light grey-text text-lighten-3">She.</h5>
-          </div>
-        </li>
-        <li>
-          <img
-            src="https://lh3.googleusercontent.com/proxy/MEGKhYJbw860lqAXRCZuPv5sSYY_5hPC7zULOOqhxynCJ4lPCc2qxgGHk9Ms6yku_TCa0DYBCGsFMp-t5Rg4O_ce7zpscRLUrmm22xyZzR-SPYZzL0KcEkEU4O1xi9s6IC4BT_E1HE5MJys"
-            alt=""
-          />
+          <img src="https://ae01.alicdn.com/kf/H4db7038e50304ba8b5e7452e9894170dO.jpg_q50.jpg%22/%3E" />
           <div className="caption center-align">
-            {/* <h3>Lenceria Artesanal</h3> */}
-            <h5 className="light grey-text text-lighten-3">
-              Lenceria Artesanal
-            </h5>
+            <h3>This is our big Tagline!</h3>
+            <h5 className="light grey-text text-lighten-3">Here's our small slogan.</h5>
+          </div>
+        </li>
+        <li>
+          <img src="https://falabella.scene7.com/is/image/FalabellaAR/5063460_1?wid=1004&hei=1500&crop=248,0,1004,1500&qlt=70%22/%3E" />
+          <div className="caption left-align">
+            <h3>Left Aligned Caption</h3>
+            <h5 className="light grey-text text-lighten-3">Here's our small slogan.</h5>
+          </div>
+        </li>
+        <li>
+          <img src="https://images-na.ssl-images-amazon.com/images/I/815V9%2Bj68-L._AC_UX342_.jpg%22/%3E" />
+          <div className="caption right-align">
+            <h3>Right Aligned Caption</h3>
+            <h5 className="light grey-text text-lighten-3">Here's our small slogan.</h5>
+          </div>
+        </li>
+        <li>
+          <img src="https://images-na.ssl-images-amazon.com/images/I/7166nLpt-wL._AC_UY1000_.jpg%22/%3E" />
+          <div className="caption center-align">
+            <h3>Hawiton Pijama Mujer Verano</h3>
+            <h5 className="light grey-text text-lighten-3">Hawiton Pijama Mujer Verano Corto Raso Pijamas Saten Sexy 2 Piezas de Encaje</h5>
           </div>
         </li>
       </ul>
     </div>
+
   );
 };
 

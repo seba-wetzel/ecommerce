@@ -22,7 +22,7 @@ const Sidenav = () => {
 
       <ul id="slide-out" className="sidenav">
         <div className="user-view" style={{ display: "flex" }}>
-          (user? (<img className="circle" src={user.photoURL} alt="" />
+          (user? (<img className="circle" src={user.photoURL ? user.photoURL : "https://i.pinimg.com/originals/b6/14/11/b61411fce1f02a043392c808f577576a.png" } alt="" />
           <div>
             <p className="black-text name">{user.displayName}</p>
             <p className="black-text email">{user.email}</p>)
@@ -42,8 +42,8 @@ const Sidenav = () => {
           <div className="divider"></div>
         </li>
 
-        {cart && cart.length
-          ? cart.map((item) => (
+        {cart 
+          ?  cart.length ? (cart.map((item) => (
               <div>
                 <CartItem
                   name={item.name}
@@ -53,7 +53,7 @@ const Sidenav = () => {
                   key={item._id}
                 />
               </div>
-            ))
+            )) ):null
           : null}
 
         <li>

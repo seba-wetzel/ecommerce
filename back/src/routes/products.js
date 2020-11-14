@@ -39,22 +39,24 @@ products.post("/", async (req, res) => {
 });
 
 products.put("/:id", async (req, res) => {
-  try {
-    const product = await Product.update(req.body);
-    res.status(201).send(product);
-  } catch {
-    res.status(503).end();
-  }
+   
+    try {
+        const product = await Product.findByIdAndUpdate(req.params.id,req.body);
+        res.status(201).send(product);
+    } catch { 
+             
+        res.status(503).end();
+    }
 });
 
 products.delete("/:id", async (req, res) => {
-  console.log(req.params.id);
-  try {
-    const product = await Product.deleteOne({ _id: req.params.id });
-    res.status(202).send(product);
-  } catch {
-    res.status(503).end();
-  }
+    console.log(req.params.id)
+    try {
+        const product = await Product.deleteOne({ _id: req.params.id });
+        res.status(202).send(product)
+    }
+
+    catch  { res.status(503).end() }
 });
 
 export default products;

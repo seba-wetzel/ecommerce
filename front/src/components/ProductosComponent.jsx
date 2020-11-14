@@ -3,7 +3,9 @@ import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../redux/actions/cart";
 
-const ProductosComponent = ({ producto }) => {
+import Stars from "../components/stars"
+
+const ProductosComponent = ({ producto, key }) => {
   const dispatch = useDispatch();
   const add = (id) => {
     dispatch(addToCart(id));
@@ -25,6 +27,7 @@ const ProductosComponent = ({ producto }) => {
           <span className="card-title">{producto.name}</span>
           <p>{producto.description}</p>
           <p> $ {producto.price} </p>
+          <Stars value={Math.floor(Math.random() * (6 - 1)) + 1} />
         </div>
         <div className="card-action center">
           <Link to={"/products/" + producto._id} className="btn red">
